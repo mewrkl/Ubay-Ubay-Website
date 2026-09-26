@@ -65,6 +65,7 @@
   --color-template-red: #d62828;
   --color-template-gray: #8f8f8f;
   --color-template-green: #1e8a4c;
+  --color-red-text: #ff6b6b;          /* the words "red line" on navy (the template red is too dark there) */
 
   /* Fonts */
   --font-body: "Agrandir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -312,35 +313,32 @@ code {
   text-align: center;
 }
 
-/* The logo badge. It is a button pin. */
-.hero-badge {
+/* The stacked logo is the page heading. Its background is transparent, so it
+   blends into the cream. */
+.hero-logo {
+  margin: 0 0 var(--space-8);
+  line-height: 0;
+}
+
+.hero-logo img {
   display: block;
-  width: 200px;
+  width: 240px;
   height: auto;
-  margin: 0 auto var(--space-8);
+  margin: 0 auto;
 }
 
 @media (min-width: 720px) {
-  .hero-badge {
-    width: 260px;
+  .hero-logo img {
+    width: 300px;
   }
 }
 
-/* Pin drawings in the backcard */
-.pin-rim {
-  fill: var(--color-ink);
-}
-
-.pin-face {
-  fill: var(--color-surface);
+.hero-invite {
+  font-weight: 700;
 }
 
 .hero-action {
-  margin: var(--space-8) 0 var(--space-6);
-}
-
-.hero .small {
-  margin-bottom: 0;
+  margin: var(--space-8) 0 0;
 }
 
 /* The deal at a glance */
@@ -398,20 +396,6 @@ code {
   border-top: 1px solid var(--color-line);
 }
 
-/* The number above each topic title, drawn as a small pin */
-.topic-number {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  margin: 0 auto var(--space-3);
-  border: 4px solid currentColor;
-  border-radius: 50%;
-  font-size: var(--size-small);
-  font-weight: 700;
-  line-height: 1;
-}
-
 /* How to join: a little more room between its title and the steps */
 .zone-join h2 {
   margin-bottom: var(--space-6);
@@ -465,41 +449,72 @@ code {
 }
 
 
-/* ---------- What to make: the 4 pins ---------- */
+/* ---------- Guidelines content ---------- */
 
-.bundle-mix {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-3);
-  max-width: 336px;
-  margin: var(--space-6) auto;
-  padding: 0;
-  list-style: none;
-}
-
-.bundle-mix li {
-  display: grid;
-  justify-items: center;
-  gap: var(--space-2);
-  font-size: var(--size-small);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.mini-pin {
+/* 1. The sample bundle picture */
+.sample-image {
   display: block;
   width: 100%;
-  aspect-ratio: 1;
-  border: 8px solid var(--color-ink);
-  border-radius: 50%;
-  background: var(--color-surface);
+  max-width: 280px;
+  height: auto;
+  margin: var(--space-6) auto;
+  border-radius: var(--radius-panel);
 }
 
-.pin-violet { border-color: var(--color-violet); }
-.pin-pink { border-color: var(--color-pink); }
-.pin-coral { border-color: var(--color-coral); }
-.pin-green { border-color: var(--color-green); }
+@media (min-width: 720px) {
+  .sample-image {
+    max-width: 320px;
+  }
+}
 
+/* A bulleted list centered as a block, with its text still reading left to right */
+.list-center {
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2. "red line" in red */
+.text-red {
+  color: var(--color-red-text);
+}
+
+/* 3 and 4. Colored blocks (orange for earnings, pink for the FAQ) with navy text.
+   The line, hint, and panel colors are reset to navy versions here, so the
+   table, rows, and placeholders inside read correctly on the color. */
+.card {
+  --color-line: rgba(43, 44, 73, 0.25);
+  --color-text-2: var(--color-navy);
+  --color-well: rgba(43, 44, 73, 0.08);
+  padding: var(--space-6);
+  border-radius: var(--radius-panel);
+  color: var(--color-navy);
+}
+
+.card-coral { background: var(--color-coral); }
+.card-pink { background: var(--color-pink); }
+
+.zone-navy .card a:not(.button) {
+  color: var(--color-navy);
+}
+
+.card h3 {
+  margin-bottom: var(--space-4);
+}
+
+.card .table-wrap {
+  margin-bottom: var(--space-4);
+  text-align: left;
+}
+
+.card td,
+.card .small {
+  font-weight: 700;
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
 
 /* ---------- The pin template drawing ---------- */
 
@@ -621,52 +636,6 @@ code {
   margin-bottom: 0;
 }
 
-/* Backcard drawing */
-.backcard {
-  display: block;
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  margin: var(--space-2) 0 var(--space-6);
-}
-
-.card {
-  fill: var(--color-surface);
-  stroke: var(--color-ink);
-  stroke-width: 2;
-}
-
-.card-hole {
-  fill: var(--color-well);
-  stroke: var(--color-ink);
-  stroke-width: 2;
-}
-
-.card-logo {
-  fill: var(--color-surface);
-  stroke: var(--color-ink-2);
-  stroke-dasharray: 3 3;
-}
-
-.backcard text {
-  font-family: var(--font-body);
-  fill: var(--color-text);
-}
-
-.card-title {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.card-small {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.card-tiny {
-  font-size: 8px;
-}
-
 /* Price table */
 .table-wrap {
   overflow-x: auto;
@@ -728,43 +697,15 @@ tbody th {
 
 .steps {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
   max-width: 440px;
   margin: var(--space-6) auto var(--space-8);
-  padding: 0;
-  list-style: none;
+  padding-left: var(--space-6);
   text-align: left;
-  counter-reset: step;
 }
 
-.steps li {
-  display: grid;
-  grid-template-columns: 36px 1fr;
-  gap: var(--space-4);
-  align-items: start;
-  counter-increment: step;
-}
-
-/* Step numbers drawn as small button pins */
-.steps li::before {
-  content: counter(step);
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 4px solid var(--color-ink);
-  border-radius: 50%;
-  background: var(--color-surface);
-  font-size: var(--size-small);
+.steps li::marker {
   font-weight: 700;
-}
-
-.steps li:nth-child(1)::before { border-color: var(--color-violet); }
-.steps li:nth-child(2)::before { border-color: var(--color-pink); }
-.steps li:nth-child(3)::before { border-color: var(--color-green); }
-
-.steps li > span {
-  padding-top: 5px;
 }
 
 
@@ -936,18 +877,60 @@ input[type="email"]:hover {
   display: block;
   width: 160px;
   height: auto;
-  margin: 0 auto var(--space-4);
+  margin: 0 auto var(--space-6);
 }
 
-.site-footer p + p {
-  margin-top: var(--space-1);
+.site-footer .footer-title {
+  margin-bottom: var(--space-3);
+  color: var(--color-cream);
+  font-size: var(--size-body);
+  font-weight: 700;
+}
+
+/* Label on the left, contact on the right */
+.footer-contacts {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 380px;
+  margin: 0 auto;
+  font-size: var(--size-body);
+  text-align: left;
+}
+
+.footer-contacts > div {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: var(--space-3);
+}
+
+.footer-contacts dt {
+  font-size: var(--size-small);
+  padding-top: 2px;
+}
+
+.footer-contacts dd {
+  margin: 0;
+  color: var(--color-cream);
+  overflow-wrap: anywhere;
+}
+
+.footer-note {
+  color: #c9cadb;
+  font-size: var(--size-small);
+}
+
+.site-footer .footer-credit {
+  max-width: 380px;
+  margin: var(--space-8) auto 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(246, 241, 231, 0.2);
 }
 
 
 /* ---------- Scroll animations ----------
    Turned on by the small script in the <head> of index.html (class "js-reveal").
    Parts with class="reveal" fade in and rise slightly the first time they
-   scroll into view. The 4 pins also pop in one after another. */
+   scroll into view. The sample bundle picture also grows in slightly. */
 
 .js-reveal .reveal {
   opacity: 0;
@@ -960,21 +943,14 @@ input[type="email"]:hover {
   transform: none;
 }
 
-.js-reveal .bundle-mix .mini-pin {
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 250ms ease-out, transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+/* The sample bundle picture also grows in slightly */
+.js-reveal .sample-image.reveal {
+  transform: translateY(12px) scale(0.96);
 }
 
-.js-reveal .bundle-mix.is-visible .mini-pin {
-  opacity: 1;
+.js-reveal .sample-image.reveal.is-visible {
   transform: none;
 }
-
-.js-reveal .bundle-mix li:nth-child(1) .mini-pin { transition-delay: 150ms; }
-.js-reveal .bundle-mix li:nth-child(2) .mini-pin { transition-delay: 250ms; }
-.js-reveal .bundle-mix li:nth-child(3) .mini-pin { transition-delay: 350ms; }
-.js-reveal .bundle-mix li:nth-child(4) .mini-pin { transition-delay: 450ms; }
 
 
 /* ---------- Reduced motion ---------- */

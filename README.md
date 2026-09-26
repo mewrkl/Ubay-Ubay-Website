@@ -1,4 +1,4 @@
-# Ubay-Ubay x UP Cookout 2026 artist call
+# Ubay-Ubay x UP Cookout 2026 artist invitation
 
 A small website that invites artists to design button pin bundles for the
 Ubay-Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build step.
@@ -7,13 +7,13 @@ Ubay-Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build st
 
 | File | What it is |
 |---|---|
-| `index.html` | The main page: intro, what to make, the pin template, earnings, "Good to know", how to join |
+| `index.html` | The main page: intro, the 4 numbered guidelines (design, pin template, earnings, FAQ), how to join |
 | `sign-up.html` | The acceptance letter and the short sign-up form |
 | `styles.css` | How both pages look. Colors, text sizes, and spacing are at the top. |
 | `script.js` | The form logic (added in Phase 2) |
 | `assets/fonts/` | The brand fonts, Sunday and Agrandir, as web files |
-| `assets/brand/` | The Ubay-Ubay logos (badge and horizontal) |
-| `assets/` | Also the place for the pin template file and pin idea images |
+| `assets/brand/` | The Ubay-Ubay logos and the sample bundle picture |
+| `assets/` | Also the place for pin idea images |
 | `TODO.md` | Every placeholder still on the site, and open questions |
 | `decisions/` | Short records of why things were built the way they were |
 
@@ -34,7 +34,7 @@ phone icon, and pick a width of 360.
 4. Save and refresh the browser.
 
 Keep each section short: a title, one or two sentences, and at most one picture or button.
-Extra detail belongs in "Good to know".
+Extra detail belongs in the FAQ (number 4 in the guidelines).
 
 ### Placeholders
 
@@ -47,14 +47,14 @@ Theme: <span class="tbd">[to be decided]</span>
 When the value is decided, replace the whole `<span ...>...</span>` with the real text,
 and tick the matching line in `TODO.md`.
 
-### Add a "Good to know" row
+### Add an FAQ question
 
 Copy one whole `<details class="more">` block on `index.html`, paste it below the others,
-and change the title in `<summary>` and the text inside `<div class="more-body">`:
+and change the question in `<summary>` and the answer inside `<div class="more-body">`:
 
 ```html
 <details class="more">
-  <summary>Your question or topic</summary>
+  <summary>Your question?</summary>
   <div class="more-body">
     <p>The answer goes here.</p>
   </div>
@@ -63,7 +63,7 @@ and change the title in `<summary>` and the text inside `<div class="more-body">
 
 ### Values that appear twice
 
-- Earnings: "What you earn" and "Full price breakdown" on `index.html`.
+- Earnings: the intro ("You get"), "3. What you earn", and the FAQ question "How is each sale split?" on `index.html`.
 - Footer: at the bottom of both pages. Keep them the same.
 
 Search for the old value (for example `₱100`) to find every copy.
@@ -84,8 +84,6 @@ The signed PDF (Phase 2) copies its text from this block, so the page and the PD
 
 - Submission folders: search `index.html` for `link to be added`. The comment above each one
   shows the exact line to paste in, with your Google Drive link.
-- Pin template download: search for `Download the template`. Put the file in `assets/`,
-  set `href="assets/your-file-name.png"`, and delete `aria-disabled="true"`.
 
 ### Copy rules
 
@@ -110,23 +108,24 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 
 - **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
   coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
-  The accents only appear on the rims of the 4 pins and the 3 step numbers.
+  Coral is the background of "3. What you earn" and pink the background of "4. Frequently asked questions",
+  both with navy text. Everywhere else the page is cream and navy.
 - **Page zones:** the page alternates cream and navy: intro (cream), "The guidelines" with numbered
   topics (navy), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
   Inside a navy zone (`class="zone zone-navy"`), text and lines switch to their light versions automatically.
 - **Scroll animation:** anything with `class="reveal"` fades in the first time it scrolls into view,
-  and the 4 pins pop in one after another. It is switched off for visitors who turned on
+  and the sample bundle picture grows in slightly. It is switched off for visitors who turned on
   "reduce motion" on their phone, and without JavaScript everything simply shows.
   To stop a part from animating, remove `reveal` from its class.
 - **Fonts:**
-  - Agrandir Grand Heavy: the big headline
-  - Agrandir Grand Heavy also: zone titles ("The guidelines", "How to join")
-  - Sunday: the numbered topic titles inside the guidelines
+  - Agrandir Grand Heavy: zone titles ("The guidelines", "How to join") and the sign-up page title
+  - Sunday: the numbered guideline titles, for example "2. Pin Template". Type the number as part of the title.
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.
-- **Logos:** `assets/brand/badge.png` (intro) and `assets/brand/logo-horizontal-cream.png` (navy footer) were cropped from the brand kit PDF.
+- **Logos:** `assets/brand/logo-stacked.png` (intro, transparent background) and `assets/brand/logo-horizontal-cream.png` (navy footer) were cropped from the brand kit PDF.
   To use sharper versions, export them from Canva with the same file names and replace these files.
+- **Sample bundle picture:** `assets/brand/pin-sample-guideline.png`, shown under guideline 1. Keep file names free of spaces.
 
 ### Font licenses
 
