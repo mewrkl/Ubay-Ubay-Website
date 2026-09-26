@@ -98,6 +98,12 @@ The signed PDF (Phase 2) copies its text from this block, so the page and the PD
 Open `styles.css`. The `:root` block at the top lists every color, the four text sizes,
 and the spacing, each with a short note. Change a value there and it updates on both pages.
 
+**After any change to `styles.css` or `script.js`, raise the version number** in both
+`index.html` and `sign-up.html`. For example, change `styles.css?v=8` and `script.js?v=8` to `?v=9`.
+Browsers keep a saved copy of these files for about 10 minutes. Without a new number, a visitor
+can get the new page with the old styles, which looks broken. The same applies to images:
+if you replace a logo with a file of the same name, it can take about 10 minutes to show everywhere.
+
 ## Brand
 
 The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public repo.
