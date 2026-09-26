@@ -8,10 +8,10 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for our stall at UP Cookout 2026. You make the art. We print, pack, and sell it. You earn a cut of every sale.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
-  <script src="script.js?v=12" defer></script>
+  <script src="script.js?v=13" defer></script>
 </head>
 <body>
 
@@ -100,21 +100,24 @@
         will not show.
       </p>
 
-      <svg class="template-diagram" viewBox="0 0 260 260" role="img" aria-labelledby="template-diagram-title">
-        <title id="template-diagram-title">Pin template: the front is inside the red line, the side is between the red and gray lines, and the area past the gray line is not visible</title>
-        <defs>
-          <path id="side-path" d="M 130,130 m -95,0 a 95,95 0 1,1 190,0"></path>
-          <path id="outside-path" d="M 130,130 m -117,0 a 117,117 0 1,1 234,0"></path>
-        </defs>
-        <circle cx="130" cy="130" r="128" class="tpl-outside"></circle>
-        <circle cx="130" cy="130" r="108" class="tpl-fold"></circle>
-        <circle cx="130" cy="130" r="88" class="tpl-front"></circle>
-        <circle cx="130" cy="130" r="108" class="tpl-line tpl-gray"></circle>
-        <circle cx="130" cy="130" r="88" class="tpl-line tpl-red"></circle>
-        <text class="tpl-ring-label"><textPath href="#side-path" startOffset="50%" text-anchor="middle">SIDE OF THE PIN</textPath></text>
-        <text class="tpl-ring-label tpl-ring-label-muted"><textPath href="#outside-path" startOffset="50%" text-anchor="middle">NOT VISIBLE</textPath></text>
-        <text class="tpl-label" x="130" y="126" text-anchor="middle">Front</text>
-        <text class="tpl-label-small" x="130" y="146" text-anchor="middle">your art goes here</text>
+      <!-- EDIT: The pin picture is assets/brand/pin-template.png. The shading and labels are drawn on top of it. -->
+      <svg class="template-diagram" viewBox="-20 -130 640 740" role="img" aria-labelledby="template-diagram-title">
+        <title id="template-diagram-title">Button pin template. Your art goes on the front, inside the red dashed line. The ring between the red and gray dashed lines wraps around the side of the pin. Anything past the gray dashed line, up to the outer edge, is not visible.</title>
+        <image href="assets/brand/pin-template.png" x="0" y="0" width="600" height="600"></image>
+        <!-- Shading: darker ring = not visible, light ring = side of the pin -->
+        <path class="zone-shade-hidden" fill-rule="evenodd" d="M 4,300 a 296,296 0 1,0 592,0 a 296,296 0 1,0 -592,0 Z M 43,300 a 257,257 0 1,0 514,0 a 257,257 0 1,0 -514,0 Z"></path>
+        <path class="zone-shade-side" fill-rule="evenodd" d="M 44,300 a 256,256 0 1,0 512,0 a 256,256 0 1,0 -512,0 Z M 71,300 a 229,229 0 1,0 458,0 a 229,229 0 1,0 -458,0 Z"></path>
+        <!-- Labels -->
+        <g class="diagram-callout">
+          <line x1="105" y1="-52" x2="105" y2="105"></line>
+          <circle cx="105" cy="105" r="9"></circle>
+          <text x="105" y="-68" text-anchor="middle">NOT VISIBLE</text>
+          <line x1="471" y1="-52" x2="471" y2="129"></line>
+          <circle cx="471" cy="129" r="9"></circle>
+          <text x="471" y="-68" text-anchor="middle">SIDE OF THE PIN</text>
+        </g>
+        <text class="diagram-front" x="300" y="292" text-anchor="middle">FRONT</text>
+        <text class="diagram-front-note" x="300" y="332" text-anchor="middle">your art goes here</text>
       </svg>
 
       <p class="small">Pin size, file type, and resolution <span class="tbd">[to be decided]</span></p>

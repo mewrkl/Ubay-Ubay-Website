@@ -128,6 +128,8 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 - **Logos:** `assets/brand/logo-stacked.png` (intro, transparent background) and `assets/brand/logo-horizontal-cream.png` (navy footer) were cropped from the brand kit PDF.
   To use sharper versions, export them from Canva with the same file names and replace these files.
 - **Sample bundle picture:** `assets/brand/pin-sample-guideline.png`, shown under guideline 1. Keep file names free of spaces.
+- **Pin template picture:** `assets/brand/pin-template.png` (transparent around the pin), shown under guideline 2.
+  The "NOT VISIBLE" and "SIDE OF THE PIN" labels and the shading are drawn on top of it in `index.html`.
 
 ### Font licenses
 

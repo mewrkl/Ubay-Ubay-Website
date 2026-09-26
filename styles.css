@@ -54,7 +54,6 @@
   --color-text: var(--color-navy);
   --color-text-2: #5a5b73;            /* small text, hints, placeholders */
   --color-ink: var(--color-navy);     /* the pin drawings */
-  --color-ink-2: #5a5b73;             /* small labels inside the drawings (never changes on navy) */
   --color-accent: var(--color-navy);  /* main button and links */
   --color-accent-hover: #1f2036;
   --color-accent-active: #15162a;
@@ -499,66 +498,62 @@ code {
   margin-right: auto;
 }
 
-/* ---------- The pin template drawing ---------- */
+/* ---------- The pin template picture with labels ---------- */
 
 .template-diagram {
   display: block;
   width: 100%;
-  max-width: 260px;
+  max-width: 340px;
   height: auto;
   margin: var(--space-6) auto;
-}
-
-.tpl-outside {
-  fill: var(--color-well);
-}
-
-.tpl-fold {
-  fill: #e2d8c6;
-}
-
-.tpl-front {
-  fill: var(--color-surface);
-}
-
-.tpl-line {
-  fill: none;
-  stroke-width: 2.5;
-}
-
-.tpl-red {
-  stroke: var(--color-template-red);
-}
-
-.tpl-gray {
-  stroke: var(--color-template-gray);
-  stroke-dasharray: 8 5;
-}
-
-.tpl-ring-label {
-  fill: var(--color-text);
   font-family: var(--font-body);
-  font-size: 10px;
+}
+
+/* Shading drawn over the picture: dark = not visible, light = side of the pin */
+.zone-shade-hidden {
+  fill: var(--color-navy);
+  fill-opacity: 0.5;
+}
+
+.zone-shade-side {
+  fill: var(--color-navy);
+  fill-opacity: 0.12;
+}
+
+/* Labels outside the pin follow the text color of the band (cream on navy) */
+.diagram-callout {
+  color: currentColor;
+}
+
+.diagram-callout line {
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.diagram-callout circle {
+  fill: currentColor;
+  stroke: var(--color-navy);
+  stroke-width: 3;
+}
+
+.diagram-callout text {
+  fill: currentColor;
+  font-size: 28px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
 }
 
-.tpl-ring-label-muted {
-  fill: var(--color-text-2);
-  font-size: 9px;
-}
-
-.tpl-label {
-  fill: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 18px;
+/* Labels inside the white front of the pin */
+.diagram-front {
+  fill: var(--color-navy);
+  font-size: 44px;
   font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-.tpl-label-small {
-  fill: var(--color-ink-2);
-  font-family: var(--font-body);
-  font-size: 12px;
+.diagram-front-note {
+  fill: var(--color-navy);
+  font-size: 26px;
 }
 
 
