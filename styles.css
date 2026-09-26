@@ -92,7 +92,8 @@
 
   --column: 560px;                /* width of the one column */
   --gutter: 16px;                 /* space at the left and right screen edges */
-  --section-gap: 64px;            /* space between sections */
+  --section-gap: 64px;            /* space at the top of each section */
+  --section-end: 32px;            /* space at the bottom of each section */
   --radius-control: 6px;
   --radius-panel: 8px;
 }
@@ -102,6 +103,7 @@
     --size-title: 48px;
     --gutter: 32px;
     --section-gap: 96px;
+    --section-end: 48px;
   }
 }
 
@@ -309,7 +311,7 @@ code {
 
 .hero {
   padding-top: var(--space-12);
-  padding-bottom: var(--section-gap);
+  padding-bottom: var(--section-end);
   text-align: center;
 }
 
@@ -345,8 +347,14 @@ code {
    Intro (cream), guidelines (navy), how to join (cream), footer (navy). */
 
 .zone {
-  padding: var(--section-gap) 0;
+  padding: var(--section-gap) 0 var(--section-end);
   text-align: center;
+}
+
+/* No extra gap after the last line of a section */
+.topic > :last-child,
+.zone > .column > :last-child {
+  margin-bottom: 0;
 }
 
 .zone-head {
@@ -446,21 +454,6 @@ code {
   max-width: 440px;
   margin-left: auto;
   margin-right: auto;
-}
-
-/* The deadline bullet stands out as an orange highlight */
-.list .list-highlight {
-  margin-top: var(--space-3);
-  margin-left: calc(-1 * var(--space-6));
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-control);
-  background: var(--color-coral);
-  color: var(--color-navy);
-  list-style: none;
-}
-
-.list-highlight .tbd {
-  color: var(--color-navy);
 }
 
 /* 2. "red line" in red */
@@ -847,7 +840,7 @@ input[type="email"]:hover {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  padding: var(--space-12) 0;
+  padding: var(--space-12) 0 var(--section-end);
   background: var(--color-navy);
   color: #c9cadb;
   font-size: var(--size-small);

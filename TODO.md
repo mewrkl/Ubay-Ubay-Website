@@ -19,7 +19,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [x] Ubay-Ubay logos: stacked logo (intro) and cream horizontal logo (footer), cropped from the brand kit PDF
 - [ ] Optional: replace the cropped logos with proper exports from Canva (SVG or transparent PNG) for extra sharpness
 - [ ] Tinkers logo, if it should appear on the site
-- [ ] Delete "These guidelines may still change." once the guidelines are final
+- [x] "These guidelines may still change." line removed
 
 ## Sign-up page (`sign-up.html`)
 
