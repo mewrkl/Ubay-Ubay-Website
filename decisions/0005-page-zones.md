@@ -1,6 +1,6 @@
 # 0005: Separate the page into 3 background zones
 
-- Status: Accepted
+- Status: Superseded by 0007
 - Date: 2026-09-26
 - Supersedes: 0004 (only where the accent colors go)
 

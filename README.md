@@ -1,7 +1,7 @@
-# Ubay Ubay x UP Cookout 2026 artist call
+# Ubay-Ubay x UP Cookout 2026 artist call
 
 A small website that invites artists to design button pin bundles for the
-Ubay Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build step.
+Ubay-Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build step.
 
 ## Files
 
@@ -105,8 +105,9 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 - **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
   coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
   The accents only appear on the rims of the 4 pins and the 3 step numbers.
-- **Page zones:** the intro sits on cream, "The guidelines" on a light panel with numbered topics,
-  and "How to join" on navy. The zone backgrounds are what separate the parts of the page.
+- **Page zones:** the page alternates cream and navy: intro (cream), "The guidelines" with numbered
+  topics (navy), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
+  Inside a navy zone (`class="zone zone-navy"`), text and lines switch to their light versions automatically.
 - **Scroll animation:** anything with `class="reveal"` fades in the first time it scrolls into view,
   and the 4 pins pop in one after another. It is switched off for visitors who turned on
   "reduce motion" on their phone, and without JavaScript everything simply shows.
@@ -118,7 +119,7 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.
-- **Logos:** `assets/brand/badge.png` and `assets/brand/logo-horizontal.png` were cropped from the brand kit PDF.
+- **Logos:** `assets/brand/badge.png` (intro) and `assets/brand/logo-horizontal-cream.png` (navy footer) were cropped from the brand kit PDF.
   To use sharper versions, export them from Canva with the same file names and replace these files.
 
 ### Font licenses

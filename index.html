@@ -19,7 +19,7 @@
   - Look for comments that start with "EDIT:" for the parts that change often.
   - Anything not decided yet looks like this: <span class="tbd">[to be decided]</span>
     Replace the whole span with the real value once it is decided, then tick it off in TODO.md.
-  - The page has 3 zones: the intro (cream), the guidelines (light panel), and how to join (navy).
+  - The page alternates cream and navy: intro (cream), guidelines (navy), how to join (cream), footer (navy).
   - Parts with class="reveal" fade in when they scroll into view.
   - The acceptance letter and the sign-up form are on the other page, sign-up.html.
 -->
@@ -73,10 +73,10 @@
 
 
   <!-- =========================================================
-       ZONE 2: THE GUIDELINES (light panel)
+       ZONE 2: THE GUIDELINES (navy)
        Each topic has a number. To add a topic, copy one <section class="topic">.
        ========================================================= -->
-  <section class="zone zone-panel" id="guidelines" aria-labelledby="guidelines-title">
+  <section class="zone zone-navy" id="guidelines" aria-labelledby="guidelines-title">
 
     <div class="column zone-head reveal">
       <h2 id="guidelines-title">The guidelines</h2>
@@ -270,9 +270,9 @@
 
 
   <!-- =========================================================
-       ZONE 3: HOW TO JOIN (navy)
+       ZONE 3: HOW TO JOIN (cream)
        ========================================================= -->
-  <section class="zone zone-navy" id="how-to-join" aria-labelledby="how-to-join-title">
+  <section class="zone zone-join" id="how-to-join" aria-labelledby="how-to-join-title">
     <div class="column reveal">
       <h2 id="how-to-join-title">How to join</h2>
 
@@ -304,15 +304,17 @@
 </main>
 
 <!-- EDIT: Footer contacts. -->
-<footer class="site-footer column">
-  <!-- EDIT: Logo image is assets/brand/logo-horizontal.png (cropped from the brand kit). -->
-  <img class="footer-logo" src="assets/brand/logo-horizontal.png" width="160" height="54" alt="Ubay-Ubay pop-up art market">
-  <p>
-    Questions? <a href="mailto:ubayubaytinkers@gmail.com">ubayubaytinkers@gmail.com</a>
-    · <a href="https://www.instagram.com/anachimotte/">@anachimotte</a> on Instagram
-    · <a href="https://www.facebook.com/ubayubay">@ubayubay</a> on Facebook
-  </p>
-  <p>A Tinkers fundraiser, UP Cebu</p>
+<footer class="site-footer">
+  <div class="column">
+    <!-- EDIT: Logo image is assets/brand/logo-horizontal-cream.png (cropped from the brand kit). -->
+    <img class="footer-logo" src="assets/brand/logo-horizontal-cream.png" width="160" height="57" alt="Ubay-Ubay pop-up art market">
+    <p>
+      Questions? <a href="mailto:ubayubaytinkers@gmail.com">ubayubaytinkers@gmail.com</a>
+      · <a href="https://www.instagram.com/anachimotte/">@anachimotte</a> on Instagram
+      · <a href="https://www.facebook.com/ubayubay">@ubayubay</a> on Facebook
+    </p>
+    <p>A Tinkers fundraiser, UP Cebu</p>
+  </div>
 </footer>
 
 </body>
