@@ -64,7 +64,8 @@ and change the question in `<summary>` and the answer inside `<div class="more-b
 ### Values that appear twice
 
 - Earnings: "3. What you earn" and the FAQ question "How is each sale split?" on `index.html`.
-- Deadline: the date box in the intro and step 3 of "How to join" on `index.html`.
+- Deadline: the highlighted last bullet of "1. Design 4 pins", the FAQ question "When is the deadline?",
+  and step 3 of "How to join" on `index.html`. Change all three.
 - Footer: at the bottom of both pages. Keep them the same.
 
 Search for the old value (for example `₱100`) to find every copy.

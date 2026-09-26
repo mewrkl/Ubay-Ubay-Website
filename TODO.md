@@ -6,7 +6,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Main page (`index.html`)
 
-- [ ] Final submission deadline, somewhere from October 20 to 25, 2026 (intro date box and How to join step 3)
+- [ ] Final submission deadline, somewhere from October 20 to 25, 2026 (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
 - [ ] Theme for the on-theme pin (What to make)
 - [x] Pin template download removed. The team aligns designs to the template.
 - [ ] Pin size, file type, and resolution (The pin template)
