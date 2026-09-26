@@ -6,6 +6,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Main page (`index.html`)
 
+- [ ] Final submission deadline, somewhere from October 20 to 25, 2026 (intro and How to join)
 - [ ] Theme for the on-theme pin (What to make)
 - [ ] Pin template file for download (put it in `assets/`)
 - [ ] Pin size, file type, and resolution (The pin template)
@@ -13,9 +14,11 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [ ] Payout timing and method (What you earn)
 - [ ] Bundle submission folder link, Google Drive (How to join)
 - [ ] Solo pin submission folder link, Google Drive (Good to know > Solo pins)
-- [ ] Facebook page link (footer, on both pages)
+- [x] Facebook page link: https://www.facebook.com/ubayubay (from the brand kit)
 - [ ] Pin idea images. The gallery section is hidden in the HTML until we have images we own or have permission to use.
-- [ ] Ubay Ubay and Tinkers logos (nowhere on the page yet. Decide where they go.)
+- [x] Ubay-Ubay logos: badge (intro) and horizontal logo (footer), cropped from the brand kit PDF
+- [ ] Optional: replace the cropped logos with proper exports from Canva (SVG or transparent PNG) for extra sharpness
+- [ ] Tinkers logo, if it should appear on the site
 - [ ] Delete "These guidelines may still change." once the guidelines are final
 
 ## Sign-up page (`sign-up.html`)
@@ -27,12 +30,16 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - Earnings: bundle ₱240 (artist ₱100, Tinkers ₱140), solo pin ₱50 (artist ₱10, Tinkers ₱40).
   The artist's share shows in "What you earn" and the full split in "Good to know". Change both.
-- Submission window: November 1 to 10, 2026 (How to join)
-- Org naming: the site says "Ubay Ubay" and "Ubay Ubay by Tinkers, UP Cebu"
+- Submission deadline: October 20 to 25, 2026, final date to be announced (intro and How to join)
+
+## Decided
+
+- Org naming follows the brand kit: "Ubay-Ubay", "pop-up art market", "A Tinkers fundraiser"
+- Colors and fonts follow the brand kit. See the Brand section in README.md.
 
 ## Open questions
 
-- [ ] Are pins sold during the whole flea market (Nov 5 to 15) or only on the main days (Nov 14 and 15)? Is there time to print between Nov 10 and Nov 14?
+- [ ] Are pins sold during the whole flea market (Nov 5 to 15) or only on the main days (Nov 14 and 15)?
 - [ ] Deadline for signing the acceptance letter
 - [ ] Does a second bundle need the same mix (2 food, 1 on theme, 1 pop culture)?
 - [ ] Can a leftover design (for example the 5th one) be sent as a solo pin?

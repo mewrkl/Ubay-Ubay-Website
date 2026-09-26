@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ubay Ubay artist call, UP Cookout 2026</title>
+  <title>Ubay-Ubay artist call, UP Cookout 2026</title>
   <!-- EDIT: This is the text that shows when the link is shared on Facebook or Messenger. -->
-  <meta name="description" content="Design a button pin bundle for the Ubay Ubay stall at UP Cookout 2026. You make the art. We print, pack, and sell it. You earn a cut of every sale.">
+  <meta name="description" content="Design a button pin bundle for the Ubay-Ubay stall at UP Cookout 2026. You make the art. We print, pack, and sell it. You earn a cut of every sale.">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -22,34 +22,28 @@
 
 <a class="skip-link" href="#what-to-make">Skip to the guidelines</a>
 
+<!-- EDIT: The colored UBAY-UBAY band at the top of the page. Decoration only. -->
+<div class="band" aria-hidden="true"><span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span> <span class="c-violet">U</span>B<span class="c-pink">A</span>Y-U<span class="c-coral">B</span>A<span class="c-green">Y</span></div>
+
 <main>
 
   <!-- =========================================================
        INTRO
        ========================================================= -->
   <section class="hero column" aria-labelledby="intro-title">
-    <!-- The big button pin. The rim text is the words inside <textPath>. -->
-    <svg class="hero-pin" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-      <defs>
-        <path id="rim-path" d="M 200,200 m -166,0 a 166,166 0 1,1 332,0 a 166,166 0 1,1 -332,0"></path>
-      </defs>
-      <circle cx="200" cy="200" r="198" class="pin-rim"></circle>
-      <circle cx="200" cy="200" r="138" class="pin-face"></circle>
-      <circle cx="200" cy="200" r="122" class="pin-guide"></circle>
-      <text class="pin-rim-text"><textPath href="#rim-path" textLength="1030" lengthAdjust="spacing">UBAY UBAY · UP COOKOUT 2026 · ARTIST CALL ·</textPath></text>
-      <text class="pin-face-text" x="200" y="192" text-anchor="middle">Your art</text>
-      <text class="pin-face-text" x="200" y="232" text-anchor="middle">here</text>
-    </svg>
+    <!-- EDIT: The logo badge. The image file is assets/brand/badge.png (cropped from the brand kit). -->
+    <img class="hero-badge" src="assets/brand/badge.png" width="280" height="280" alt="Ubay-Ubay pop-up art market logo">
 
     <!-- EDIT: Headline and intro. -->
-    <h1 id="intro-title">Your art on a pin at UP Cookout 2026</h1>
+    <h1 id="intro-title">Call for artists.</h1>
     <p>
-      Ubay Ubay is looking for artists to design button pin bundles for our stall.
+      Design a button pin bundle for our stall at UP Cookout 2026.
       You make the art. We print, pack, and sell it. You earn a cut of every sale.
     </p>
     <p class="small">
-      Ubay Ubay is a popup bazaar by Tinkers, UP Cebu Fine Arts.
-      UP Cookout 2026 runs on November 14 and 15, with a flea market from November 5 to 15.
+      Ubay-Ubay is a pop-up art market by Tinkers, UP Cebu Fine Arts.
+      UP Cookout 2026 is on November 14 and 15.<br>
+      Deadline for designs: October 20 to 25, 2026 <span class="tbd">[final date to be announced]</span>
     </p>
     <p class="hero-action">
       <a class="button button-secondary" href="#what-to-make">See what to make</a>
@@ -64,14 +58,14 @@
        WHAT TO MAKE
        ========================================================= -->
   <section class="block column" id="what-to-make" aria-labelledby="what-to-make-title">
-    <h2 id="what-to-make-title">What to make</h2>
+    <h2 id="what-to-make-title"><span class="label label-coral">What to make</span></h2>
     <p>Design 4 pins and give your bundle a name.</p>
 
     <ul class="bundle-mix" aria-label="The 4 pins in one bundle">
-      <li><span class="mini-pin" aria-hidden="true"></span>Food</li>
-      <li><span class="mini-pin" aria-hidden="true"></span>Food</li>
-      <li><span class="mini-pin" aria-hidden="true"></span>On theme</li>
-      <li><span class="mini-pin" aria-hidden="true"></span>Pop culture</li>
+      <li><span class="mini-pin pin-violet" aria-hidden="true"></span>Food</li>
+      <li><span class="mini-pin pin-pink" aria-hidden="true"></span>Food</li>
+      <li><span class="mini-pin pin-coral" aria-hidden="true"></span>On theme</li>
+      <li><span class="mini-pin pin-green" aria-hidden="true"></span>Pop culture</li>
     </ul>
 
     <!-- EDIT: Replace the tbd span with the theme once it is decided. -->
@@ -87,7 +81,7 @@
        THE PIN TEMPLATE
        ========================================================= -->
   <section class="block column" id="pin-template" aria-labelledby="pin-template-title">
-    <h2 id="pin-template-title">The pin template</h2>
+    <h2 id="pin-template-title"><span class="label label-pink">The pin template</span></h2>
     <p>
       Keep your art inside the red line. The area up to the gray line wraps around
       the side of the pin. Anything past the gray line will not show.
@@ -127,7 +121,7 @@
        WHAT YOU EARN
        ========================================================= -->
   <section class="block column" id="earnings" aria-labelledby="earnings-title">
-    <h2 id="earnings-title">What you earn</h2>
+    <h2 id="earnings-title"><span class="label label-green">What you earn</span></h2>
     <!-- EDIT: Earnings. The full split is under "Good to know" below. Change both. -->
     <p>
       ₱100 for every bundle sold and ₱10 for every solo pin sold.
@@ -142,7 +136,7 @@
        To add a row, copy one <details> block and change the text.
        ========================================================= -->
   <section class="block column" id="good-to-know" aria-labelledby="good-to-know-title">
-    <h2 id="good-to-know-title">Good to know</h2>
+    <h2 id="good-to-know-title"><span class="label label-violet">Good to know</span></h2>
 
     <div class="more-list">
 
@@ -176,11 +170,11 @@
         <summary>The backcard</summary>
         <div class="more-body">
           <p>
-            You only design the pins and the bundle name. An assigned Ubay Ubay artist makes
+            You only design the pins and the bundle name. An assigned Ubay-Ubay artist makes
             the backcard so all bundles look the same.
           </p>
           <svg class="backcard" viewBox="0 0 220 340" role="img" aria-labelledby="backcard-title">
-            <title id="backcard-title">Backcard layout: bundle name, UP Cookout 2026, four pins around the Ubay Ubay logo, and the artist's social handle at the bottom</title>
+            <title id="backcard-title">Backcard layout: bundle name, UP Cookout 2026, four pins around the Ubay-Ubay logo, and the artist's social handle at the bottom</title>
             <rect x="10" y="10" width="200" height="320" rx="6" class="card"></rect>
             <circle cx="110" cy="32" r="7" class="card-hole"></circle>
             <text x="110" y="74" text-anchor="middle" class="card-title">Bundle name</text>
@@ -197,7 +191,7 @@
           </svg>
           <p>
             From top to bottom: your bundle name, "UP Cookout 2026", your 4 pins with the
-            Ubay Ubay logo in the center, and your social handle. The card is vellum board or
+            Ubay-Ubay logo in the center, and your social handle. The card is vellum board or
             hard paper with pre-punched holes for the pins.
           </p>
           <p>
@@ -254,15 +248,16 @@
        HOW TO JOIN
        ========================================================= -->
   <section class="block column" id="how-to-join" aria-labelledby="how-to-join-title">
-    <h2 id="how-to-join-title">How to join</h2>
+    <h2 id="how-to-join-title"><span class="label label-navy">How to join</span></h2>
 
-    <!-- EDIT: Submission dates and folder name. -->
+    <!-- EDIT: Deadline and folder name. The deadline also appears in the intro. -->
     <ol class="steps">
       <li><span>Read and sign the acceptance letter.</span></li>
       <li><span>Check your email for your signed copy.</span></li>
       <li>
         <span>
-          Upload your designs from November 1 to 10, 2026, in a folder named
+          Upload your designs by the deadline, October 20 to 25, 2026
+          <span class="tbd">[final date to be announced]</span>, in a folder named
           <code class="folder-name">LastName_BundleName_ArtistName</code>
         </span>
       </li>
@@ -283,12 +278,14 @@
 
 <!-- EDIT: Footer contacts. -->
 <footer class="site-footer column">
+  <!-- EDIT: Logo image is assets/brand/logo-horizontal.png (cropped from the brand kit). -->
+  <img class="footer-logo" src="assets/brand/logo-horizontal.png" width="160" height="54" alt="Ubay-Ubay pop-up art market">
   <p>
     Questions? <a href="mailto:ubayubaytinkers@gmail.com">ubayubaytinkers@gmail.com</a>
     · <a href="https://www.instagram.com/anachimotte/">@anachimotte</a> on Instagram
-    · Facebook <span class="tbd">[link to be added]</span>
+    · <a href="https://www.facebook.com/ubayubay">@ubayubay</a> on Facebook
   </p>
-  <p>Ubay Ubay by Tinkers, UP Cebu</p>
+  <p>A Tinkers fundraiser, UP Cebu</p>
 </footer>
 
 </body>

@@ -1,0 +1,9 @@
+# Full font packages. Only the web font files in assets/fonts/ are published.
+/Agrandir-Font-Family/
+/Sunday/
+
+# Internal brand kit (draft posters, photos). Not for the public repo.
+UBAY-UBAY BRANDKIT.pdf
+
+# Local tool caches
+.impeccable/

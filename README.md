@@ -11,7 +11,9 @@ Ubay Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build st
 | `sign-up.html` | The acceptance letter and the short sign-up form |
 | `styles.css` | How both pages look. Colors, text sizes, and spacing are at the top. |
 | `script.js` | The form logic (added in Phase 2) |
-| `assets/` | Logos, the pin template file, pin idea images |
+| `assets/fonts/` | The brand fonts, Sunday and Agrandir, as web files |
+| `assets/brand/` | The Ubay-Ubay logos (badge and horizontal) |
+| `assets/` | Also the place for the pin template file and pin idea images |
 | `TODO.md` | Every placeholder still on the site, and open questions |
 | `decisions/` | Short records of why things were built the way they were |
 
@@ -95,6 +97,29 @@ The signed PDF (Phase 2) copies its text from this block, so the page and the PD
 
 Open `styles.css`. The `:root` block at the top lists every color, the four text sizes,
 and the spacing, each with a short note. Change a value there and it updates on both pages.
+
+## Brand
+
+The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public repo.
+
+- **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
+  coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
+  The accents only appear on the top band, the section title labels, the pins, and the step numbers.
+- **Fonts:**
+  - Agrandir Grand Heavy: the big headline
+  - Sunday: section titles and the top band
+  - Agrandir Regular and Text Bold: everything else
+
+  Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.
+- **Logos:** `assets/brand/badge.png` and `assets/brand/logo-horizontal.png` were cropped from the brand kit PDF.
+  To use sharper versions, export them from Canva with the same file names and replace these files.
+
+### Font licenses
+
+- **Sunday:** Fontfabric free font license. Web use with `@font-face` is allowed.
+- **Agrandir:** Pangram Pangram. The org holds a web license. Keep the purchase receipt somewhere the team can find it.
+- Only the four `.woff` files in `assets/fonts/` are published. The full font folders
+  (`Agrandir-Font-Family/`, `Sunday/`) are listed in `.gitignore` and stay on your computer.
 
 ## Set up the form backend
 
