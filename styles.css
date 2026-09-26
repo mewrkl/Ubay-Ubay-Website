@@ -68,7 +68,7 @@
   /* Fonts */
   --font-body: "Agrandir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   --font-headline: "Agrandir Grand", "Agrandir", Arial, sans-serif;  /* big poster headline */
-  --font-display: "Sunday", Georgia, serif;                          /* section titles, band */
+  --font-display: "Sunday", Georgia, serif;                          /* topic titles in the guidelines */
   --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
 
   /* Text sizes. The whole site uses only these four. */
@@ -131,7 +131,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
   font-weight: 700;
   text-wrap: balance;
@@ -146,31 +147,25 @@ h1 {
   margin-bottom: var(--space-6);
 }
 
+/* Zone titles: "The guidelines", "How to join" */
 h2 {
+  font-family: var(--font-headline);
+  font-size: var(--size-heading);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+/* Topic titles inside the guidelines */
+h3 {
   font-family: var(--font-display);
   font-size: var(--size-heading);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-bottom: var(--space-4);
-}
-
-/* Section titles sit on a solid brand-color label, like the poster date blocks */
-.label {
-  display: inline-block;
-  padding: 0 var(--space-3) var(--space-1);
-  color: var(--color-navy);
-}
-
-.label-coral { background: var(--color-coral); }
-.label-pink { background: var(--color-pink); }
-.label-green { background: var(--color-green); }
-.label-violet { background: var(--color-violet); }
-
-.label-navy {
-  background: var(--color-navy);
-  color: var(--color-cream);
+  margin-bottom: var(--space-3);
 }
 
 p {
@@ -311,25 +306,9 @@ code {
 
 .hero {
   padding-top: var(--space-12);
+  padding-bottom: var(--section-gap);
   text-align: center;
 }
-
-/* The colored UBAY-UBAY band at the very top */
-.band {
-  overflow: hidden;
-  padding: var(--space-2) 0 0;
-  color: var(--color-navy);
-  font-family: var(--font-display);
-  font-size: var(--size-heading);
-  line-height: 1.2;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.c-violet { color: var(--color-violet); }
-.c-pink { color: var(--color-pink); }
-.c-coral { color: var(--color-coral); }
-.c-green { color: var(--color-green); }
 
 /* The logo badge. It is a button pin. */
 .hero-badge {
@@ -355,29 +334,129 @@ code {
 }
 
 .hero-action {
-  margin: var(--space-8) 0 0;
+  margin: var(--space-8) 0 var(--space-6);
 }
 
-.changes-note {
-  margin-top: var(--section-gap);
+.hero .small {
   margin-bottom: 0;
+}
+
+/* The deal at a glance */
+.glance {
+  display: grid;
+  max-width: 420px;
+  margin: var(--space-8) auto 0;
+  border-top: 1px solid var(--color-line);
+  text-align: left;
+}
+
+.glance > div {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.glance dd {
+  margin: 0;
+}
+
+.glance dt {
+  color: var(--color-text-2);
+  font-size: var(--size-small);
+  font-weight: 700;
+  padding-top: 2px;
+}
+
+
+/* ---------- Zones: intro (cream), guidelines (light panel), how to join (navy) ---------- */
+
+.zone {
+  padding: var(--section-gap) 0;
   text-align: center;
 }
 
-.changes-note + .block {
-  padding-top: var(--space-6);
+.zone-panel {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
 }
 
-
-/* ---------- Sections ---------- */
-
-.block {
-  padding-top: var(--section-gap);
-  text-align: center;
+.zone-head {
+  margin-bottom: var(--space-4);
 }
 
-.block:last-child {
-  padding-bottom: var(--section-gap);
+.zone-head p {
+  margin: 0;
+}
+
+/* Each numbered topic in the guidelines */
+.topic {
+  padding-top: var(--space-12);
+}
+
+.topic + .topic {
+  margin-top: var(--space-12);
+  border-top: 1px solid var(--color-line);
+}
+
+/* The number above each topic title, drawn as a small navy pin */
+.topic-number {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto var(--space-3);
+  border: 4px solid var(--color-navy);
+  border-radius: 50%;
+  font-size: var(--size-small);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* How to join sits on navy, so its text and buttons flip to cream */
+.zone-navy {
+  background: var(--color-navy);
+  color: var(--color-cream);
+}
+
+.zone-navy h2 {
+  margin-bottom: var(--space-6);
+}
+
+.zone-navy a:not(.button) {
+  color: var(--color-cream);
+}
+
+.zone-navy .small,
+.zone-navy .tbd {
+  color: #c9cadb;
+}
+
+.zone-navy .folder-name {
+  border-color: rgba(246, 241, 231, 0.25);
+  background: rgba(246, 241, 231, 0.12);
+  color: var(--color-cream);
+}
+
+.zone-navy .button-primary {
+  background: var(--color-cream);
+  color: var(--color-navy);
+}
+
+.zone-navy .button-primary:hover {
+  background: #e9e1d1;
+  color: var(--color-navy);
+}
+
+.zone-navy .button-primary:active {
+  background: #ddd4c2;
+}
+
+.zone-navy .steps li::before {
+  background: transparent;
+  color: var(--color-cream);
 }
 
 /* Lists inside a centered section read left to right */
@@ -849,7 +928,6 @@ input[type="email"]:hover {
 .site-footer {
   padding-top: var(--space-8);
   padding-bottom: var(--space-8);
-  border-top: 1px solid var(--color-line);
   color: var(--color-text-2);
   font-size: var(--size-small);
   line-height: 1.5;
@@ -870,6 +948,39 @@ input[type="email"]:hover {
 .site-footer p + p {
   margin-top: var(--space-1);
 }
+
+
+/* ---------- Scroll animations ----------
+   Turned on by the small script in the <head> of index.html (class "js-reveal").
+   Parts with class="reveal" fade in and rise slightly the first time they
+   scroll into view. The 4 pins also pop in one after another. */
+
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 500ms ease-out, transform 500ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal .bundle-mix .mini-pin {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 250ms ease-out, transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js-reveal .bundle-mix.is-visible .mini-pin {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal .bundle-mix li:nth-child(1) .mini-pin { transition-delay: 150ms; }
+.js-reveal .bundle-mix li:nth-child(2) .mini-pin { transition-delay: 250ms; }
+.js-reveal .bundle-mix li:nth-child(3) .mini-pin { transition-delay: 350ms; }
+.js-reveal .bundle-mix li:nth-child(4) .mini-pin { transition-delay: 450ms; }
 
 
 /* ---------- Reduced motion ---------- */

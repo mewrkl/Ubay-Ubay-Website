@@ -104,10 +104,17 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 
 - **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
   coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
-  The accents only appear on the top band, the section title labels, the pins, and the step numbers.
+  The accents only appear on the rims of the 4 pins and the 3 step numbers.
+- **Page zones:** the intro sits on cream, "The guidelines" on a light panel with numbered topics,
+  and "How to join" on navy. The zone backgrounds are what separate the parts of the page.
+- **Scroll animation:** anything with `class="reveal"` fades in the first time it scrolls into view,
+  and the 4 pins pop in one after another. It is switched off for visitors who turned on
+  "reduce motion" on their phone, and without JavaScript everything simply shows.
+  To stop a part from animating, remove `reveal` from its class.
 - **Fonts:**
   - Agrandir Grand Heavy: the big headline
-  - Sunday: section titles and the top band
+  - Agrandir Grand Heavy also: zone titles ("The guidelines", "How to join")
+  - Sunday: the numbered topic titles inside the guidelines
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.

@@ -1,6 +1,6 @@
 # 0004: Adopt the Ubay-Ubay brand kit for colors, fonts, and logo
 
-- Status: Accepted
+- Status: Accepted (color placement superseded by 0005)
 - Date: 2026-09-26
 - Source: UBAY-UBAY BRANDKIT.pdf (not in the repo), PRD_ubayubay_cookout_site.md §3 (the rules this reverses), owner's answers in the brand restyle planning round
 
