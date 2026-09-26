@@ -1,0 +1,790 @@
+/* Ubay Ubay artist call, UP Cookout 2026
+   EDIT: Colors, fonts, sizes, and spacing are set once in :root below.
+   Change a value there and it updates everywhere on both pages.
+   The layout is one centered column. Wider screens only get a bigger
+   headline, a bigger pin, and more space between sections. */
+
+:root {
+  /* Colors */
+  --color-page: #ffffff;
+  --color-well: #f5f5f5;          /* letter box, table header, template outside area */
+  --color-line: #e5e5e5;          /* thin divider lines */
+  --color-control: #858585;       /* input and outlined button borders */
+  --color-text: #171717;
+  --color-text-2: #4d4d4d;        /* small text, hints, placeholders */
+  --color-ink: #171717;           /* the pin drawings */
+  --color-accent: #2b3fd6;        /* main button, links, focus ring */
+  --color-accent-hover: #2334b8;
+  --color-accent-active: #1c2a96;
+  --color-error: #dc2626;
+
+  /* Pin template colors. Match these to the real template file. */
+  --color-template-red: #d62828;
+  --color-template-gray: #8f8f8f;
+  --color-template-green: #1e8a4c;
+
+  /* Fonts */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Text sizes. The whole site uses only these four. */
+  --size-title: 36px;             /* page title (48px on wide screens) */
+  --size-heading: 24px;           /* section titles */
+  --size-body: 17px;              /* normal text, buttons, inputs */
+  --size-small: 14px;             /* small gray text, hints, footer */
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  --column: 560px;                /* width of the one column */
+  --gutter: 16px;                 /* space at the left and right screen edges */
+  --section-gap: 64px;            /* space between sections */
+  --radius-control: 6px;
+  --radius-panel: 8px;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --size-title: 48px;
+    --gutter: 32px;
+    --section-gap: 96px;
+  }
+}
+
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: 1.6;
+}
+
+[id] {
+  scroll-margin-top: var(--space-6);
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--size-title);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--size-heading);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-4);
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* The one centered column every section sits in */
+.column {
+  max-width: calc(var(--column) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.small,
+.hint {
+  color: var(--color-text-2);
+  font-size: var(--size-small);
+  line-height: 1.5;
+}
+
+/* Anything not decided yet */
+.tbd {
+  color: var(--color-text-2);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-page);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-6);
+  border: 0;
+  border-radius: var(--radius-control);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease-out, color 120ms ease-out;
+}
+
+.button-primary {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: var(--color-accent-hover);
+  color: #ffffff;
+}
+
+.button-primary:active {
+  background: var(--color-accent-active);
+}
+
+.button-secondary {
+  background: var(--color-page);
+  color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-control);
+}
+
+.button-secondary:hover {
+  background: var(--color-well);
+  color: var(--color-text);
+}
+
+.button-secondary:active {
+  background: var(--color-line);
+}
+
+.button-ghost {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.button-ghost:hover {
+  background: var(--color-well);
+}
+
+.button-block {
+  width: 100%;
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button[aria-disabled="true"] {
+  pointer-events: none;
+}
+
+
+/* ---------- Intro ---------- */
+
+.hero {
+  padding-top: var(--space-12);
+  text-align: center;
+}
+
+.hero-pin {
+  display: block;
+  width: 200px;
+  height: auto;
+  margin: 0 auto var(--space-8);
+}
+
+@media (min-width: 720px) {
+  .hero-pin {
+    width: 280px;
+  }
+}
+
+.pin-rim {
+  fill: var(--color-ink);
+}
+
+.pin-face {
+  fill: #ffffff;
+}
+
+.pin-guide {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-opacity: 0.3;
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+}
+
+.pin-rim-text {
+  fill: #ffffff;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.pin-face-text {
+  fill: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.hero-action {
+  margin: var(--space-8) 0 0;
+}
+
+.changes-note {
+  margin-top: var(--section-gap);
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.changes-note + .block {
+  padding-top: var(--space-6);
+}
+
+
+/* ---------- Sections ---------- */
+
+.block {
+  padding-top: var(--section-gap);
+  text-align: center;
+}
+
+.block:last-child {
+  padding-bottom: var(--section-gap);
+}
+
+/* Lists inside a centered section read left to right */
+.list {
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-6);
+  text-align: left;
+}
+
+.list li + li {
+  margin-top: var(--space-2);
+}
+
+.folder-name {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  background: var(--color-well);
+  overflow-wrap: anywhere;
+}
+
+
+/* ---------- What to make: the 4 pins ---------- */
+
+.bundle-mix {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  max-width: 336px;
+  margin: var(--space-6) auto;
+  padding: 0;
+  list-style: none;
+}
+
+.bundle-mix li {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  font-size: var(--size-small);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.mini-pin {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 8px solid var(--color-ink);
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+
+/* ---------- The pin template drawing ---------- */
+
+.template-diagram {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: var(--space-6) auto;
+}
+
+.tpl-outside {
+  fill: var(--color-well);
+}
+
+.tpl-fold {
+  fill: #e4e4e4;
+}
+
+.tpl-front {
+  fill: #ffffff;
+}
+
+.tpl-line {
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.tpl-red {
+  stroke: var(--color-template-red);
+}
+
+.tpl-gray {
+  stroke: var(--color-template-gray);
+  stroke-dasharray: 8 5;
+}
+
+.tpl-ring-label {
+  fill: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.tpl-ring-label-muted {
+  fill: var(--color-text-2);
+  font-size: 9px;
+}
+
+.tpl-label {
+  fill: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tpl-label-small {
+  fill: var(--color-text-2);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+
+/* ---------- Good to know: folded rows ---------- */
+
+.more-list {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--color-line);
+  text-align: left;
+}
+
+.more {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.more summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 56px;
+  padding: var(--space-3) 0;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.more summary::-webkit-details-marker {
+  display: none;
+}
+
+/* The small arrow. Points right when closed, down when open. */
+.more summary::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin: 0 var(--space-1);
+  border-right: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-text);
+  transform: rotate(-45deg);
+  transition: transform 150ms ease-out;
+}
+
+.more[open] summary::before {
+  transform: rotate(45deg);
+}
+
+.more summary:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.more-body {
+  padding: 0 0 var(--space-6) var(--space-8);
+}
+
+.more-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Backcard drawing */
+.backcard {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin: var(--space-2) 0 var(--space-6);
+}
+
+.card {
+  fill: #ffffff;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+.card-hole {
+  fill: var(--color-well);
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+.card-logo {
+  fill: #ffffff;
+  stroke: var(--color-text-2);
+  stroke-dasharray: 3 3;
+}
+
+.backcard text {
+  font-family: var(--font-body);
+  fill: var(--color-text);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-small {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.card-tiny {
+  font-size: 8px;
+}
+
+/* Price table */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-panel);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: var(--space-3);
+}
+
+th:last-child,
+td:last-child {
+  padding-right: var(--space-3);
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+thead th {
+  background: var(--color-well);
+  color: var(--color-text-2);
+  font-size: var(--size-small);
+  font-weight: 500;
+}
+
+tbody th {
+  font-weight: 500;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ---------- How to join ---------- */
+
+.steps {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 440px;
+  margin: var(--space-6) auto var(--space-8);
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  counter-reset: step;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  counter-increment: step;
+}
+
+/* Step numbers drawn as small button pins */
+.steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 4px solid var(--color-ink);
+  border-radius: 50%;
+  font-size: var(--size-small);
+  font-weight: 600;
+}
+
+.steps li > span {
+  padding-top: 5px;
+}
+
+
+/* ---------- Sign-up page ---------- */
+
+.signup {
+  padding-bottom: var(--section-gap);
+}
+
+.back {
+  margin: 0;
+  padding: var(--space-4) 0 var(--space-8);
+  font-size: var(--size-small);
+}
+
+.back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.signup h1,
+.signup-intro {
+  text-align: center;
+}
+
+.signup-intro {
+  margin-bottom: var(--space-8);
+}
+
+.letter {
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: var(--space-12);
+  padding: var(--space-6);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-panel);
+  background: var(--color-well);
+}
+
+.letter-heading {
+  font-weight: 600;
+}
+
+.letter h2 {
+  margin: var(--space-6) 0 var(--space-2);
+  font-size: var(--size-body);
+  letter-spacing: 0;
+}
+
+.letter > :last-child {
+  margin-bottom: 0;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.field .hint {
+  margin: calc(-1 * var(--space-1)) 0 0;
+}
+
+label,
+.label {
+  margin: 0;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3);
+  border: 1px solid var(--color-control);
+  border-radius: var(--radius-control);
+  background: #ffffff;
+  color: var(--color-text);
+  font: inherit;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover {
+  border-color: var(--color-text-2);
+}
+
+.check {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: var(--space-3);
+  align-items: start;
+  margin: var(--space-8) 0;
+}
+
+.check input {
+  width: 22px;
+  height: 22px;
+  margin: 3px 0 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.check label {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.signature-box {
+  height: 160px;
+  border: 1px dashed var(--color-control);
+  border-radius: var(--radius-panel);
+  background: #ffffff;
+}
+
+.signature-actions {
+  margin: 0;
+}
+
+.form-status {
+  margin-top: var(--space-3);
+  text-align: center;
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-text-2);
+  font-size: var(--size-small);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer p + p {
+  margin-top: var(--space-1);
+}
+
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign the acceptance letter, Ubay Ubay artist call</title>
+  <meta name="description" content="Read and sign the Ubay Ubay x UP Cookout 2026 artist acceptance letter.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<!--
+  HOW TO EDIT THIS PAGE
+  - The acceptance letter is between ACCEPTANCE LETTER: START and END below.
+  - Anything not decided yet looks like this: <span class="tbd">[to be decided]</span>
+  - The main page with the guidelines is index.html.
+-->
+
+<main class="column signup">
+
+  <p class="back"><a href="index.html#how-to-join">← Back to the guidelines</a></p>
+
+  <h1 id="page-title">Sign the acceptance letter</h1>
+  <p class="signup-intro">Read the letter, fill in 4 details, and sign. We will email you a copy.</p>
+
+  <!-- ================= ACCEPTANCE LETTER: START =================
+       EDIT: Replace the placeholder text with the final letter.
+       The signed PDF will use this same text, so only edit it here.
+       Keep each clause as an <h2> heading followed by <p> paragraphs. -->
+  <div class="letter" id="letter-text" tabindex="0" role="region" aria-label="Acceptance letter">
+    <p class="letter-heading">Ubay Ubay x UP Cookout 2026 artist acceptance letter</p>
+    <p class="small">This is placeholder text. The final letter is still being written.</p>
+
+    <h2>1. Parties and event</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>2. What the artist will submit</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>3. Deadlines</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>4. Earnings and payout</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>5. Ownership and permission to print and sell</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>6. Originality</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>7. Curation and right to decline designs</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>8. Data privacy consent</h2>
+    <p><span class="tbd">[to be written]</span></p>
+
+    <h2>9. Signature</h2>
+    <p><span class="tbd">[to be written]</span></p>
+  </div>
+  <!-- ================= ACCEPTANCE LETTER: END ================= -->
+
+  <noscript>
+    <p class="small">This form needs JavaScript. Please open this page in your phone's browser, such as Chrome or Safari.</p>
+  </noscript>
+
+  <!-- The form is laid out but not connected yet. Validation, the signature pad,
+       and sending are added in Phase 2. -->
+  <form class="form" id="acceptance-form" aria-labelledby="page-title" novalidate>
+
+    <div class="field">
+      <label for="full-name">Your full name</label>
+      <p class="hint" id="full-name-hint">We use this name in the agreement.</p>
+      <input id="full-name" name="fullName" type="text" autocomplete="name" aria-describedby="full-name-hint" required>
+    </div>
+
+    <div class="field">
+      <label for="artist-name">Artist name</label>
+      <p class="hint" id="artist-name-hint">This is shown on the backcard.</p>
+      <input id="artist-name" name="artistName" type="text" aria-describedby="artist-name-hint" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <p class="hint" id="email-hint">We will send your signed letter here.</p>
+      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="email-hint" required>
+    </div>
+
+    <div class="field">
+      <label for="social">Social handle</label>
+      <p class="hint" id="social-hint">Example: @artistname on Instagram</p>
+      <input id="social" name="social" type="text" aria-describedby="social-hint" required>
+    </div>
+
+    <div class="check">
+      <input id="agree" name="agree" type="checkbox" required>
+      <label for="agree">
+        I have read the letter and agree to it. I consent to Ubay Ubay using my details
+        for UP Cookout 2026 only, under the Data Privacy Act of 2012.
+      </label>
+    </div>
+
+    <div class="field">
+      <p class="label" id="signature-label">Signature</p>
+      <p class="hint" id="signature-hint">Sign with your finger or mouse.</p>
+      <!-- Phase 2 replaces this box with the signature pad. -->
+      <div class="signature-box" id="signature-pad" aria-labelledby="signature-label" aria-describedby="signature-hint"></div>
+      <p class="signature-actions"><button class="button button-ghost" type="button" disabled>Clear signature</button></p>
+    </div>
+
+    <!-- Hidden fields. The first one is a trap for spam bots. People never see it. -->
+    <div class="trap" aria-hidden="true">
+      <label for="website">Leave this empty</label>
+      <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <input type="hidden" id="date-signed" name="dateSigned">
+
+    <button class="button button-primary button-block" type="submit" disabled>Sign and send</button>
+    <p class="small form-status"><span class="tbd">[The form is not connected yet. Sending will work in the next build.]</span></p>
+  </form>
+
+</main>
+
+<!-- EDIT: Footer contacts. Keep this the same as the footer on index.html. -->
+<footer class="site-footer column">
+  <p>
+    Questions? <a href="mailto:ubayubaytinkers@gmail.com">ubayubaytinkers@gmail.com</a>
+    · <a href="https://www.instagram.com/anachimotte/">@anachimotte</a> on Instagram
+    · Facebook <span class="tbd">[link to be added]</span>
+  </p>
+  <p>Ubay Ubay by Tinkers, UP Cebu</p>
+</footer>
+
+</body>
+</html>
