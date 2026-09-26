@@ -63,7 +63,8 @@ and change the question in `<summary>` and the answer inside `<div class="more-b
 
 ### Values that appear twice
 
-- Earnings: the intro ("You get"), "3. What you earn", and the FAQ question "How is each sale split?" on `index.html`.
+- Earnings: "3. What you earn" and the FAQ question "How is each sale split?" on `index.html`.
+- Deadline: the date box in the intro and step 3 of "How to join" on `index.html`.
 - Footer: at the bottom of both pages. Keep them the same.
 
 Search for the old value (for example `₱100`) to find every copy.
@@ -108,10 +109,10 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 
 - **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
   coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
-  Coral is the background of "3. What you earn" and pink the background of "4. Frequently asked questions",
-  both with navy text. Everywhere else the page is cream and navy.
-- **Page zones:** the page alternates cream and navy: intro (cream), "The guidelines" with numbered
-  topics (navy), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
+  Coral is a full-width band behind "3. What you earn" and pink a full-width band behind
+  "4. Frequently asked questions", both with navy text. Everywhere else the page is cream and navy.
+- **Page bands, top to bottom:** intro (cream), guidelines 1 and 2 (navy), 3 What you earn (orange),
+  4 FAQ (pink), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
   Inside a navy zone (`class="zone zone-navy"`), text and lines switch to their light versions automatically.
 - **Scroll animation:** anything with `class="reveal"` fades in the first time it scrolls into view,
   and the sample bundle picture grows in slightly. It is switched off for visitors who turned on

@@ -8,10 +8,10 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for our stall at UP Cookout 2026. You make the art. We print, pack, and sell it. You earn a cut of every sale.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
-  <script src="script.js?v=9" defer></script>
+  <script src="script.js?v=10" defer></script>
 </head>
 <body>
 
@@ -21,7 +21,8 @@
   - Look for comments that start with "EDIT:" for the parts that change often.
   - Anything not decided yet looks like this: <span class="tbd">[to be decided]</span>
     Replace the whole span with the real value once it is decided, then tick it off in TODO.md.
-  - The page alternates cream and navy: intro (cream), guidelines (navy), how to join (cream), footer (navy).
+  - The page bands, top to bottom: intro (cream), guidelines 1 and 2 (navy), 3 What you earn (orange),
+    4 FAQ (pink), how to join (cream), footer (navy).
   - Parts with class="reveal" fade in when they scroll into view.
   - The acceptance letter and the sign-up form are on the other page, sign-up.html.
 -->
@@ -51,37 +52,28 @@
       You make the art. We print, pack, and sell it, and you earn a cut of every sale.
     </p>
 
+    <!-- EDIT: The deadline. It also appears in "How to join" step 3. -->
+    <div class="deadline">
+      <p class="deadline-label">Deadline</p>
+      <p class="deadline-date">Oct 20 to 25</p>
+      <p class="deadline-year">2026</p>
+      <p class="deadline-note"><span class="tbd">[final date to be announced]</span></p>
+    </div>
+
     <p class="hero-action">
       <a class="button button-primary" href="#guidelines">See the guidelines</a>
     </p>
 
-    <!-- EDIT: The deal at a glance. The same facts are explained in the guidelines below. -->
-    <dl class="glance">
-      <div>
-        <dt>What</dt>
-        <dd>4 button pins and a bundle name</dd>
-      </div>
-      <div>
-        <dt>Mix</dt>
-        <dd>2 food, 1 on theme, 1 pop culture</dd>
-      </div>
-      <div>
-        <dt>You get</dt>
-        <dd>₱100 for every bundle sold, plus a free pin bundle</dd>
-      </div>
-      <div>
-        <dt>Due</dt>
-        <dd>October 20 to 25, 2026 <span class="tbd">[final date to be announced]</span></dd>
-      </div>
-    </dl>
   </section>
 
 
   <!-- =========================================================
-       ZONE 2: THE GUIDELINES (navy)
+       ZONE 2: THE GUIDELINES
+       Topics 1 and 2 sit on navy, 3 on a full-width orange band, 4 on a full-width pink band.
        Each topic title starts with its number, for example "2. Pin Template".
        ========================================================= -->
-  <section class="zone zone-navy" id="guidelines" aria-labelledby="guidelines-title">
+  <section class="guidelines" id="guidelines" aria-labelledby="guidelines-title">
+  <div class="zone zone-navy">
 
     <div class="column zone-head reveal">
       <h2 id="guidelines-title">The guidelines</h2>
@@ -91,7 +83,7 @@
 
     <!-- ---------- 1. Design 4 pins ---------- -->
     <section class="topic column reveal" id="what-to-make" aria-labelledby="what-to-make-title">
-      <h3 id="what-to-make-title">1. Design 4 pins and give your bundle a name</h3>
+      <h3 id="what-to-make-title">1. Design 4 pins</h3>
 
       <!-- EDIT: The sample bundle picture is assets/brand/pin-sample-guideline.png -->
       <img class="sample-image reveal" src="assets/brand/pin-sample-guideline.png" width="432" height="727"
@@ -135,11 +127,13 @@
       <p class="small">Pin size, file type, and resolution <span class="tbd">[to be decided]</span></p>
     </section>
 
-    <!-- ---------- 3. What you earn (orange block) ---------- -->
-    <section class="topic column reveal" id="earnings" aria-labelledby="earnings-title">
-      <div class="card card-coral">
+  </div>
+
+    <!-- ---------- 3. What you earn (full-width orange band) ---------- -->
+    <section class="zone zone-color zone-coral" id="earnings" aria-labelledby="earnings-title">
+      <div class="topic column reveal">
         <h3 id="earnings-title">3. What you earn</h3>
-        <!-- EDIT: Earnings. Also in the intro ("You get") and in the FAQ ("How is each sale split?"). Change all three. -->
+        <!-- EDIT: Earnings. Also in the FAQ ("How is each sale split?"). Change both. -->
         <div class="table-wrap">
           <table>
             <thead>
@@ -160,10 +154,10 @@
       </div>
     </section>
 
-    <!-- ---------- 4. Frequently asked questions (pink block) ----------
+    <!-- ---------- 4. Frequently asked questions (full-width pink band) ----------
          To add a question, copy one <details> block and change the text. -->
-    <section class="topic column reveal" id="faq" aria-labelledby="faq-title">
-      <div class="card card-pink">
+    <section class="zone zone-color zone-pink" id="faq" aria-labelledby="faq-title">
+      <div class="topic column reveal">
         <h3 id="faq-title">4. Frequently asked questions</h3>
 
         <div class="more-list">
@@ -212,7 +206,7 @@
           <details class="more">
             <summary>How is each sale split?</summary>
             <div class="more-body">
-              <!-- EDIT: Prices. The artist's share also appears in the intro and under "3. What you earn". -->
+              <!-- EDIT: Prices. The artist's share also appears under "3. What you earn". -->
               <div class="table-wrap">
                 <table>
                   <thead>

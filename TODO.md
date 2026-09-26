@@ -6,7 +6,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Main page (`index.html`)
 
-- [ ] Final submission deadline, somewhere from October 20 to 25, 2026 (intro and How to join)
+- [ ] Final submission deadline, somewhere from October 20 to 25, 2026 (intro date box and How to join step 3)
 - [ ] Theme for the on-theme pin (What to make)
 - [x] Pin template download removed. The team aligns designs to the template.
 - [ ] Pin size, file type, and resolution (The pin template)
@@ -29,7 +29,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 ## Values that may still change
 
 - Earnings: bundle ₱240 (artist ₱100, Tinkers ₱140), solo pin ₱50 (artist ₱10, Tinkers ₱40).
-  The artist's share shows in "What you earn" and the full split in the FAQ ("How is each sale split?"). Change all three, including the intro.
+  The artist's share shows in "What you earn" and the full split in the FAQ ("How is each sale split?"). Change both.
 - Submission deadline: October 20 to 25, 2026, final date to be announced (intro and How to join)
 
 ## Decided
