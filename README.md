@@ -11,7 +11,7 @@ Ubay-Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build st
 | `sign-up.html` | The acceptance letter and the short sign-up form |
 | `styles.css` | How both pages look. Colors, text sizes, and spacing are at the top. |
 | `script.js` | The form logic (added in Phase 2) |
-| `assets/fonts/` | The brand fonts, Sunday and Agrandir, as web files |
+| `assets/fonts/` | The brand font, Agrandir, as web files |
 | `assets/brand/` | The Ubay-Ubay logos and the sample bundle picture |
 | `assets/` | Also the place for pin idea images |
 | `TODO.md` | Every placeholder still on the site, and open questions |
@@ -121,7 +121,7 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
   To stop a part from animating, remove `reveal` from its class.
 - **Fonts:**
   - Agrandir Grand Heavy: zone titles ("The guidelines", "How to join") and the sign-up page title
-  - Sunday: the numbered guideline titles, for example "2. Pin Template". Type the number as part of the title.
+  - Agrandir Text Bold: the numbered guideline titles, for example "2. PIN TEMPLATE". Type the number as part of the title.
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.
@@ -133,10 +133,10 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 
 ### Font licenses
 
-- **Sunday:** Fontfabric free font license. Web use with `@font-face` is allowed.
 - **Agrandir:** Pangram Pangram. The org holds a web license. Keep the purchase receipt somewhere the team can find it.
-- Only the four `.woff` files in `assets/fonts/` are published. The full font folders
+- Only the three Agrandir `.woff` files in `assets/fonts/` are published. The full font folders
   (`Agrandir-Font-Family/`, `Sunday/`) are listed in `.gitignore` and stay on your computer.
+  The site no longer uses Sunday. It only appears inside the logo images.
 
 ## Set up the form backend
 
