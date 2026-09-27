@@ -40,7 +40,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Open questions
 
-- [ ] Are pins sold during the whole flea market (Nov 5 to 15) or only on the main days (Nov 14 and 15)?
+- [x] Pins are sold during the whole event, November 5 to 15 (intro)
 - [ ] Deadline for signing the acceptance letter
 - [ ] Does a second bundle need the same mix (2 food, 1 on theme, 1 pop culture)?
 - [ ] Can a leftover design (for example the 5th one) be sent as a solo pin?
