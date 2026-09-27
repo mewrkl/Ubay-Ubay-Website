@@ -341,7 +341,7 @@ code {
 .hero-scroll {
   margin: var(--space-8) 0 0;
   color: var(--color-text-2);
-  font-size: var(--size-small);
+  font-size: var(--size-body);
 }
 
 /* The down arrow beside "Scroll down to see the guidelines" */
