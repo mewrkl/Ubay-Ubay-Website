@@ -344,6 +344,12 @@ code {
   font-size: var(--size-small);
 }
 
+/* The down arrow under "Scroll down to see the guidelines" */
+.hero-scroll-arrow {
+  display: block;
+  margin: var(--space-2) auto 0;
+}
+
 /* ---------- Zones: cream, navy, cream, navy ----------
    Intro (cream), guidelines (navy), how to join (cream), footer (navy). */
 
@@ -468,6 +474,7 @@ code {
 }
 
 .example-title {
+  font-size: 20px;                /* a little bigger than body text */
   font-weight: 700;
 }
 

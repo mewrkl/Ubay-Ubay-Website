@@ -8,10 +8,10 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for our stall at UP Cookout 2026. You make the art. We print, pack, and sell it. You earn a cut of every sale.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="styles.css?v=16">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
-  <script src="script.js?v=15" defer></script>
+  <script src="script.js?v=16" defer></script>
 </head>
 <body>
 
@@ -52,7 +52,12 @@
       You make the art. We print, pack, and sell it, and you earn a cut of every sale.
     </p>
 
-    <p class="hero-scroll">Scroll down to see the guidelines</p>
+    <p class="hero-scroll">
+      Scroll down to see the guidelines
+      <svg class="hero-scroll-arrow" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </p>
   </section>
 
 
@@ -87,7 +92,7 @@
 
       <!-- EDIT: The finished bundle example is assets/brand/pin-example-bundle.jpg (by Gumtoo Stickers). -->
       <figure class="example">
-        <figcaption class="example-title">Example of a finished bundle</figcaption>
+        <figcaption class="example-title">Example of a finished bundle:</figcaption>
         <img class="example-image" src="assets/brand/pin-example-bundle.jpg" width="844" height="1265" loading="lazy"
              alt="A finished bundle called Cooking Noodle: four round pins on a backcard, showing a noodle pack, a fried egg with shrimp and bacon, bok choy with a dumpling, and a bowl of noodles">
         <p class="small">Cooking Noodle by <a href="https://www.gumtoostickers.com">Gumtoo Stickers</a></p>
