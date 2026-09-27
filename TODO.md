@@ -6,8 +6,8 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Main page (`index.html`)
 
-- [ ] Final submission deadline, somewhere from October 20 to 25, 2026 (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
-- [ ] Theme for the on-theme pin (What to make)
+- [x] Final submission deadline: October 25, 2026 (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
+- [x] On-theme pin: on theme with the artist's own bundle, so no site-wide theme
 - [x] Pin template download removed. The team aligns designs to the template.
 - [ ] Pin size, file type, and resolution (The pin template)
 - [ ] What the green line on the template means (FAQ)
@@ -15,6 +15,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [ ] Bundle submission folder link, Google Drive (How to join)
 - [ ] Solo pin submission folder link, Google Drive (FAQ > Can I also send single pins?)
 - [x] Facebook page link: https://www.facebook.com/ubayubay (from the brand kit)
+- [ ] Permission from Gumtoo Stickers for the finished bundle example (assets/brand/pin-example-bundle.jpg), or swap in our own photo
 - [ ] Pin idea images. The gallery section is hidden in the HTML until we have images we own or have permission to use.
 - [x] Ubay-Ubay logos: stacked logo (intro) and cream horizontal logo (footer), cropped from the brand kit PDF
 - [ ] Optional: replace the cropped logos with proper exports from Canva (SVG or transparent PNG) for extra sharpness
@@ -30,7 +31,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - Earnings: bundle ₱240 (artist ₱100, Tinkers ₱140), solo pin ₱50 (artist ₱10, Tinkers ₱40).
   The artist's share shows in "What you earn" and the full split in the FAQ ("How is each sale split?"). Change both.
-- Submission deadline: October 20 to 25, 2026, final date to be announced (intro and How to join)
+- Submission deadline: October 25, 2026 (1. Design 4 pins, FAQ, and How to join)
 
 ## Decided
 

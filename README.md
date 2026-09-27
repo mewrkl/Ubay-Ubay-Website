@@ -64,7 +64,7 @@ and change the question in `<summary>` and the answer inside `<div class="more-b
 ### Values that appear twice
 
 - Earnings: "3. What you earn" and the FAQ question "How is each sale split?" on `index.html`.
-- Deadline: the highlighted last bullet of "1. Design 4 pins", the FAQ question "When is the deadline?",
+- Deadline (October 25, 2026): the last bullet of "1. Design 4 pins", with the date in pink text, the FAQ question "When is the deadline?",
   and step 3 of "How to join" on `index.html`. Change all three.
 - Footer: at the bottom of both pages. Keep them the same.
 
@@ -120,8 +120,9 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
   "reduce motion" on their phone, and without JavaScript everything simply shows.
   To stop a part from animating, remove `reveal` from its class.
 - **Fonts:**
-  - Agrandir Grand Heavy: zone titles ("The guidelines", "How to join") and the sign-up page title
-  - Agrandir Text Bold: the numbered guideline titles, for example "2. PIN TEMPLATE". Type the number as part of the title.
+  - Agrandir Text Bold, uppercase: every title, including "The guidelines", "How to join", the sign-up page title,
+    and the numbered guideline titles, for example "2. PIN TEMPLATE". Type the number as part of the title.
+  - Agrandir Grand Heavy is loaded in styles.css (`--font-headline`) but not used right now.
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.

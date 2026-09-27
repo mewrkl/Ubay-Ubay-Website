@@ -57,6 +57,7 @@
   --color-template-gray: #8f8f8f;
   --color-template-green: #1e8a4c;
   --color-red-text: #ff6b6b;          /* the words "red line" on navy (the template red is too dark there) */
+  --color-highlight: #ff8acb;         /* highlighted words on navy: "2 food designs" and the deadline (brand pink, lightened to read on navy) */
 
   /* Fonts */
   --font-body: "Agrandir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -134,9 +135,9 @@ h3 {
 }
 
 h1 {
-  font-family: var(--font-headline);
+  font-family: var(--font-body);
   font-size: var(--size-title);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.05;
   text-transform: uppercase;
   margin-bottom: var(--space-6);
@@ -144,10 +145,11 @@ h1 {
 
 /* Zone titles: "The guidelines", "How to join" */
 h2 {
-  font-family: var(--font-headline);
+  font-family: var(--font-body);
   font-size: var(--size-heading);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.1;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   margin-bottom: var(--space-2);
 }
@@ -329,8 +331,17 @@ code {
   font-weight: 700;
 }
 
-.hero-action {
+/* "a button pin bundle" in the intro */
+.underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.hero-scroll {
   margin: var(--space-8) 0 0;
+  color: var(--color-text-2);
+  font-size: var(--size-small);
 }
 
 /* ---------- Zones: cream, navy, cream, navy ----------
@@ -444,6 +455,33 @@ code {
   max-width: 440px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* 1. "2 food designs" and the deadline in colored text */
+.text-highlight {
+  color: var(--color-highlight);
+}
+
+/* 1. The finished bundle example, under the list */
+.example {
+  margin: var(--space-8) auto 0;
+}
+
+.example-title {
+  font-weight: 700;
+}
+
+.example-image {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: var(--space-4) auto var(--space-3);
+  border-radius: var(--radius-panel);
+}
+
+.example .small {
+  margin: 0;
 }
 
 /* 2. "red line" in red */
