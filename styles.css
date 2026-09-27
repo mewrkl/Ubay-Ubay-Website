@@ -57,7 +57,7 @@
   --color-template-gray: #8f8f8f;
   --color-template-green: #1e8a4c;
   --color-red-text: #ff6b6b;          /* the words "red line" on navy (the template red is too dark there) */
-  --color-highlight: #ff8acb;         /* highlighted words on navy: "2 food designs" and the deadline (brand pink, lightened to read on navy) */
+  --color-highlight: #ff8acb;         /* highlighted words on navy: the 1. Design 4 pins bullet labels and the deadline (brand pink, lightened to read on navy) */
 
   /* Fonts */
   --font-body: "Agrandir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -464,7 +464,7 @@ code {
   margin-right: auto;
 }
 
-/* 1. "2 food designs" and the deadline in colored text */
+/* 1. The bullet labels and the deadline in colored text */
 .text-highlight {
   color: var(--color-highlight);
 }

@@ -9,7 +9,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [x] Final submission deadline: October 25, 2026 (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
 - [x] On-theme pin: on theme with the artist's own bundle, so no site-wide theme
 - [x] Pin template download removed. The team aligns designs to the template.
-- [ ] Pin size, file type, and resolution (The pin template)
+- [x] Pin file: PNG, 1000 x 1000 px (The pin template)
 - [ ] What the green line on the template means (FAQ)
 - [ ] Payout timing and method (What you earn)
 - [ ] Bundle submission folder link, Google Drive (How to join)
