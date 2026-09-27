@@ -344,10 +344,11 @@ code {
   font-size: var(--size-small);
 }
 
-/* The down arrow under "Scroll down to see the guidelines" */
+/* The down arrow beside "Scroll down to see the guidelines" */
 .hero-scroll-arrow {
-  display: block;
-  margin: var(--space-2) auto 0;
+  display: inline-block;
+  margin-left: var(--space-1);
+  vertical-align: -3px;
 }
 
 /* ---------- Zones: cream, navy, cream, navy ----------
