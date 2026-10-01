@@ -441,7 +441,7 @@ code {
    The first line uses the full sheet width and a smaller size so it fits on
    one line on computers. On phones it wraps. */
 .invite {
-  padding: 0 var(--gutter) var(--space-12);
+  padding: 0 var(--gutter);
   text-align: center;
 }
 
@@ -559,6 +559,14 @@ code {
   color: var(--color-cream);
 }
 
+/* Guidelines 1 and 2: cream with navy text. The pink and red words get darker
+   versions here, because the light ones made for navy are too faint on cream. */
+.zone-guide {
+  --color-highlight: #c42d86;
+  --color-red-text: #c62828;
+  background: var(--color-page);
+}
+
 .zone-navy a:not(.button) {
   color: var(--color-cream);
 }
@@ -588,7 +596,7 @@ code {
 
 /* ---------- Guidelines content ---------- */
 
-/* 1. Design 4 pins: a bento grid of rounded tiles.
+/* 1. Design 4 pins: a bento grid (the parts sit right on the cream, no tile backgrounds).
    Computers: text | sample card, then photo | "Example" arrow.
    Phones (sheet narrower than 640px): one column in that same order. */
 .topic-wide {
@@ -599,7 +607,7 @@ code {
 .bento {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-3);
+  gap: var(--space-8);
 }
 
 @container (min-width: 640px) {
@@ -610,9 +618,6 @@ code {
 
 .bento-tile {
   margin: 0;
-  padding: var(--space-6);
-  border-radius: var(--radius-card);
-  background: rgba(246, 241, 231, 0.06);   /* a slightly lighter navy */
 }
 
 .bento-text {
