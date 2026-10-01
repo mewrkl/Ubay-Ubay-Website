@@ -831,7 +831,8 @@ code {
   color: var(--color-navy);
 }
 
-.zone-coral { background: var(--color-coral); }
+/* 3. What you earn: the brand green, a step lighter so navy text reads clearly (5.5:1) */
+.zone-green { background: #8bb33a; }
 .zone-pink { background: var(--color-pink); }
 
 /* The band's own padding already spaces the topic */

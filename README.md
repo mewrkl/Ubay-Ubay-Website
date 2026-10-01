@@ -106,10 +106,11 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 
 - **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
   coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
-  Coral is a full-width band behind "3. What you earn" and pink a full-width band behind
-  "4. Frequently asked questions", both with navy text. Everywhere else the page is cream and navy.
-- **Page bands, top to bottom:** intro (cream), guidelines 1 and 2 (navy), 3 What you earn (orange),
-  4 FAQ (pink), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
+  Coral fills the space around the centered sheet (`--color-backdrop`). A lighter green (`#8bb33a`,
+  so navy text stays readable) is the band behind "3. What you earn", and pink the band behind
+  "4. Frequently asked questions", both with navy text. Everywhere else the sheet is cream and navy.
+- **Page bands, top to bottom:** intro (cream), invitation (navy), guideline 1 (cream), guideline 2 (navy),
+  3 What you earn (green), 4 FAQ (pink), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
   Inside a navy zone (`class="zone zone-navy"`), text and lines switch to their light versions automatically.
 - **Scroll animation:** anything with `class="reveal"` fades in the first time it scrolls into view,
   and the sample bundle picture grows in slightly. It is switched off for visitors who turned on
