@@ -118,7 +118,7 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 - **Fonts:**
   - Agrandir Text Bold, uppercase: every title, including "The guidelines", "How to join", the sign-up page title,
     and the numbered guideline titles, for example "2. PIN TEMPLATE". Type the number as part of the title.
-  - Agrandir Grand Heavy (`--font-headline`): only the big "MAKE YOUR OWN BUTTON PIN" heading at the top of `index.html`
+  - Agrandir Grand Heavy is loaded in styles.css (`--font-headline`) but not used right now.
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.

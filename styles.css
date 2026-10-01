@@ -381,16 +381,16 @@ code {
   text-align: center;
 }
 
-/* MAKE YOUR OWN / BUTTON PIN, always exactly two lines.
-   "MAKE YOUR OWN" is about 12.4 letter-heights wide in this font, so the size is
-   the sheet width divided by 12.8 (cqw = 1% of the sheet's width). It stops growing at 88px.
-   The first line is a fallback for old browsers that don't know cqw. */
+/* MAKE YOUR OWN / BUTTON PIN, always exactly two lines, in the regular Agrandir
+   title style. "MAKE YOUR OWN" is about 8.6 letter-heights wide in this font, so the
+   size is the sheet width divided by 8.9 (cqw = 1% of the sheet's width). It stops
+   growing at 88px. The first line is a fallback for old browsers that don't know cqw. */
 .hero-title {
   margin: 0 0 var(--space-8);
-  font-family: var(--font-headline);
-  font-size: min(54px, calc((100vw - 2 * var(--gutter)) / 12.8));
-  font-size: min(88px, calc((100cqw - 2 * var(--gutter)) / 12.8));
-  font-weight: 800;
+  font-family: var(--font-body);
+  font-size: min(88px, calc((100vw - 2 * var(--gutter)) / 8.9));
+  font-size: min(88px, calc((100cqw - 2 * var(--gutter)) / 8.9));
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -588,55 +588,96 @@ code {
 
 /* ---------- Guidelines content ---------- */
 
-/* 1. The sample bundle picture */
-.sample-image {
-  display: block;
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  margin: var(--space-6) auto;
-  border-radius: var(--radius-panel);
+/* 1. Design 4 pins: a bento grid of rounded tiles.
+   Computers: text | sample card, then photo | "Example" arrow.
+   Phones (sheet narrower than 640px): one column in that same order. */
+.topic-wide {
+  padding-right: var(--gutter);
+  padding-left: var(--gutter);
 }
 
-@media (min-width: 720px) {
-  .sample-image {
-    max-width: 320px;
+.bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@container (min-width: 640px) {
+  .bento {
+    grid-template-columns: 1.25fr 1fr;
   }
 }
 
-/* A bulleted list centered as a block, with its text still reading left to right */
-.list-center {
-  max-width: 440px;
-  margin-left: auto;
-  margin-right: auto;
+.bento-tile {
+  margin: 0;
+  padding: var(--space-6);
+  border-radius: var(--radius-card);
+  background: rgba(246, 241, 231, 0.06);   /* a slightly lighter navy */
+}
+
+.bento-text {
+  text-align: left;
+}
+
+.bento-text .list {
+  margin-bottom: var(--space-6);
+}
+
+/* "Send each pin as a PNG, 1000 x 1000 px." */
+.bento-sub {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bento-sample,
+.bento-photo,
+.bento-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sample-image,
+.bento-photo img {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: var(--radius-panel);
+}
+
+.bento-photo figcaption {
+  margin-top: var(--space-3);
+}
+
+.bento-arrow {
+  gap: var(--space-2);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* On phones the photo is above the arrow, so the arrow points up */
+.bento-arrow svg {
+  transform: rotate(90deg);
+}
+
+@container (min-width: 640px) {
+  .bento-arrow svg {
+    transform: none;
+  }
+}
+
+/* Keeps a short phrase on one line, like "1000 x 1000 px." */
+.nowrap {
+  white-space: nowrap;
 }
 
 /* 1. The bullet labels and the deadline in colored text */
 .text-highlight {
   color: var(--color-highlight);
-}
-
-/* 1. The finished bundle example, under the list */
-.example {
-  margin: var(--space-8) auto 0;
-}
-
-.example-title {
-  font-size: 20px;                /* a little bigger than body text */
-  font-weight: 700;
-}
-
-.example-image {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  margin: var(--space-4) auto var(--space-3);
-  border-radius: var(--radius-panel);
-}
-
-.example .small {
-  margin: 0;
 }
 
 /* 2. "red line" in red */
@@ -1106,14 +1147,6 @@ input[type="email"]:hover {
   transform: none;
 }
 
-/* The sample bundle picture also grows in slightly */
-.js-reveal .sample-image.reveal {
-  transform: translateY(12px) scale(0.96);
-}
-
-.js-reveal .sample-image.reveal.is-visible {
-  transform: none;
-}
 
 
 /* ---------- Reduced motion ---------- */

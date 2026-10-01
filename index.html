@@ -8,7 +8,7 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=30">
+  <link rel="stylesheet" href="styles.css?v=31">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
   <script src="script.js?v=21" defer></script>
@@ -50,7 +50,7 @@
        ========================================================= -->
   <section class="hero" aria-labelledby="intro-title">
     <!-- EDIT: The big heading. Each <span> is one line. If you change the words,
-         change the 12.8 in .hero-title in styles.css so the longest line still fits phones. -->
+         change the 8.9 in .hero-title in styles.css so the longest line still fits phones. -->
     <h1 id="intro-title" class="hero-title"><span>Make your own</span> <span>button pin</span></h1>
 
     <a class="hero-cta" href="#guidelines">
@@ -101,14 +101,17 @@
     </div>
 
     <!-- ---------- 1. Design 4 pins ---------- -->
-    <section class="topic column reveal" id="what-to-make" aria-labelledby="what-to-make-title">
+    <!-- Guideline 1 is a bento grid of 4 rounded tiles:
+         text | sample card
+         photo | "Example" arrow
+         On phones the tiles stack in that order. -->
+    <section class="topic topic-wide reveal" id="what-to-make" aria-labelledby="what-to-make-title">
+      <div class="bento">
+
+      <div class="bento-tile bento-text">
       <h3 id="what-to-make-title">1. Design 4 pins</h3>
 
-      <!-- EDIT: The sample bundle picture is assets/brand/pin-sample-guideline.png -->
-      <img class="sample-image reveal" src="assets/brand/pin-sample-guideline.png?v=2" width="432" height="727"
-           alt="Sample bundle card: the bundle name at the top, four pins with the template lines around the Ubay-Ubay logo, and the artist's socials at the bottom">
-
-      <ul class="list list-center">
+      <ul class="list">
         <li><strong class="text-highlight">4 pin designs.</strong> Together they make 1 bundle.</li>
         <li><strong class="text-highlight">A bundle name logo.</strong> It goes at the top of the card.</li>
         <li><strong class="text-highlight">The backcard is on us.</strong> A FASO artist designs it.</li>
@@ -120,13 +123,32 @@
         </li>
       </ul>
 
+      <!-- EDIT: File format for each pin. -->
+      <p class="bento-sub">Send each pin as a PNG, <span class="nowrap">1000 x 1000 px.</span></p>
+      </div>
+
+      <!-- EDIT: The sample bundle picture is assets/brand/pin-sample-guideline.png -->
+      <div class="bento-tile bento-sample">
+        <img class="sample-image" src="assets/brand/pin-sample-guideline.png?v=2" width="432" height="727"
+             alt="Sample bundle card: the bundle name at the top, four pins with the template lines around the Ubay-Ubay logo, and the artist's socials at the bottom">
+      </div>
+
       <!-- EDIT: The finished bundle example is assets/brand/pin-example-bundle.jpg (by Gumtoo Stickers). -->
-      <figure class="example">
-        <figcaption class="example-title">Example of a finished bundle:</figcaption>
-        <img class="example-image" src="assets/brand/pin-example-bundle.jpg" width="844" height="1265" loading="lazy"
+      <figure class="bento-tile bento-photo">
+        <img src="assets/brand/pin-example-bundle.jpg" width="844" height="1265" loading="lazy"
              alt="A finished bundle called Cooking Noodle: four round pins on a backcard, showing a noodle pack, a fried egg with shrimp and bacon, bok choy with a dumpling, and a bowl of noodles">
-        <p class="small">Cooking Noodle by <a href="https://www.gumtoostickers.com">Gumtoo Stickers</a></p>
+        <figcaption class="small">Cooking Noodle by <a href="https://www.gumtoostickers.com">Gumtoo Stickers</a></figcaption>
       </figure>
+
+      <!-- The arrow points left at the photo on computers, and up at it on phones. -->
+      <div class="bento-tile bento-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="40" height="40" focusable="false">
+          <path d="M20 12H4M11 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>Example</span>
+      </div>
+
+      </div>
     </section>
 
     <hr class="band-divider">
@@ -160,8 +182,6 @@
         <text class="diagram-front-note" x="300" y="332" text-anchor="middle">your art goes here</text>
       </svg>
 
-      <!-- EDIT: File format for each pin. -->
-      <p><strong>Send each pin as a PNG, 1000 x 1000 px.</strong></p>
     </section>
 
   </div>
