@@ -88,7 +88,7 @@
   --radius-control: 6px;
   --radius-panel: 8px;
   --header-height: 48px;          /* the sticky header at the top */
-  --page-width: 768px;            /* width of the centered column the whole site sits in */
+  --page-width: 900px;            /* width of the centered sheet the whole site sits on */
   --color-backdrop: #e6ddcb;      /* the sand color around the sheet */
   --card-gap: 12px;               /* sand space above the header, below the footer, and at the sides */
   --radius-card: 12px;            /* rounded outer corners of the sheet */
