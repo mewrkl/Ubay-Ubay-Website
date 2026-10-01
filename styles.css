@@ -542,6 +542,15 @@ code {
   padding: var(--space-16) 0;
 }
 
+/* Guideline 2 (Pin Template) on its own navy band */
+.zone-template {
+  padding: var(--space-16) 0;
+}
+
+.zone-template .topic {
+  padding-top: 0;
+}
+
 .zone-head p {
   margin: 0;
 }
