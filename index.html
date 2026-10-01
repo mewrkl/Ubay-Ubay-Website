@@ -8,10 +8,10 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=34">
+  <link rel="stylesheet" href="styles.css?v=35">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
-  <script src="script.js?v=21" defer></script>
+  <script src="script.js?v=22" defer></script>
 </head>
 <body>
 
@@ -75,7 +75,7 @@
        Each topic title starts with its number, for example "2. Pin Template".
        ========================================================= -->
   <section class="guidelines" id="guidelines" aria-labelledby="guidelines-title">
-  <div class="zone zone-navy">
+  <div class="zone zone-navy zone-invite">
 
     <!-- EDIT: The invitation at the top of the navy section. The first line is
          sized to fit on one line on computers. Phones wrap it. -->
@@ -105,12 +105,12 @@
     </div>
 
     <!-- ---------- 1. Design 4 pins ---------- -->
-    <!-- Guideline 1: the text beside the sample card (on cream), then the example
-         photo with an "Example" arrow on a navy band. On phones everything stacks. -->
+    <!-- Guideline 1: the text on the left, the sample card on the right.
+         On phones the sample card goes under the text. -->
     <section class="topic topic-wide reveal" id="what-to-make" aria-labelledby="what-to-make-title">
-      <div class="bento bento-center">
+      <div class="bento">
 
-      <div class="bento-tile bento-text">
+      <div class="bento-text">
       <h3 id="what-to-make-title">1 Design 4 pins</h3>
 
       <ul class="list">
@@ -126,45 +126,36 @@
       </ul>
 
       <!-- EDIT: File format for each pin. -->
-      <p class="bento-sub">Send each pin as a PNG, <span class="nowrap">1000 x 1000 px.</span></p>
+      <p class="bento-sub">Send each pin as a PNG, 1000 x 1000 px.</p>
+
+      <!-- "See example": on computers, hovering shows a small preview.
+           Clicking or tapping opens the full picture on top of the page (the dialog
+           at the bottom of <main>). It never leaves the page. -->
+      <div class="example-trigger">
+        <button class="button button-secondary example-open" type="button" data-open-example>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"></rect>
+            <circle cx="9" cy="9" r="2" fill="none" stroke="currentColor" stroke-width="1.75"></circle>
+            <path d="M21 15l-5-5L5 21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          See example
+        </button>
+        <div class="example-peek" aria-hidden="true">
+          <img src="assets/brand/pin-example-bundle.jpg" width="844" height="1265" loading="lazy" alt="">
+        </div>
+      </div>
       </div>
 
       <!-- EDIT: The sample bundle picture is assets/brand/pin-sample-guideline.png -->
-      <div class="bento-tile bento-sample">
+      <div class="bento-sample">
         <img class="sample-image" src="assets/brand/pin-sample-guideline.png?v=2" width="432" height="727"
              alt="Sample bundle card: the bundle name at the top, four pins with the template lines around the Ubay-Ubay logo, and the artist's socials at the bottom">
       </div>
 
       </div>
     </section>
-  </div>
 
-  <!-- The example of a finished bundle, on a navy band -->
-  <div class="zone zone-navy zone-example">
-    <div class="topic-wide reveal">
-      <div class="bento bento-center">
-
-      <!-- EDIT: The finished bundle example is assets/brand/pin-example-bundle.jpg (by Gumtoo Stickers). -->
-      <figure class="bento-tile bento-photo">
-        <img src="assets/brand/pin-example-bundle.jpg" width="844" height="1265" loading="lazy"
-             alt="A finished bundle called Cooking Noodle: four round pins on a backcard, showing a noodle pack, a fried egg with shrimp and bacon, bok choy with a dumpling, and a bowl of noodles">
-        <figcaption class="small">Cooking Noodle by <a href="https://www.gumtoostickers.com">Gumtoo Stickers</a></figcaption>
-      </figure>
-
-      <!-- The arrow points left at the photo on computers, and up at it on phones. -->
-      <div class="bento-tile bento-arrow" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="96" height="96" focusable="false">
-          <path d="M20 12H4M11 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        <span>Example</span>
-      </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Guideline 2 on cream -->
-  <div class="zone zone-guide zone-next">
+    <hr class="band-divider">
 
     <!-- ---------- 2. Pin Template ---------- -->
     <section class="topic column reveal" id="pin-template" aria-labelledby="pin-template-title">
@@ -351,6 +342,26 @@
       </p>
     </div>
   </section>
+
+  <!-- EDIT: The example picture that opens from "See example" in guideline 1.
+       The picture is assets/brand/pin-example-bundle.jpg (by Gumtoo Stickers). -->
+  <dialog class="example-dialog" id="example-dialog" aria-labelledby="example-dialog-title">
+    <div class="example-dialog-inner">
+      <div class="example-dialog-head">
+        <p class="example-dialog-title" id="example-dialog-title">Example of a finished bundle</p>
+        <form method="dialog">
+          <button class="example-dialog-close" type="submit" aria-label="Close">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+              <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+      <img src="assets/brand/pin-example-bundle.jpg" width="844" height="1265" loading="lazy"
+           alt="A finished bundle called Cooking Noodle: four round pins on a backcard, showing a noodle pack, a fried egg with shrimp and bacon, bok choy with a dumpling, and a bowl of noodles">
+      <p class="small">Cooking Noodle by <a href="https://www.gumtoostickers.com">Gumtoo Stickers</a></p>
+    </div>
+  </dialog>
 
 </main>
 

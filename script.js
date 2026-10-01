@@ -28,3 +28,15 @@ if (siteHeader) {
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
 }
+
+// "See example" in guideline 1: open the example picture on top of the page.
+// The dialog closes with its X button, the Esc key, or a click outside the picture.
+const exampleDialog = document.getElementById('example-dialog');
+if (exampleDialog && typeof exampleDialog.showModal === 'function') {
+  document.querySelectorAll('[data-open-example]').forEach((button) => {
+    button.addEventListener('click', () => exampleDialog.showModal());
+  });
+  exampleDialog.addEventListener('click', (event) => {
+    if (event.target === exampleDialog) exampleDialog.close();
+  });
+}
