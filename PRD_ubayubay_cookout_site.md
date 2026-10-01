@@ -148,7 +148,7 @@ Build this as a clear skeleton that is easy to update. Show a visible note that 
 **2.5 Solo pins**
 - Only artists who submitted a bundle can send solo pin designs.
 - Solo pin art does not have to be new or on theme.
-- Solo pins have their own submission folder.
+- Solo pins are uploaded with the same private upload link as the bundle.
 
 **2.6 Earnings [TENTATIVE]**
 
@@ -161,12 +161,13 @@ Build this as a clear skeleton that is easy to update. Show a visible note that 
 - Payout timing and method: [TBD]
 
 **2.7 Submission**
-- Submission window: November 1 to 10, 2026 [TENTATIVE]
-- Bundle folder name: `LastName_BundleName_ArtistName` (example: `Ledesma_[bundle name]_Anachimotte`)
-- Solo pin folder name: `LastName_solo pins_ArtistName` (example: `Ledesma_solo pins_Anachimotte`)
-- Submission bins are shared Google Drive folders. The site only links to them with a clear button. It does not handle uploads.
-- Bundle submission bin (Google Drive folder) link: [TBD]
-- Solo pin submission bin (Google Drive folder) link: [TBD]
+- Deadline: October 25, 2026. The event runs November 5 to 15, 2026.
+- Artists upload on the website (changed 2026-10-01, see `decisions/0008-uploads-through-site.md`):
+  - After signing, each artist gets an email with their signed copy and a private upload link (`upload.html?t=<token>`).
+  - They can also attach designs on the sign-up form. This is optional.
+  - Files go to the org's Google Drive. Artists never see Drive or name folders. The Apps Script creates
+    `Artists/ArtistName (Full Name)/Bundle - <bundle name>/` and `.../Solo pins/` automatically.
+  - Checks: PNG only, 1000 x 1000 px, exactly 4 files per bundle, uploads refused after the deadline.
 
 **2.8 Pin ideas**
 - A small gallery of example pins for inspiration. [TBD: images. Use only images we own or have permission to use.]
@@ -178,7 +179,7 @@ This is a real sequence, so numbered steps are fine here.
 1. Read the guidelines above.
 2. Read and sign the acceptance letter below.
 3. Check your email for a copy of your signed letter.
-4. Upload your designs to the submission bin before the deadline.
+4. Upload your designs on the website with your private upload link before the deadline.
 
 **Acceptance letter:** [TBD, the text is still being written]
 - Display the full letter text on the page in a readable, scrollable block.
@@ -234,7 +235,7 @@ This is a real sequence, so numbered steps are fine here.
 2. Build a PDF with: the full letter text, the artist's filled-in details, the signature image, the typed name, and the date.
 3. Send the form data and the PDF (base64) to the Apps Script web app with `fetch`. Use `Content-Type: text/plain` to avoid the CORS preflight.
 4. Disable the button and show a sending state while it runs.
-5. On success, show a confirmation with a short summary and the next step (upload designs to the submission bin).
+5. On success, show a confirmation with a short summary and the next step (upload designs with the private upload link from the email).
 6. On failure, keep everything the artist entered and show a clear error with a retry button.
 
 Do not rely on a file download as the artist's copy. In-app browsers often block downloads. The emailed copy is the main copy. A download button can be offered as an extra.
@@ -257,7 +258,6 @@ Do not rely on a file download as the artist's copy. In-app browsers often block
 - Ubay Ubay logo and Tinkers logo
 - Pin template file for download
 - Pin idea images (our own or with permission)
-- Submission bin links (bundle and solo)
 - Social media links
 - Final acceptance letter text
 
@@ -265,7 +265,8 @@ Do not rely on a file download as the artist's copy. In-app browsers often block
 
 ## 7. Out of scope
 
-- Uploading design files through the website (artists use the submission bin links)
 - Collecting payment or payout details
-- An admin dashboard (the Google Sheet is the record)
-- User accounts or logins
+- User accounts or logins for artists (the private upload link is enough)
+
+Moved into scope on 2026-10-01 (see decisions 0008 and 0009): uploads through the website, and a
+password-protected admin page (`admin.html`) that lists signups, signed letters, and uploads.

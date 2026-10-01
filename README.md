@@ -82,11 +82,6 @@ Keep each clause as a heading followed by paragraphs:
 
 The signed PDF (Phase 2) copies its text from this block, so the page and the PDF always match.
 
-### Links
-
-- Submission folders: search `index.html` for `link to be added`. The comment above each one
-  shows the exact line to paste in, with your Google Drive link.
-
 ### Copy rules
 
 - No em dashes. No semicolons.

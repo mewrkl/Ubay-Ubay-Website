@@ -40,7 +40,7 @@
   /* How the colors are used */
   --color-page: var(--color-cream);
   --color-surface: #fffdf8;           /* letter box, inputs, pin faces */
-  --color-well: #ede5d6;              /* table header, folder names, template outside area */
+  --color-well: #ede5d6;              /* table header, template outside area */
   --color-line: #ddd5c6;              /* thin divider lines */
   --color-control: #7a7b93;           /* input and outlined button borders */
   --color-text: var(--color-navy);
@@ -392,8 +392,7 @@ code {
 }
 
 /* Navy zones. Text turns cream, and the line, hint, and panel colors are
-   redefined here so everything inside (rows, tables, folder names,
-   placeholders) switches to its light version automatically.
+   redefined here so everything inside (rows, tables, placeholders) switches to its light version automatically.
    The drawings keep their own light backgrounds and navy text. */
 .zone-navy {
   --color-line: rgba(246, 241, 231, 0.2);
@@ -427,15 +426,6 @@ code {
 
 .list li + li {
   margin-top: var(--space-2);
-}
-
-.folder-name {
-  display: inline-block;
-  padding: 0 var(--space-2);
-  border: 1px solid var(--color-line);
-  border-radius: 4px;
-  background: var(--color-well);
-  overflow-wrap: anywhere;
 }
 
 

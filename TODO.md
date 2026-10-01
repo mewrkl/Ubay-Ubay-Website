@@ -12,8 +12,6 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [x] Pin file: PNG, 1000 x 1000 px (The pin template)
 - [ ] What the green line on the template means (FAQ)
 - [ ] Payout timing and method (What you earn)
-- [ ] Bundle submission folder link, Google Drive (How to join)
-- [ ] Solo pin submission folder link, Google Drive (FAQ > Can I also send single pins?)
 - [x] Facebook page link: https://www.facebook.com/ubayubay (from the brand kit)
 - [ ] Permission from Gumtoo Stickers for the finished bundle example (assets/brand/pin-example-bundle.jpg), or swap in our own photo
 - [ ] Pin idea images. The gallery section is hidden in the HTML until we have images we own or have permission to use.
@@ -46,8 +44,16 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [ ] Can a leftover design (for example the 5th one) be sent as a solo pin?
 - [ ] Can the food and pop culture pins be older work? Does the originality clause allow fan art?
 - [ ] Free pin bundle: one per artist? Is it the artist's own bundle?
-- [ ] Should artists create a folder inside the Drive bin, or upload files straight in?
 - [ ] Exact red, gray, and green values in the template file (update `--color-template-*` in `styles.css`)
+
+## Uploads and admin page (decided 2026-10-01, built in Phase 2)
+
+Artists upload on the website with a private link from their email, or optionally during
+sign-up. Files and signed letters are stored in the org's Google Drive, and folders are
+named automatically. See `decisions/0008-uploads-through-site.md`.
+
+- [ ] Who sets and keeps the admin page password? Keep the list of people who know it small (RA 10173).
+- [ ] Who besides ubayubaytinkers@gmail.com needs access to the Drive files?
 
 ## Sign-up form fields (decided 2026-09-26)
 
