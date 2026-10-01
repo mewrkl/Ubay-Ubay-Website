@@ -857,6 +857,19 @@ code {
   margin-bottom: var(--space-4);
 }
 
+/* Pin Template, What you earn, FAQ: big headings, a little smaller than
+   THE GUIDELINES. "WHAT YOU EARN" is about 8.5 letter-heights wide, so the size
+   is the sheet width divided by 8.8, up to 64px. The FAQ title wraps to two lines. */
+h3.section-title {
+  font-size: min(40px, calc((100vw - 2 * var(--gutter)) / 8.8));
+  font-size: min(64px, calc((100cqw - 2 * var(--gutter)) / 8.8));
+  line-height: 1.05;
+  margin-bottom: var(--space-6);
+  /* Use the full width of the sheet, not just the narrow text column */
+  margin-right: min(0px, calc((100% - (100cqw - 2 * var(--gutter))) / 2));
+  margin-left: min(0px, calc((100% - (100cqw - 2 * var(--gutter))) / 2));
+}
+
 .zone-color .table-wrap {
   margin-bottom: var(--space-4);
   text-align: left;
