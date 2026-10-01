@@ -8,7 +8,7 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=22">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
   <script src="script.js?v=20" defer></script>
@@ -21,43 +21,40 @@
   - Look for comments that start with "EDIT:" for the parts that change often.
   - Anything not decided yet looks like this: <span class="tbd">[to be decided]</span>
     Replace the whole span with the real value once it is decided, then tick it off in TODO.md.
-  - The page bands, top to bottom: intro (cream), guidelines 1 and 2 (navy), 3 What you earn (orange),
-    4 FAQ (pink), how to join (cream), footer (navy).
+  - The page, top to bottom: header (stays at the top while scrolling), intro (cream),
+    guidelines 1 and 2 (navy), 3 What you earn (orange), 4 FAQ (pink), how to join (cream), footer (navy).
   - Parts with class="reveal" fade in when they scroll into view.
   - The acceptance letter and the sign-up form are on the other page, sign-up.html.
 -->
 
 <a class="skip-link" href="#guidelines">Skip to the guidelines</a>
 
+<!-- EDIT: The header. Keep it the same as the header on sign-up.html.
+     The logo is assets/brand/logo-wordmark-navy.png (cropped from the brand kit). -->
+<header class="site-header">
+  <p>
+    This site is made by
+    <img class="site-header-logo" src="assets/brand/logo-wordmark-navy.png" width="465" height="101" alt="Ubay-Ubay">,
+    under Tinkers.
+  </p>
+</header>
+
 <main>
 
   <!-- =========================================================
        ZONE 1: INTRO (cream)
        ========================================================= -->
-  <section class="hero column" aria-labelledby="intro-title">
-    <!-- EDIT: The logo. The image file is assets/brand/logo-stacked.png (cropped from the brand kit). -->
-    <h1 id="intro-title" class="hero-logo">
-      <img src="assets/brand/logo-stacked.png" width="300" height="313" alt="Ubay-Ubay pop-up art market">
-    </h1>
+  <section class="hero" aria-labelledby="intro-title">
+    <!-- EDIT: The big heading. Each <span> is one line. If you change the words,
+         change the 12.8 in .hero-title in styles.css so the longest line still fits phones. -->
+    <h1 id="intro-title" class="hero-title"><span>Make your own</span> <span>button pin</span></h1>
 
-    <!-- EDIT: Who we are, then the invitation. -->
-    <p class="hero-about">
-      Ubay-Ubay is a pop-up art market by Tinkers, an organization in the Fine Arts
-      department of UP Cebu. We hold pop-up markets in campus to raise funds, and give
-      local artists a place to sell their work.
-    </p>
-    <p class="hero-invite">
-      We are inviting you to design <span class="underline">a button pin bundle</span> for our stall.
-      You make the art. We print, pack, and sell it, and you earn a cut of every sale.
-      Your bundle goes to the merch table for FASO.
-    </p>
-
-    <p class="hero-scroll">
-      Scroll down to see the guidelines
-      <svg class="hero-scroll-arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
-        <path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+    <a class="hero-cta" href="#guidelines">
+      <span class="hero-box">Be a part of the program</span>
+      <svg class="hero-arrow" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" focusable="false">
+        <path d="M12 4v16M5 13l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
-    </p>
+    </a>
   </section>
 
 

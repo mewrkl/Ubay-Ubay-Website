@@ -2,8 +2,8 @@
    EDIT: Colors, fonts, sizes, and spacing are set once in :root below.
    Change a value there and it updates everywhere on both pages.
    Colors and fonts follow the Ubay-Ubay brand kit.
-   The layout is one centered column. Wider screens only get a bigger
-   headline, a bigger badge, and more space between sections. */
+   The layout is one centered column under a small sticky header. Wider
+   screens only get a bigger headline and more space between sections. */
 
 /* Brand font, hosted in assets/fonts/.
    Agrandir: Pangram Pangram, web license held by the org. */
@@ -87,6 +87,7 @@
   --section-end: 32px;            /* space at the bottom of each section */
   --radius-control: 6px;
   --radius-panel: 8px;
+  --header-height: 48px;          /* the sticky header at the top */
 }
 
 @media (min-width: 720px) {
@@ -122,8 +123,15 @@ body {
   line-height: 1.6;
 }
 
+/* Links to a part of the page stop below the sticky header */
 [id] {
-  scroll-margin-top: var(--space-6);
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 h1,
@@ -299,56 +307,105 @@ code {
 }
 
 
-/* ---------- Intro ---------- */
+/* ---------- Header (stays at the top while scrolling) ---------- */
 
-.hero {
-  padding-top: var(--space-12);
-  padding-bottom: var(--section-end);
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--header-height);
+  padding: var(--space-2) var(--gutter);
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-page);
   text-align: center;
 }
 
-/* The stacked logo is the page heading. Its background is transparent, so it
-   blends into the cream. */
-.hero-logo {
-  margin: 0 0 var(--space-8);
-  line-height: 0;
+.site-header p {
+  margin: 0;
+  font-size: var(--size-small);
+  line-height: 1.4;
 }
 
-.hero-logo img {
-  display: block;
-  width: 240px;
-  height: auto;
-  margin: 0 auto;
-}
-
-@media (min-width: 720px) {
-  .hero-logo img {
-    width: 300px;
-  }
-}
-
-.hero-invite {
-  font-weight: 700;
-}
-
-/* "a button pin bundle" in the intro */
-.underline {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
-
-.hero-scroll {
-  margin: var(--space-8) 0 0;
-  color: var(--color-text-2);
-  font-size: var(--size-body);
-}
-
-/* The down arrow beside "Scroll down to see the guidelines" */
-.hero-scroll-arrow {
+/* The UBAY-UBAY wordmark reads like a word in the sentence. Its cream
+   background matches the page, so it blends in. */
+.site-header-logo {
   display: inline-block;
-  margin-left: var(--space-1);
-  vertical-align: -3px;
+  height: 16px;
+  width: auto;
+  margin-left: 2px;
+  vertical-align: -2px;
+}
+
+
+/* ---------- Intro ---------- */
+
+/* Fills the first screen below the header, so the arrow points at what comes next */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  padding: var(--space-12) var(--gutter);
+  text-align: center;
+}
+
+/* MAKE YOUR OWN / BUTTON PIN, always exactly two lines.
+   "MAKE YOUR OWN" is about 12.4 letters-widths wide in this font, so the size is
+   the screen width divided by 12.8. It stops growing at 88px. */
+.hero-title {
+  margin: 0 0 var(--space-8);
+  font-family: var(--font-headline);
+  font-size: min(88px, calc((100vw - 2 * var(--gutter)) / 12.8));
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.hero-title span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* The box and the arrow are one link to the guidelines */
+.hero-cta {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.hero-box {
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--color-navy);
+  border-radius: var(--radius-control);
+  font-weight: 700;
+  line-height: 1.4;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.hero-cta:hover {
+  color: var(--color-text);
+}
+
+.hero-cta:hover .hero-box {
+  background: var(--color-navy);
+  color: var(--color-cream);
+}
+
+.hero-cta:active .hero-box {
+  background: var(--color-accent-active);
+  color: var(--color-cream);
+}
+
+.hero-arrow {
+  display: block;
 }
 
 /* ---------- Zones: cream, navy, cream, navy ----------

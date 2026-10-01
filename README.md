@@ -118,11 +118,12 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 - **Fonts:**
   - Agrandir Text Bold, uppercase: every title, including "The guidelines", "How to join", the sign-up page title,
     and the numbered guideline titles, for example "2. PIN TEMPLATE". Type the number as part of the title.
-  - Agrandir Grand Heavy is loaded in styles.css (`--font-headline`) but not used right now.
+  - Agrandir Grand Heavy (`--font-headline`): only the big "MAKE YOUR OWN BUTTON PIN" heading at the top of `index.html`
   - Agrandir Regular and Text Bold: everything else
 
   Neither font has a ₱ sign, so prices show ₱ in the phone's own font. That is expected.
-- **Logos:** `assets/brand/logo-stacked.png` (intro, transparent background) and `assets/brand/logo-horizontal-cream.png` (navy footer) were cropped from the brand kit PDF.
+- **Logos:** `assets/brand/logo-wordmark-navy.png` (the UBAY-UBAY word in the sticky header, cream background) and `assets/brand/logo-horizontal-cream.png` (navy footer) were cropped from the brand kit PDF.
+  `assets/brand/logo-stacked.png` (transparent, stacked) is kept but no longer used on the site.
   To use sharper versions, export them from Canva with the same file names and replace these files.
 - **Sample bundle picture:** `assets/brand/pin-sample-guideline.png`, shown under guideline 1. Keep file names free of spaces.
 - **Pin template picture:** `assets/brand/pin-template.png` (transparent around the pin), shown under guideline 2.
