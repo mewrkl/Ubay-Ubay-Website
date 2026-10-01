@@ -542,9 +542,22 @@ code {
   padding: var(--space-16) 0;
 }
 
-/* Guideline 2 (Pin Template) on its own navy band */
+/* Pin Template on a deep purple band with cream text. It's the brand violet,
+   darkened so cream text reads clearly (5.5:1). Red text can't be read on purple,
+   so "red line" stays cream with a red dashed underline, like the template line. */
 .zone-template {
   padding: var(--space-16) 0;
+}
+
+.zone-navy.zone-template {
+  background: #6c3fe0;
+}
+
+.zone-template .text-red {
+  color: var(--color-cream);
+  text-decoration: underline dashed var(--color-red-text);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .zone-template .topic {

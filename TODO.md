@@ -6,7 +6,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Main page (`index.html`)
 
-- [x] Submission deadline: the last day of every month, so the team makes the bundles the month after (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
+- [x] Submission deadline: the last day of every month, so the team makes the bundles the month after (bullet under Design 4 pins, FAQ, and How to join step 3)
 - [x] On-theme pin: on theme with the artist's own bundle, so no site-wide theme
 - [x] Pin template download removed. The team aligns designs to the template.
 - [x] Pin file: PNG, 1000 x 1000 px (The pin template)
@@ -29,7 +29,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - Earnings: bundle ₱240 (artist ₱100, Tinkers ₱140), solo pin ₱50 (artist ₱10, Tinkers ₱40).
   The artist's share shows in "What you earn" and the full split in the FAQ ("How is each sale split?"). Change both.
-- Submission deadline: the last day of every month (1. Design 4 pins, FAQ, and How to join)
+- Submission deadline: the last day of every month (Design 4 pins, FAQ, and How to join)
 
 ## Decided
 

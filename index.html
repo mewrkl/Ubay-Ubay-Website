@@ -8,7 +8,7 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=40">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
   <script src="script.js?v=22" defer></script>
@@ -22,7 +22,7 @@
   - Anything not decided yet looks like this: <span class="tbd">[to be decided]</span>
     Replace the whole span with the real value once it is decided, then tick it off in TODO.md.
   - The page, top to bottom: header (stays at the top while scrolling), intro (cream),
-    invitation (navy), guideline 1 (cream), guideline 2 (navy), 3 What you earn (green), 4 FAQ (pink),
+    invitation (navy), Design 4 pins (cream), Pin Template (purple), What you earn (green), FAQ (pink),
     how to join (cream), footer (navy). The space around the sheet is orange.
   - Parts with class="reveal" fade in when they scroll into view.
   - The acceptance letter and the sign-up form are on the other page, sign-up.html.
@@ -72,8 +72,8 @@
 
   <!-- =========================================================
        ZONE 2: THE GUIDELINES
-       The invitation sits on navy, topic 1 on cream, 2 on navy, 3 on a green band, 4 on a pink band.
-       Each topic title starts with its number, for example "2. Pin Template".
+       The invitation sits on navy, Design 4 pins on cream, Pin Template on purple, What you earn on green, the FAQ on pink.
+       Topic titles have no numbers. The heading itself names the part.
        ========================================================= -->
   <section class="guidelines" id="guidelines" aria-labelledby="guidelines-title">
   <div class="zone zone-navy zone-invite">
@@ -105,14 +105,14 @@
       <h2 id="guidelines-title" class="guidelines-title">The guidelines</h2>
     </div>
 
-    <!-- ---------- 1. Design 4 pins ---------- -->
+    <!-- ---------- Design 4 pins ---------- -->
     <!-- Guideline 1: the text on the left, the sample card on the right.
          On phones the sample card goes under the text. -->
     <section class="topic topic-wide reveal" id="what-to-make" aria-labelledby="what-to-make-title">
       <div class="bento">
 
       <div class="bento-text">
-      <h3 id="what-to-make-title">1 Design 4 pins</h3>
+      <h3 id="what-to-make-title">Design 4 pins</h3>
 
       <ul class="list">
         <li><strong class="text-highlight">4 pin designs.</strong> Together they make 1 bundle.</li>
@@ -157,12 +157,12 @@
     </section>
   </div>
 
-  <!-- Guideline 2 on navy with cream text -->
+  <!-- Pin Template on purple with cream text -->
   <div class="zone zone-navy zone-template">
 
-    <!-- ---------- 2. Pin Template ---------- -->
+    <!-- ---------- Pin Template ---------- -->
     <section class="topic column reveal" id="pin-template" aria-labelledby="pin-template-title">
-      <h3 id="pin-template-title">2. Pin Template</h3>
+      <h3 id="pin-template-title">Pin Template</h3>
       <p>
         Keep your art inside the <strong class="text-red">red line</strong>. The area up to the
         gray line wraps around the side of the pin. <strong>Anything</strong> past the gray line
@@ -193,10 +193,10 @@
 
   </div>
 
-    <!-- ---------- 3. What you earn (green band) ---------- -->
+    <!-- ---------- What you earn (green band) ---------- -->
     <section class="zone zone-color zone-green" id="earnings" aria-labelledby="earnings-title">
       <div class="topic column reveal">
-        <h3 id="earnings-title">3. What you earn</h3>
+        <h3 id="earnings-title">What you earn</h3>
         <!-- EDIT: Earnings. Also in the FAQ ("How is each sale split?"). Change both. -->
         <div class="table-wrap">
           <table>
@@ -218,15 +218,15 @@
       </div>
     </section>
 
-    <!-- ---------- 4. Frequently asked questions (full-width pink band) ----------
+    <!-- ---------- Frequently asked questions (pink band) ----------
          To add a question, copy one <details> block and change the text. -->
     <section class="zone zone-color zone-pink" id="faq" aria-labelledby="faq-title">
       <div class="topic column reveal">
-        <h3 id="faq-title">4. Frequently asked questions</h3>
+        <h3 id="faq-title">Frequently asked questions</h3>
 
         <div class="more-list">
 
-          <!-- EDIT: The deadline. It also appears under "1. Design 4 pins" and in "How to join" step 3. -->
+          <!-- EDIT: The deadline. It also appears under "Design 4 pins" and in "How to join" step 3. -->
           <details class="more">
             <summary>When is the deadline?</summary>
             <div class="more-body">
@@ -266,7 +266,7 @@
             <div class="more-body">
               <p>
                 A FASO artist makes every backcard, so all bundles look the same.
-                You only design the pins and the bundle name logo. See the sample card under number 1.
+                You only design the pins and the bundle name logo. See the sample card under "Design 4 pins".
               </p>
               <p>The card is vellum board or hard paper with pre-punched holes for the pins.</p>
               <p>
@@ -279,7 +279,7 @@
           <details class="more">
             <summary>How is each sale split?</summary>
             <div class="more-body">
-              <!-- EDIT: Prices. The artist's share also appears under "3. What you earn". -->
+              <!-- EDIT: Prices. The artist's share also appears under "What you earn". -->
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -314,7 +314,7 @@
          To show it, delete the two comment lines marked HIDE and put the images inside the gallery div.
     HIDE START
     <section class="topic column reveal" id="pin-ideas" aria-labelledby="pin-ideas-title">
-      <h3 id="pin-ideas-title">5. Pin ideas</h3>
+      <h3 id="pin-ideas-title">Pin ideas</h3>
       <div class="gallery"></div>
     </section>
     HIDE END -->
@@ -329,7 +329,7 @@
     <div class="column reveal">
       <h2 id="how-to-join-title">How to join</h2>
 
-      <!-- EDIT: Deadline. It also appears under "1. Design 4 pins" and in the FAQ. -->
+      <!-- EDIT: Deadline. It also appears under "Design 4 pins" and in the FAQ. -->
       <ol class="steps">
         <li>Read and sign the acceptance letter.</li>
         <li>Check your email for your signed copy and your private upload link.</li>

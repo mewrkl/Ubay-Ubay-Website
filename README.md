@@ -35,7 +35,7 @@ phone icon, and pick a width of 360.
 4. Save and refresh the browser.
 
 Keep each section short: a title, one or two sentences, and at most one picture or button.
-Extra detail belongs in the FAQ (number 4 in the guidelines).
+Extra detail belongs in the FAQ (Frequently asked questions, in the guidelines).
 
 ### Placeholders
 
@@ -64,8 +64,8 @@ and change the question in `<summary>` and the answer inside `<div class="more-b
 
 ### Values that appear twice
 
-- Earnings: "3. What you earn" and the FAQ question "How is each sale split?" on `index.html`.
-- Deadline (the last day of every month): the last bullet of "1. Design 4 pins", with the date in pink text, the FAQ question "When is the deadline?",
+- Earnings: "What you earn" and the FAQ question "How is each sale split?" on `index.html`.
+- Deadline (the last day of every month): the last bullet of "Design 4 pins", with the date in pink text, the FAQ question "When is the deadline?",
   and step 3 of "How to join" on `index.html`. Change all three.
 - Footer: at the bottom of both pages. Keep them the same.
 
@@ -107,10 +107,10 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
 - **Colors:** cream `#f6f1e7` (page), navy `#2b2c49` (text and buttons), and four accents:
   coral `#eb6648`, pink `#f055b1`, violet `#8c5eff`, green `#749e25`.
   Coral fills the space around the centered sheet (`--color-backdrop`). A lighter green (`#8bb33a`,
-  so navy text stays readable) is the band behind "3. What you earn", and pink the band behind
-  "4. Frequently asked questions", both with navy text. Everywhere else the sheet is cream and navy.
-- **Page bands, top to bottom:** intro (cream), invitation (navy), guideline 1 (cream), guideline 2 (navy),
-  3 What you earn (green), 4 FAQ (pink), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
+  so navy text stays readable) is the band behind "What you earn", and pink the band behind
+  "Frequently asked questions", both with navy text. "Pin Template" sits on a deep purple (`#6c3fe0`) with cream text. Everywhere else the sheet is cream and navy.
+- **Page bands, top to bottom:** intro (cream), invitation (navy), Design 4 pins (cream), Pin Template (purple),
+  What you earn (green), FAQ (pink), "How to join" (cream), footer (navy). The backgrounds are what separate the parts.
   Inside a navy zone (`class="zone zone-navy"`), text and lines switch to their light versions automatically.
 - **Scroll animation:** anything with `class="reveal"` fades in the first time it scrolls into view,
   and the sample bundle picture grows in slightly. It is switched off for visitors who turned on
