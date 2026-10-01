@@ -12,7 +12,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [x] Pin file: PNG, 1000 x 1000 px (The pin template)
 - [ ] What the green line on the template means (FAQ)
 - [ ] Payout timing and method (What you earn)
-- [x] Facebook page link: https://www.facebook.com/ubayubay (from the brand kit)
+- [x] Facebook page link: https://www.facebook.com/profile.php?id=61594420606815 (from the owner, 2026-10-01)
 - [ ] Permission from Gumtoo Stickers for the finished bundle example (assets/brand/pin-example-bundle.jpg), or swap in our own photo
 - [ ] Pin idea images. The gallery section is hidden in the HTML until we have images we own or have permission to use.
 - [x] Ubay-Ubay logos: stacked logo (intro) and cream horizontal logo (footer), cropped from the brand kit PDF
