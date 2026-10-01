@@ -7,7 +7,7 @@
   <meta name="description" content="Read and sign the Ubay-Ubay artist acceptance letter.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=24">
+  <link rel="stylesheet" href="styles.css?v=25">
   <script src="script.js?v=20" defer></script>
 </head>
 <body>
@@ -19,19 +19,21 @@
   - The main page with the guidelines is index.html.
 -->
 
-<!-- The whole site sits on one centered sheet (.page), with empty space at the left and right on wide screens. -->
+<!-- The whole site sits in one centered column (.page). Each part is a rounded card (class="card")
+     with a little sand-colored space between them, like the questions in a Google Form. -->
 <div class="page">
 
 <!-- EDIT: The header. Keep it the same as the header on index.html. -->
 <header class="site-header">
-  <p>
+  <p><span>
     This site is made by
     <img class="site-header-logo" src="assets/brand/logo-wordmark-navy.png" width="465" height="101" alt="Ubay-Ubay">,
     under Tinkers.
-  </p>
+  </span></p>
 </header>
 
-<main class="column signup">
+<main class="signup card">
+<div class="column">
 
   <p class="back"><a href="index.html#how-to-join">← Back to the guidelines</a></p>
 
@@ -134,10 +136,11 @@
     <p class="small form-status"><span class="tbd">[The form is not connected yet. Sending will work in the next build.]</span></p>
   </form>
 
+</div>
 </main>
 
 <!-- EDIT: Footer contacts. Keep this the same as the footer on index.html. -->
-<footer class="site-footer">
+<footer class="site-footer card">
   <div class="column">
     <!-- EDIT: Logo image is assets/brand/logo-horizontal-cream.png (cropped from the brand kit). -->
     <img class="footer-logo" src="assets/brand/logo-horizontal-cream.png" width="160" height="57" alt="Ubay-Ubay pop-up art market">

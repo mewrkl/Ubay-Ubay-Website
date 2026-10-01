@@ -8,7 +8,7 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=24">
+  <link rel="stylesheet" href="styles.css?v=25">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
   <script src="script.js?v=20" defer></script>
@@ -29,17 +29,18 @@
 
 <a class="skip-link" href="#guidelines">Skip to the guidelines</a>
 
-<!-- The whole site sits on one centered sheet (.page), with empty space at the left and right on wide screens. -->
+<!-- The whole site sits in one centered column (.page). Each part is a rounded card (class="card")
+     with a little sand-colored space between them, like the questions in a Google Form. -->
 <div class="page">
 
 <!-- EDIT: The header. Keep it the same as the header on sign-up.html.
      The logo is assets/brand/logo-wordmark-navy.png (cropped from the brand kit). -->
 <header class="site-header">
-  <p>
+  <p><span>
     This site is made by
     <img class="site-header-logo" src="assets/brand/logo-wordmark-navy.png" width="465" height="101" alt="Ubay-Ubay">,
     under Tinkers.
-  </p>
+  </span></p>
 </header>
 
 <main>
@@ -47,7 +48,7 @@
   <!-- =========================================================
        ZONE 1: INTRO (cream)
        ========================================================= -->
-  <section class="hero" aria-labelledby="intro-title">
+  <section class="hero card" aria-labelledby="intro-title">
     <!-- EDIT: The big heading. Each <span> is one line. If you change the words,
          change the 12.8 in .hero-title in styles.css so the longest line still fits phones. -->
     <h1 id="intro-title" class="hero-title"><span>Make your own</span> <span>button pin</span></h1>
@@ -67,7 +68,7 @@
        Each topic title starts with its number, for example "2. Pin Template".
        ========================================================= -->
   <section class="guidelines" id="guidelines" aria-labelledby="guidelines-title">
-  <div class="zone zone-navy">
+  <div class="zone zone-navy card">
 
     <div class="column zone-head reveal">
       <h2 id="guidelines-title">The guidelines</h2>
@@ -140,7 +141,7 @@
   </div>
 
     <!-- ---------- 3. What you earn (full-width orange band) ---------- -->
-    <section class="zone zone-color zone-coral" id="earnings" aria-labelledby="earnings-title">
+    <section class="zone zone-color zone-coral card" id="earnings" aria-labelledby="earnings-title">
       <div class="topic column reveal">
         <h3 id="earnings-title">3. What you earn</h3>
         <!-- EDIT: Earnings. Also in the FAQ ("How is each sale split?"). Change both. -->
@@ -166,7 +167,7 @@
 
     <!-- ---------- 4. Frequently asked questions (full-width pink band) ----------
          To add a question, copy one <details> block and change the text. -->
-    <section class="zone zone-color zone-pink" id="faq" aria-labelledby="faq-title">
+    <section class="zone zone-color zone-pink card" id="faq" aria-labelledby="faq-title">
       <div class="topic column reveal">
         <h3 id="faq-title">4. Frequently asked questions</h3>
 
@@ -271,7 +272,7 @@
   <!-- =========================================================
        ZONE 3: HOW TO JOIN (cream)
        ========================================================= -->
-  <section class="zone zone-join" id="how-to-join" aria-labelledby="how-to-join-title">
+  <section class="zone zone-join card" id="how-to-join" aria-labelledby="how-to-join-title">
     <div class="column reveal">
       <h2 id="how-to-join-title">How to join</h2>
 
@@ -295,7 +296,7 @@
 </main>
 
 <!-- EDIT: Footer contacts. Keep this the same as the footer on sign-up.html. -->
-<footer class="site-footer">
+<footer class="site-footer card">
   <div class="column">
     <!-- EDIT: Logo image is assets/brand/logo-horizontal-cream.png (cropped from the brand kit). -->
     <img class="footer-logo" src="assets/brand/logo-horizontal-cream.png" width="160" height="57" alt="Ubay-Ubay pop-up art market">

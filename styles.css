@@ -88,8 +88,10 @@
   --radius-control: 6px;
   --radius-panel: 8px;
   --header-height: 48px;          /* the sticky header at the top */
-  --page-width: 768px;            /* width of the centered sheet the whole site sits on */
-  --color-backdrop: #e6ddcb;      /* the empty space at the left and right of the sheet */
+  --page-width: 768px;            /* width of the centered column the whole site sits in */
+  --color-backdrop: #e6ddcb;      /* the sand color around and between the cards */
+  --card-gap: 12px;               /* space between cards, and between the cards and the screen edge */
+  --radius-card: 12px;            /* rounded corners of each card */
 }
 
 @media (min-width: 720px) {
@@ -125,26 +127,36 @@ body {
   line-height: 1.6;
 }
 
-/* The sheet: everything on the page sits inside it, like a Google Form.
-   On screens narrower than --page-width it simply fills the screen. */
+/* The centered column everything sits in, like a Google Form.
+   Each part of the page is a rounded card, with a little sand-colored
+   space around and between them, so they look like they float. */
 .page {
   container-type: inline-size;
-  max-width: var(--page-width);
-  min-height: 100vh;
+  max-width: calc(var(--page-width) + 2 * var(--card-gap));
   margin: 0 auto;
-  background: var(--color-page);
+  padding: 0 var(--card-gap) var(--card-gap);
 }
 
-@media (min-width: 800px) {
-  .page {
-    border-right: 1px solid var(--color-line);
-    border-left: 1px solid var(--color-line);
-  }
+.card {
+  border-radius: var(--radius-card);
+}
+
+/* The sand-colored gap between cards */
+main > * + *,
+.guidelines > * + *,
+main + .site-footer {
+  margin-top: var(--card-gap);
+}
+
+/* Cards that would otherwise show the sand through them */
+.zone-join,
+.signup {
+  background: var(--color-page);
 }
 
 /* Links to a part of the page stop below the sticky header */
 [id] {
-  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+  scroll-margin-top: calc(var(--header-height) + 2 * var(--card-gap) + var(--space-6));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -326,26 +338,31 @@ code {
 }
 
 
-/* ---------- Header (stays at the top while scrolling) ---------- */
+/* ---------- Header (stays at the top while scrolling) ----------
+   The header is a sand strip with a floating cream card inside it. The strip
+   hides the page as it scrolls under, so there is always a gap above and below
+   the card. */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 5;
+  padding: var(--card-gap) 0;
+  background: var(--color-backdrop);
+}
+
+.site-header p {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: var(--header-height);
-  padding: var(--space-2) var(--gutter);
-  border-bottom: 1px solid var(--color-line);
-  background: var(--color-page);
-  text-align: center;
-}
-
-.site-header p {
   margin: 0;
+  padding: var(--space-2) var(--gutter);
+  border-radius: var(--radius-card);
+  background: var(--color-page);
   font-size: var(--size-small);
   line-height: 1.4;
+  text-align: center;
 }
 
 /* The UBAY-UBAY wordmark reads like a word in the sentence. Its cream
@@ -367,9 +384,10 @@ code {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - var(--header-height));
-  min-height: calc(100svh - var(--header-height));
+  min-height: calc(100vh - var(--header-height) - 3 * var(--card-gap));
+  min-height: calc(100svh - var(--header-height) - 3 * var(--card-gap));
   padding: var(--space-12) var(--gutter);
+  background: var(--color-page);
   text-align: center;
 }
 
