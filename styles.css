@@ -88,6 +88,8 @@
   --radius-control: 6px;
   --radius-panel: 8px;
   --header-height: 48px;          /* the sticky header at the top */
+  --page-width: 768px;            /* width of the centered sheet the whole site sits on */
+  --color-backdrop: #e6ddcb;      /* the empty space at the left and right of the sheet */
 }
 
 @media (min-width: 720px) {
@@ -111,16 +113,33 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  background: var(--color-navy); /* space below the navy footer stays navy */
+  background: var(--color-backdrop);
 }
 
 body {
   margin: 0;
-  background: var(--color-page);
+  background: var(--color-backdrop);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--size-body);
   line-height: 1.6;
+}
+
+/* The sheet: everything on the page sits inside it, like a Google Form.
+   On screens narrower than --page-width it simply fills the screen. */
+.page {
+  container-type: inline-size;
+  max-width: var(--page-width);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--color-page);
+}
+
+@media (min-width: 800px) {
+  .page {
+    border-right: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
+  }
 }
 
 /* Links to a part of the page stop below the sticky header */
@@ -355,12 +374,14 @@ code {
 }
 
 /* MAKE YOUR OWN / BUTTON PIN, always exactly two lines.
-   "MAKE YOUR OWN" is about 12.4 letters-widths wide in this font, so the size is
-   the screen width divided by 12.8. It stops growing at 88px. */
+   "MAKE YOUR OWN" is about 12.4 letter-heights wide in this font, so the size is
+   the sheet width divided by 12.8 (cqw = 1% of the sheet's width). It stops growing at 88px.
+   The first line is a fallback for old browsers that don't know cqw. */
 .hero-title {
   margin: 0 0 var(--space-8);
   font-family: var(--font-headline);
-  font-size: min(88px, calc((100vw - 2 * var(--gutter)) / 12.8));
+  font-size: min(54px, calc((100vw - 2 * var(--gutter)) / 12.8));
+  font-size: min(88px, calc((100cqw - 2 * var(--gutter)) / 12.8));
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: 0;
