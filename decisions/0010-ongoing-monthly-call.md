@@ -21,8 +21,8 @@ recorded because it reverses the PRD's premise.
 
 ## Decision
 Ongoing call with a monthly deadline. All Cookout names and dates are removed
-from the pages and the sample card picture. Guideline 1 now asks for 4 pins and
-a bundle name logo, says a FASO artist designs the backcard, and says 1 free
+from the pages and the sample card picture. Guideline 1 keeps the pin mix
+(2 food, 1 new original on theme, 1 pop culture), adds a bundle name logo, says a FASO artist designs the backcard, and says 1 free
 copy of the bundle goes to the artist. Uploads that arrive after a month's
 deadline count for the next month instead of being refused.
 
@@ -32,9 +32,6 @@ The site can stay up for good, with nothing to update each month. **Given up:**
   date, so artists can put it off forever.
 - The event hook. "Your art at UP Cookout" was a concrete reason to join. The
   intro now has to sell the idea by itself.
-- The fixed pin mix (2 food, 1 on theme, 1 pop culture), which gave every
-  bundle a shared shape. It was dropped with the Cookout framing and is listed
-  in TODO in case the org wants it back.
 
 ## Generalizes to
 **One-time campaign page vs evergreen intake page.** When the same request
