@@ -575,9 +575,11 @@ code {
   padding: 0 var(--gutter);
 }
 
-/* "THE GUIDELINES": almost as big as the MAKE YOUR OWN BUTTON PIN heading, on one line.
-   It is about 8.1 letter-heights wide, so the size is the sheet width divided by 8.4. */
-.guidelines-title {
+/* "THE GUIDELINES" and "HOW TO JOIN": almost as big as the MAKE YOUR OWN BUTTON PIN
+   heading, on one line. THE GUIDELINES is about 8.1 letter-heights wide, so the size
+   is the sheet width divided by 8.4. */
+.guidelines-title,
+.join-title {
   font-size: min(48px, calc((100vw - 2 * var(--gutter)) / 8.4));
   font-size: min(76px, calc((100cqw - 2 * var(--gutter)) / 8.4));
   line-height: 1.05;
