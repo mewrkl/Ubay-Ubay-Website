@@ -524,6 +524,29 @@ code {
 
 .zone-head {
   margin-bottom: var(--space-4);
+  padding: 0 var(--gutter);
+}
+
+/* "THE GUIDELINES": almost as big as the MAKE YOUR OWN BUTTON PIN heading, on one line.
+   It is about 8.1 letter-heights wide, so the size is the sheet width divided by 8.4. */
+.guidelines-title {
+  font-size: min(48px, calc((100vw - 2 * var(--gutter)) / 8.4));
+  font-size: min(76px, calc((100cqw - 2 * var(--gutter)) / 8.4));
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+/* The example band and guideline 2 don't need the big section space on top */
+.zone-example {
+  padding: var(--space-12) 0;
+}
+
+.zone-next {
+  padding-top: var(--space-12);
+}
+
+.zone-next .topic {
+  padding-top: 0;
 }
 
 .zone-head p {
@@ -618,6 +641,11 @@ code {
 
 .bento-tile {
   margin: 0;
+}
+
+/* The text and the picture beside it line up on their centers */
+.bento-center {
+  align-items: center;
 }
 
 .bento-text {
