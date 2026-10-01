@@ -17,3 +17,14 @@ if (document.documentElement.classList.contains('js-reveal')) {
 
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 }
+
+// Sticky header: once it reaches the top of the screen, add .is-stuck so the
+// stylesheet can square its top corners and draw a line under it.
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const updateHeader = () => {
+    siteHeader.classList.toggle('is-stuck', siteHeader.getBoundingClientRect().top <= 0);
+  };
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+}

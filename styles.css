@@ -142,6 +142,7 @@ body {
 }
 
 /* The sand-colored gap between cards */
+main,
 main > * + *,
 .guidelines > * + *,
 main + .site-footer {
@@ -156,7 +157,7 @@ main + .site-footer {
 
 /* Links to a part of the page stop below the sticky header */
 [id] {
-  scroll-margin-top: calc(var(--header-height) + 2 * var(--card-gap) + var(--space-6));
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -339,16 +340,21 @@ code {
 
 
 /* ---------- Header (stays at the top while scrolling) ----------
-   The header is a sand strip with a floating cream card inside it. The strip
-   hides the page as it scrolls under, so there is always a gap above and below
-   the card. */
+   At the top of the page it floats with a small gap above it. Once you scroll,
+   it sticks flush to the top of the screen, and script.js adds .is-stuck so its
+   top corners go square and a thin line appears under it. */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 5;
-  padding: var(--card-gap) 0;
-  background: var(--color-backdrop);
+  margin-top: var(--card-gap);
+}
+
+.site-header.is-stuck p {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: inset 0 -1px 0 var(--color-line);
 }
 
 .site-header p {
@@ -474,12 +480,9 @@ code {
   padding-top: var(--space-12);
 }
 
-/* The line between guideline topics runs the full width of the screen */
-.band-divider {
-  height: 0;
-  margin: var(--space-12) 0 0;
-  border: 0;
-  border-top: 1px solid var(--color-line);
+/* Guideline 2 starts its own card, so it doesn't need the extra topic space on top */
+.zone-next .topic {
+  padding-top: 0;
 }
 
 /* How to join: a little more room between its title and the steps */
