@@ -88,6 +88,8 @@ The signed PDF (Phase 2) copies its text from this block, so the page and the PD
 - No em dashes. No semicolons.
 - Formal but simple English. Sentence case.
 - Buttons say exactly what they do ("Sign and send", not "Submit").
+- Links to other websites open in a new tab. Add `target="_blank" rel="noopener noreferrer"` to any new
+  outside link, like the Instagram and Facebook links in the footer.
 
 ## Change colors, fonts, or sizes
 
