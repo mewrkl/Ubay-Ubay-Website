@@ -360,11 +360,58 @@ code {
 /* The UBAY-UBAY wordmark reads like a word in the sentence. Its cream
    background matches the page, so it blends in. */
 .site-header-logo {
-  display: inline-block;
+  display: block;
   height: 16px;
   width: auto;
+}
+
+/* The logo opens a short description of Ubay-Ubay: on hover (computers),
+   or on tap (phones, where script.js adds .is-open). */
+.logo-tip {
+  position: relative;
+  display: inline-block;
   margin-left: 2px;
   vertical-align: -2px;
+}
+
+.logo-tip-trigger {
+  display: block;
+  padding: 2px 0;
+  border: 0;
+  border-bottom: 1px dashed var(--color-control);  /* hints that it can be opened */
+  border-radius: 0;
+  background: none;
+  cursor: help;
+}
+
+.logo-tip-text {
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  left: 50%;
+  z-index: 6;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-panel);
+  background: var(--color-navy);
+  color: var(--color-cream);
+  font-size: var(--size-small);
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -4px);
+  transition: opacity 150ms ease-out, transform 150ms ease-out, visibility 150ms;
+  pointer-events: none;
+}
+
+.logo-tip:hover .logo-tip-text,
+.logo-tip:focus-within .logo-tip-text,
+.logo-tip.is-open .logo-tip-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
 }
 
 

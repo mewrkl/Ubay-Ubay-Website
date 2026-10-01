@@ -8,10 +8,10 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=43">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
-  <script src="script.js?v=22" defer></script>
+  <script src="script.js?v=23" defer></script>
 </head>
 <body>
 
@@ -39,7 +39,8 @@
 <header class="site-header">
   <p><span>
     This site is made by
-    <img class="site-header-logo" src="assets/brand/logo-wordmark-navy.png" width="465" height="101" alt="Ubay-Ubay">,
+    <!-- EDIT: The short description that pops up from the logo (hover on computers, tap on phones). -->
+    <span class="logo-tip"><button class="logo-tip-trigger" type="button" aria-describedby="logo-tip-text" aria-expanded="false"><img class="site-header-logo" src="assets/brand/logo-wordmark-navy.png" width="465" height="101" alt="Ubay-Ubay"></button><span class="logo-tip-text" id="logo-tip-text" role="tooltip">Ubay-Ubay is a pop-up art market by Tinkers, an organization in the Fine Arts department of UP Cebu.</span></span>,
     under Tinkers.
   </span></p>
 </header>

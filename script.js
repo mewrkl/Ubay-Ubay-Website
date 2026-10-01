@@ -40,3 +40,25 @@ if (exampleDialog && typeof exampleDialog.showModal === 'function') {
     if (event.target === exampleDialog) exampleDialog.close();
   });
 }
+
+// Header logo: tap to show the short Ubay-Ubay description on phones (hover
+// already shows it on computers). Tapping anywhere else or pressing Esc closes it.
+const logoTip = document.querySelector('.logo-tip');
+if (logoTip) {
+  const trigger = logoTip.querySelector('.logo-tip-trigger');
+  const setOpen = (open) => {
+    logoTip.classList.toggle('is-open', open);
+    trigger.setAttribute('aria-expanded', String(open));
+  };
+  trigger.addEventListener('click', (event) => {
+    event.stopPropagation();
+    setOpen(!logoTip.classList.contains('is-open'));
+  });
+  document.addEventListener('click', () => setOpen(false));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setOpen(false);
+      trigger.blur();
+    }
+  });
+}
