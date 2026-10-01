@@ -947,9 +947,9 @@ h3.section-title {
 }
 
 /* Shading drawn over the picture: dark = not visible, light = side of the pin */
+/* The outer ring that will not show: white with red diagonal lines */
 .zone-shade-hidden {
-  fill: var(--color-navy);
-  fill-opacity: 0.5;
+  fill: url(#hatch-not-visible);
 }
 
 .zone-shade-side {

@@ -8,7 +8,7 @@
   <meta name="description" content="Ubay-Ubay is inviting artists to design a button pin bundle for the FASO merch table. You make the art. We print, pack, and sell it. You earn a cut of every sale. Submissions close at the end of every month.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=44">
+  <link rel="stylesheet" href="styles.css?v=45">
   <!-- Turns on the scroll animations. Skipped for people who turned on "reduce motion". -->
   <script>if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('js-reveal')</script>
   <script src="script.js?v=23" defer></script>
@@ -173,8 +173,15 @@
       <!-- EDIT: The pin picture is assets/brand/pin-template.png. The shading and labels are drawn on top of it. -->
       <svg class="template-diagram" viewBox="-20 -130 640 740" role="img" aria-labelledby="template-diagram-title">
         <title id="template-diagram-title">Button pin template. Your art goes on the front, inside the red dashed line. The ring between the red and gray dashed lines wraps around the side of the pin. Anything past the gray dashed line, up to the outer edge, is not visible.</title>
+        <defs>
+          <!-- White with red diagonal lines, for the outer ring that will not show -->
+          <pattern id="hatch-not-visible" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(45)">
+            <rect width="12" height="12" fill="#ffffff"></rect>
+            <line x1="0" y1="0" x2="0" y2="12" stroke="#d62828" stroke-width="3"></line>
+          </pattern>
+        </defs>
         <image href="assets/brand/pin-template.png" x="0" y="0" width="600" height="600"></image>
-        <!-- Shading: darker ring = not visible, light ring = side of the pin -->
+        <!-- Shading: red-hatched ring = not visible, light gray ring = side of the pin -->
         <path class="zone-shade-hidden" fill-rule="evenodd" d="M 4,300 a 296,296 0 1,0 592,0 a 296,296 0 1,0 -592,0 Z M 43,300 a 257,257 0 1,0 514,0 a 257,257 0 1,0 -514,0 Z"></path>
         <path class="zone-shade-side" fill-rule="evenodd" d="M 44,300 a 256,256 0 1,0 512,0 a 256,256 0 1,0 -512,0 Z M 71,300 a 229,229 0 1,0 458,0 a 229,229 0 1,0 -458,0 Z"></path>
         <!-- Labels -->
