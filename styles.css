@@ -439,6 +439,32 @@ code {
   display: block;
 }
 
+/* The invitation under the picture */
+.hero-invite {
+  max-width: var(--column);
+  margin: var(--space-8) 0 0;
+  font-weight: 700;
+}
+
+/* "a button pin bundle" in the invitation */
+.underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.hero-scroll {
+  margin: var(--space-6) 0 0;
+  color: var(--color-text-2);
+}
+
+/* The small down arrow beside "Scroll down to see the guidelines" */
+.hero-scroll-arrow {
+  display: inline-block;
+  margin-left: var(--space-1);
+  vertical-align: -3px;
+}
+
 /* The picture under the arrow, with a "Placeholder" label on top for now */
 .hero-image {
   position: relative;
