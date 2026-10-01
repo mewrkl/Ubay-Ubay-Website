@@ -89,7 +89,7 @@
   --radius-panel: 8px;
   --header-height: 48px;          /* the sticky header at the top */
   --page-width: 900px;            /* width of the centered sheet the whole site sits on */
-  --color-backdrop: #e4dcf3;      /* soft lavender (from the brand violet) around the sheet */
+  --color-backdrop: var(--color-coral);  /* brand orange, the same as "3. What you earn", around the sheet */
   --card-gap: 12px;               /* sand space above the header, below the footer, and at the sides */
   --radius-card: 12px;            /* rounded outer corners of the sheet */
 }
