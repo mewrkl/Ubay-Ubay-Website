@@ -687,9 +687,15 @@ code {
 }
 
 .bento-arrow {
-  gap: var(--space-2);
-  font-size: 20px;
+  gap: var(--space-3);
+  font-size: var(--size-title);   /* 36px on phones, 48px on computers */
   font-weight: 700;
+  line-height: 1.1;
+}
+
+.bento-arrow svg {
+  width: 96px;
+  height: 96px;
 }
 
 /* On phones the photo is above the arrow, so the arrow points up */
