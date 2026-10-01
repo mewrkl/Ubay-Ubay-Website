@@ -277,3 +277,5 @@ Do not rely on a file download as the artist's copy. In-app browsers often block
 
 Moved into scope on 2026-10-01 (see decisions 0008 and 0009): uploads through the website, and a
 password-protected admin page (`admin.html`) that lists signups, signed letters, and uploads.
+The admin page was then widened into a staff center with Submissions, Artists (directory with
+socials), and Prints (active bundles and next month's lineup) tabs. The Google Sheet is the database.

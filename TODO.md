@@ -54,8 +54,18 @@ Artists upload on the website with a private link from their email, or optionall
 sign-up. Files and signed letters are stored in the org's Google Drive, and folders are
 named automatically. See `decisions/0008-uploads-through-site.md`.
 
+The admin page grows into a staff center (`admin.html`, requested 2026-10-01) with three tabs:
+- Submissions: each month's bundles with pin thumbnails and a review status
+  (New / Accepted / Needs changes / Declined).
+- Artists: a directory of everyone who signed, with clickable socials and an "In the program" tag.
+- Prints: accepted bundles marked Printing / Active / Retired, a "Keep for next month" switch,
+  and a "Next month's lineup" list that updates itself.
+Staff type their name at login so every change is logged. The Google Sheet is the database.
+
+- [ ] Waiting on: the person who decides which Google account runs the Apps Script
 - [ ] Who sets and keeps the admin page password? Keep the list of people who know it small (RA 10173).
 - [ ] Who besides ubayubaytinkers@gmail.com needs access to the Drive files?
+- [ ] Who on staff can change review and print statuses?
 
 ## Sign-up form fields (decided 2026-09-26)
 
