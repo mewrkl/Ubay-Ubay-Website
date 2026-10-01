@@ -981,16 +981,11 @@ h3.section-title {
 }
 
 /* Labels inside the white front of the pin */
-.diagram-front {
-  fill: var(--color-navy);
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
+/* "your art goes here" in the middle of the pin */
 .diagram-front-note {
   fill: var(--color-navy);
-  font-size: 26px;
+  font-size: 34px;
+  font-weight: 700;
 }
 
 
