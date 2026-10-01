@@ -6,7 +6,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Main page (`index.html`)
 
-- [x] Final submission deadline: October 25, 2026 (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
+- [x] Submission deadline: the last day of every month, so the team makes the bundles the month after (bullet under 1. Design 4 pins, FAQ, and How to join step 3)
 - [x] On-theme pin: on theme with the artist's own bundle, so no site-wide theme
 - [x] Pin template download removed. The team aligns designs to the template.
 - [x] Pin file: PNG, 1000 x 1000 px (The pin template)
@@ -29,7 +29,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - Earnings: bundle ₱240 (artist ₱100, Tinkers ₱140), solo pin ₱50 (artist ₱10, Tinkers ₱40).
   The artist's share shows in "What you earn" and the full split in the FAQ ("How is each sale split?"). Change both.
-- Submission deadline: October 25, 2026 (1. Design 4 pins, FAQ, and How to join)
+- Submission deadline: the last day of every month (1. Design 4 pins, FAQ, and How to join)
 
 ## Decided
 
@@ -38,12 +38,13 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Open questions
 
-- [x] Pins are sold during the whole event, November 5 to 15 (intro)
+- [x] No longer tied to UP Cookout. Submissions are ongoing, every month (changed 2026-10-01)
 - [ ] Deadline for signing the acceptance letter
-- [ ] Does a second bundle need the same mix (2 food, 1 on theme, 1 pop culture)?
+- [ ] The old pin mix (2 food, 1 on theme, 1 pop culture) was removed from guideline 1. Bring it back, or is any 4 designs fine?
+- [ ] What does FASO stand for, and should the site spell it out the first time?
 - [ ] Can a leftover design (for example the 5th one) be sent as a solo pin?
 - [ ] Can the food and pop culture pins be older work? Does the originality clause allow fan art?
-- [ ] Free pin bundle: one per artist? Is it the artist's own bundle?
+- [x] Free pin bundle: we make copies of the artist's bundle, and 1 free copy goes to them
 - [ ] Exact red, gray, and green values in the template file (update `--color-template-*` in `styles.css`)
 
 ## Uploads and admin page (decided 2026-10-01, built in Phase 2)

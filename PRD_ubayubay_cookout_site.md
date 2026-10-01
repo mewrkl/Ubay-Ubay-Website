@@ -1,5 +1,12 @@
 # PRD: Ubay Ubay x UP Cookout 2026 Artist Call Website
 
+> **Changed 2026-10-01:** the site is no longer about UP Cookout. It is an ongoing artist call
+> for pin bundles sold at the Ubay-Ubay stall and the FASO merch table. Submissions close on the
+> last day of every month, and the team makes the bundles the month after. Artists design 4 pins
+> and a bundle name logo. A FASO artist designs the backcard. We make copies of each bundle, and
+> 1 free copy goes to the artist. Where this document mentions Cookout, its dates, or the pin mix
+> (2 food, 1 on theme, 1 pop culture), this note wins. See `decisions/0010-ongoing-monthly-call.md`.
+
 ## Read this first (instructions for Claude Code)
 
 You are building a small static website. Before writing any design or code, read our frontend design skill in this project and follow it.
@@ -161,13 +168,13 @@ Build this as a clear skeleton that is easy to update. Show a visible note that 
 - Payout timing and method: [TBD]
 
 **2.7 Submission**
-- Deadline: October 25, 2026. The event runs November 5 to 15, 2026.
+- Deadline: the last day of every month. The team makes the bundles the month after.
 - Artists upload on the website (changed 2026-10-01, see `decisions/0008-uploads-through-site.md`):
   - After signing, each artist gets an email with their signed copy and a private upload link (`upload.html?t=<token>`).
   - They can also attach designs on the sign-up form. This is optional.
   - Files go to the org's Google Drive. Artists never see Drive or name folders. The Apps Script creates
     `Artists/ArtistName (Full Name)/Bundle - <bundle name>/` and `.../Solo pins/` automatically.
-  - Checks: PNG only, 1000 x 1000 px, exactly 4 files per bundle, uploads refused after the deadline.
+  - Checks: PNG only, 1000 x 1000 px, exactly 4 files per bundle, uploads after the deadline count for the next month.
 
 **2.8 Pin ideas**
 - A small gallery of example pins for inspiration. [TBD: images. Use only images we own or have permission to use.]

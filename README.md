@@ -1,7 +1,8 @@
-# Ubay-Ubay x UP Cookout 2026 artist invitation
+# Ubay-Ubay artist invitation
 
 A small website that invites artists to design button pin bundles for the
-Ubay-Ubay stall at UP Cookout 2026. Plain HTML, CSS, and JavaScript. No build step.
+Ubay-Ubay stall and the FASO merch table. Submissions are ongoing and close at the
+end of every month. Plain HTML, CSS, and JavaScript. No build step.
 
 ## Files
 
@@ -64,7 +65,7 @@ and change the question in `<summary>` and the answer inside `<div class="more-b
 ### Values that appear twice
 
 - Earnings: "3. What you earn" and the FAQ question "How is each sale split?" on `index.html`.
-- Deadline (October 25, 2026): the last bullet of "1. Design 4 pins", with the date in pink text, the FAQ question "When is the deadline?",
+- Deadline (the last day of every month): the last bullet of "1. Design 4 pins", with the date in pink text, the FAQ question "When is the deadline?",
   and step 3 of "How to join" on `index.html`. Change all three.
 - Footer: at the bottom of both pages. Keep them the same.
 
