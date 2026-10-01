@@ -4,8 +4,8 @@
 > for pin bundles sold at the Ubay-Ubay stall and the FASO merch table. Submissions close on the
 > last day of every month, and the team makes the bundles the month after. Artists design 4 pins
 > and a bundle name logo. A FASO artist designs the backcard. We make copies of each bundle, and
-> 1 free copy goes to the artist. The pin mix stays (2 food, 1 new original on theme, 1 pop culture).
-> Where this document mentions Cookout or its dates, this note wins. See `decisions/0010-ongoing-monthly-call.md`.
+> 1 free copy goes to the artist. There is no fixed pin mix anymore, just any 4 pin designs.
+> Where this document mentions Cookout, its dates, or the pin mix, this note wins. See `decisions/0010-ongoing-monthly-call.md`.
 
 ## Read this first (instructions for Claude Code)
 

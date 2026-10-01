@@ -40,8 +40,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - [x] No longer tied to UP Cookout. Submissions are ongoing, every month (changed 2026-10-01)
 - [ ] Deadline for signing the acceptance letter
-- [x] Pin mix stays: 2 food, 1 new original on theme, 1 pop culture (guideline 1)
-- [ ] Does a second bundle need the same mix?
+- [x] No fixed pin mix. Guideline 1 just asks for 4 pin designs (the old 2 food, 1 on theme, 1 pop culture mix was dropped)
 - [ ] What does FASO stand for, and should the site spell it out the first time?
 - [ ] Can a leftover design (for example the 5th one) be sent as a solo pin?
 - [ ] Can the food and pop culture pins be older work? Does the originality clause allow fan art?
