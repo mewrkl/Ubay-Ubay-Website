@@ -752,21 +752,12 @@ code {
   justify-content: center;
 }
 
-/* "Good to know": the extra information right under "See example".
+/* The extra information right under "See example".
    Smaller, quieter text, with each pink label on its own line. */
 .bento-extra {
   margin-top: var(--space-8);
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-line);
-}
-
-.bento-extra-title {
-  margin: 0 0 var(--space-4);
-  color: var(--color-text-2);
-  font-size: var(--size-small);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .bento-extra-items {
