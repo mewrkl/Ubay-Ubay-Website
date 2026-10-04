@@ -670,7 +670,8 @@ code {
 
 /* 1. Design 4 pins: the text on the left, the sample card on the right, both
    lined up on their centers inside a centered 760px block.
-   Phones (sheet narrower than 640px): everything is centered and the sample card goes last. */
+   Phones (sheet narrower than 640px): everything is centered and stacked.
+   "Good to know" spans the full width under both. */
 .topic-wide {
   padding-right: var(--gutter);
   padding-left: var(--gutter);
@@ -746,21 +747,63 @@ code {
   white-space: nowrap;
 }
 
-/* The sample card, with "The backcard is on us." centered under it */
 .bento-sample {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
-.bento-note {
-  max-width: 280px;
-  margin: var(--space-4) 0 0;
-  text-align: center;
+/* "Good to know": the extra information under everything, spanning both
+   columns. Smaller, quieter text, with each pink label on its own line.
+   Three side by side on computers, stacked and centered on phones. */
+.bento-extra {
+  grid-column: 1 / -1;
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-line);
 }
 
-.bento-note strong {
+.bento-extra-title {
+  margin: 0 0 var(--space-6);
+  color: var(--color-text-2);
+  font-size: var(--size-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bento-extra-items {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+}
+
+.bento-extra-items p {
+  margin: 0;
+  color: var(--color-text-2);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.bento-extra-items strong {
   display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* "Deadline:" reads navy; the pink labels stay pink */
+.bento-extra-items strong:not(.text-highlight) {
+  color: var(--color-text);
+}
+
+@container (min-width: 640px) {
+  .bento-extra-items {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+}
+
+@container (max-width: 639.98px) {
+  .bento-extra {
+    text-align: center;
+  }
 }
 
 .sample-image {
