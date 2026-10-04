@@ -696,8 +696,8 @@ code {
   text-align: left;
 }
 
-/* Phones: the text box opens up so the sample card sits right after the
-   deadline, then the PNG line, then "See example". */
+/* Phones: everything is centered. The text box opens up so the sample card
+   sits right after the deadline, then the PNG line, then "See example". */
 @container (max-width: 639.98px) {
   .bento {
     gap: 0;
@@ -705,13 +705,23 @@ code {
 
   .bento-text {
     display: contents;
+    text-align: center;
   }
 
   .bento-text h3   { order: 1; }
   .bento-lines     { order: 2; }
   .bento-sample    { order: 3; margin-top: var(--space-8); }
   .bento-sub       { order: 4; }
-  .example-trigger { order: 5; justify-self: start; }
+  .example-trigger { order: 5; justify-self: center; }
+
+  /* Each pink label sits on its own line, as a small heading over its sentence */
+  .bento-lines strong {
+    display: block;
+  }
+
+  .bento-lines p + p {
+    margin-top: var(--space-6);
+  }
 }
 
 /* "Design 4 pins" title: the same pink as its highlighted words */
