@@ -696,8 +696,10 @@ code {
   text-align: left;
 }
 
+/* "Design 4 pins" title: the same pink as its highlighted words */
 .bento-text h3 {
   margin-bottom: var(--space-4);
+  color: var(--color-highlight);
 }
 
 /* The lines under "Design 4 pins": plain sentences, no bullets, a space between each. */
