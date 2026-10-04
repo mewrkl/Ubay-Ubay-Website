@@ -670,8 +670,8 @@ code {
 
 /* 1. Design 4 pins: the text on the left, the sample card on the right, both
    lined up on their centers inside a centered 760px block.
-   Phones (sheet narrower than 640px): everything is centered and stacked.
-   "Good to know" spans the full width under both. */
+   Phones (sheet narrower than 640px): everything is centered and stacked,
+   with the sample card last. */
 .topic-wide {
   padding-right: var(--gutter);
   padding-left: var(--gutter);
@@ -752,17 +752,16 @@ code {
   justify-content: center;
 }
 
-/* "Good to know": the extra information under everything, spanning both
-   columns. Smaller, quieter text, with each pink label on its own line.
-   Three side by side on computers, stacked and centered on phones. */
+/* "Good to know": the extra information right under "See example".
+   Smaller, quieter text, with each pink label on its own line. */
 .bento-extra {
-  grid-column: 1 / -1;
-  padding-top: var(--space-8);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
   border-top: 1px solid var(--color-line);
 }
 
 .bento-extra-title {
-  margin: 0 0 var(--space-6);
+  margin: 0 0 var(--space-4);
   color: var(--color-text-2);
   font-size: var(--size-small);
   font-weight: 700;
@@ -772,8 +771,7 @@ code {
 
 .bento-extra-items {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 .bento-extra-items p {
@@ -791,19 +789,6 @@ code {
 /* "Deadline:" reads navy; the pink labels stay pink */
 .bento-extra-items strong:not(.text-highlight) {
   color: var(--color-text);
-}
-
-@container (min-width: 640px) {
-  .bento-extra-items {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-8);
-  }
-}
-
-@container (max-width: 639.98px) {
-  .bento-extra {
-    text-align: center;
-  }
 }
 
 .sample-image {
