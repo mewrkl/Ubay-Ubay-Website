@@ -700,13 +700,13 @@ code {
   margin-bottom: var(--space-4);
 }
 
-.bento-text .list {
+/* The lines under "Design 4 pins": plain sentences, no bullets, a space between each. */
+.bento-lines p {
   margin: 0;
-  padding-left: var(--space-6);
 }
 
-.bento-text .list li + li {
-  margin-top: var(--space-3);
+.bento-lines p + p {
+  margin-top: var(--space-4);
 }
 
 /* "Send each pin as a PNG, 1000 x 1000 px.": a separate line under the list,
