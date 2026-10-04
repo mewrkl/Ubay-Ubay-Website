@@ -670,7 +670,7 @@ code {
 
 /* 1. Design 4 pins: the text on the left, the sample card on the right, both
    lined up on their centers inside a centered 760px block.
-   Phones (sheet narrower than 640px): the sample card goes between the deadline and the PNG line. */
+   Phones (sheet narrower than 640px): everything is centered and the sample card goes last. */
 .topic-wide {
   padding-right: var(--gutter);
   padding-left: var(--gutter);
@@ -696,23 +696,16 @@ code {
   text-align: left;
 }
 
-/* Phones: everything is centered. The text box opens up so the sample card
-   sits right after the deadline, then the PNG line, then "See example". */
+/* Phones: everything is centered, in page order: the lines, the PNG line,
+   "See example", then the sample card with its backcard caption. */
 @container (max-width: 639.98px) {
   .bento {
-    gap: 0;
+    gap: var(--space-12);
   }
 
   .bento-text {
-    display: contents;
     text-align: center;
   }
-
-  .bento-text h3   { order: 1; }
-  .bento-lines     { order: 2; }
-  .bento-sample    { order: 3; margin-top: var(--space-8); }
-  .bento-sub       { order: 4; }
-  .example-trigger { order: 5; justify-self: center; }
 
   /* Each pink label sits on its own line, as a small heading over its sentence */
   .bento-lines strong {
@@ -753,9 +746,21 @@ code {
   white-space: nowrap;
 }
 
+/* The sample card, with "The backcard is on us." centered under it */
 .bento-sample {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bento-note {
+  max-width: 280px;
+  margin: var(--space-4) 0 0;
+  text-align: center;
+}
+
+.bento-note strong {
+  display: block;
 }
 
 .sample-image {
