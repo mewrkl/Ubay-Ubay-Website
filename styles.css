@@ -524,7 +524,7 @@ code {
   vertical-align: -3px;
 }
 
-/* The picture under the arrow, with a "Placeholder" label on top for now.
+/* The picture under the arrow.
    It shows whole, never cropped, at its own shape.
    It sits right on top of the navy section, so its bottom corners are square. */
 .hero-image {
@@ -539,20 +539,6 @@ code {
   width: 100%;
   height: auto;
   border-radius: var(--radius-panel) var(--radius-panel) 0 0;
-}
-
-.hero-image-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-control);
-  background: var(--color-navy);
-  color: var(--color-cream);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* ---------- Zones: cream, navy, cream, navy ----------
