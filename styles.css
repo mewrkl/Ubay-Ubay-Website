@@ -716,6 +716,10 @@ code {
   .bento-lines p + p {
     margin-top: var(--space-6);
   }
+
+  .bento-extra-items {
+    gap: var(--space-6);
+  }
 }
 
 /* "Design 4 pins" title: the same pink as its highlighted words */
@@ -753,7 +757,7 @@ code {
 }
 
 /* The extra information right under "See example".
-   Smaller, quieter text, with each pink label on its own line. */
+   Same size as the lines above, quieter gray, each pink label on its own line. */
 .bento-extra {
   margin-top: var(--space-8);
   padding-top: var(--space-6);
@@ -768,13 +772,10 @@ code {
 .bento-extra-items p {
   margin: 0;
   color: var(--color-text-2);
-  font-size: 15px;
-  line-height: 1.5;
 }
 
 .bento-extra-items strong {
   display: block;
-  margin-bottom: var(--space-1);
 }
 
 /* "Deadline:" reads navy; the pink labels stay pink */
