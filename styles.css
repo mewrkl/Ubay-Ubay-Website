@@ -670,7 +670,7 @@ code {
 
 /* 1. Design 4 pins: the text on the left, the sample card on the right, both
    lined up on their centers inside a centered 760px block.
-   Phones (sheet narrower than 640px): the sample card goes under the text. */
+   Phones (sheet narrower than 640px): the sample card goes between the deadline and the PNG line. */
 .topic-wide {
   padding-right: var(--gutter);
   padding-left: var(--gutter);
@@ -694,6 +694,24 @@ code {
 
 .bento-text {
   text-align: left;
+}
+
+/* Phones: the text box opens up so the sample card sits right after the
+   deadline, then the PNG line, then "See example". */
+@container (max-width: 639.98px) {
+  .bento {
+    gap: 0;
+  }
+
+  .bento-text {
+    display: contents;
+  }
+
+  .bento-text h3   { order: 1; }
+  .bento-lines     { order: 2; }
+  .bento-sample    { order: 3; margin-top: var(--space-8); }
+  .bento-sub       { order: 4; }
+  .example-trigger { order: 5; justify-self: start; }
 }
 
 /* "Design 4 pins" title: the same pink as its highlighted words */
