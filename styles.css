@@ -1504,3 +1504,32 @@ input[aria-invalid="true"]:hover,
     animation-duration: 0ms !important;
   }
 }
+
+/* The thank-you popup after signing. It reuses the example popup's frame. */
+.thanks-dialog .example-dialog-inner {
+  padding: var(--space-6);
+  text-align: left;
+}
+
+.thanks-dialog .example-dialog-title {
+  font-size: var(--size-heading);
+  line-height: 1.1;
+}
+
+.thanks-dialog .example-dialog-head {
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+/* The X lines up with the first line of the title */
+.thanks-dialog .example-dialog-close {
+  margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0 0;
+}
+
+.thanks-dialog .example-dialog-inner > p {
+  margin: 0 0 var(--space-4);
+}
+
+.thanks-dialog .example-dialog-inner > form:last-child {
+  margin: var(--space-6) 0 0;
+}

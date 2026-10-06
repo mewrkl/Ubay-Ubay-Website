@@ -67,6 +67,18 @@ The admin page grows into a staff center (`admin.html`, requested 2026-10-01) wi
   and a "Next month's lineup" list that updates itself.
 Staff type their name at login so every change is logged. The Google Sheet is the database.
 
+**Sign-ups tab (ideas from the owner, 2026-10-06, not built yet).** Artists are told they get a
+reply within 1 to 3 business days, so staff need to see who is still waiting:
+- One row per sign-up: date, artist name, full name, email, social (clickable), signed letter.
+- Two statuses per row: Reply (Not replied / Replied) and Decision (New / Accepted / Not accepted).
+  Staff change them with a tick box and a dropdown. Each change saves to the Sheet with the
+  staff name and time.
+- A "Needs a reply" count at the top. Oldest first, flagged once it passes 3 business days.
+- Idea: the script can check the org Gmail for a sent email to that artist and tick
+  "Replied" by itself, so staff don't have to.
+- Idea: "Accept" and "Decline" buttons that send a ready-made email from
+  ubayubaytinkers@gmail.com (the accept email carries the upload link) and set both statuses at once.
+
 - [x] The Apps Script runs on ubayubaytinkers@gmail.com (owner, 2026-10-06)
 - [ ] Who sets and keeps the admin page password? Keep the list of people who know it small (RA 10173).
 - [ ] Who besides ubayubaytinkers@gmail.com needs access to the Drive files?

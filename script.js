@@ -214,14 +214,25 @@ function setUpSignup(form) {
     }
   });
 
+  // Sent: swap the form for the "Signed and sent" summary, then open the thank-you
+  // popup on top. Older browsers without popups just see the summary.
+  const thanks = document.getElementById('thanks-dialog');
+  if (thanks) {
+    thanks.addEventListener('click', (event) => {
+      if (event.target === thanks) thanks.close();
+    });
+    thanks.addEventListener('close', () => done.focus({ preventScroll: true }));
+  }
+
   const showDone = (details) => {
-    done.querySelectorAll('[data-done]').forEach((el) => {
+    document.querySelectorAll('[data-done]').forEach((el) => {
       el.textContent = details[el.dataset.done];
     });
     form.hidden = true;
     done.hidden = false;
     done.scrollIntoView({ block: 'start' });
-    done.focus({ preventScroll: true });
+    if (thanks && typeof thanks.showModal === 'function') thanks.showModal();
+    else done.focus({ preventScroll: true });
   };
 
   document.getElementById('signup-download').addEventListener('click', () => {

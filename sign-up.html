@@ -7,11 +7,11 @@
   <meta name="description" content="Read and sign the Ubay-Ubay artist acceptance letter.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=58">
+  <link rel="stylesheet" href="styles.css?v=59">
   <!-- The signature pad and the PDF maker, from public CDNs. Pinned versions, so they never change by surprise. -->
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@5.1.4/dist/signature_pad.umd.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js" defer></script>
-  <script src="script.js?v=25" defer></script>
+  <script src="script.js?v=26" defer></script>
 </head>
 <body>
 
@@ -272,13 +272,40 @@
       <div><dt>Social</dt><dd data-done="social"></dd></div>
       <div><dt>Date signed</dt><dd data-done="dateSigned"></dd></div>
     </dl>
-    <!-- EDIT: The next step. Keep it in line with "How to join" on index.html. -->
-    <p><strong>Next:</strong> we will email you your private upload link. Upload your 4 pin designs there by the last day of the month.</p>
+    <!-- EDIT: The next step. Keep it in line with the thank-you popup below and "How to join" on index.html. -->
+    <p><strong>Next:</strong> we will email you from ubayubaytinkers@gmail.com within 1 to 3 business days to let you know if you're in and what to do next.</p>
     <p class="done-actions">
       <button class="button button-secondary" type="button" id="signup-download">Download your copy</button>
       <a href="index.html">Back to the guidelines</a>
     </p>
   </div>
+
+  <!-- EDIT: The thank-you popup. It opens on top of the page once the letter is sent.
+       Closing it (Done, the X, or Esc) shows the "Signed and sent" summary above. -->
+  <dialog class="example-dialog thanks-dialog" id="thanks-dialog" aria-labelledby="thanks-title">
+    <div class="example-dialog-inner">
+      <div class="example-dialog-head">
+        <p class="example-dialog-title" id="thanks-title">Thank you for signing!</p>
+        <form method="dialog">
+          <button class="example-dialog-close" type="submit" aria-label="Close">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+              <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+      <p>We got your signed letter. A copy is on its way to <strong data-done="email"></strong>.</p>
+      <p>
+        Our team will review your sign-up and email you from
+        <strong>ubayubaytinkers@gmail.com</strong> within <strong>1 to 3 business days</strong>
+        to let you know if you're in and what to do next.
+      </p>
+      <p>Please keep an eye on your inbox, and check your Spam folder too.</p>
+      <form method="dialog">
+        <button class="button button-primary button-block" type="submit">Done</button>
+      </form>
+    </div>
+  </dialog>
 
 </div>
 </main>

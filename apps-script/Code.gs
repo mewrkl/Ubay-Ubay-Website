@@ -132,9 +132,9 @@ function saveSignup(d, pdfBytes) {
     subject: tag + 'Your signed Ubay-Ubay acceptance letter',
     body:
       'Hi ' + artistName + ',\n\n' +
-      'Thank you for joining the Ubay-Ubay pin bundle program! Your signed acceptance letter is attached. Keep it for your records.\n\n' +
-      'Next step: we will email you your private upload link, where you send your 4 pin designs. ' +
-      'Designs are due on the last day of each month.\n\n' +
+      'Thank you for signing up for the Ubay-Ubay pin bundle program! Your signed acceptance letter is attached. Keep it for your records.\n\n' +
+      'Our team will review your sign-up and email you from this address within 1 to 3 business days ' +
+      'to let you know if you\'re in and what to do next. Please keep an eye on your inbox, and check your Spam folder too.\n\n' +
       'Questions? Reply to this email.\n\n' +
       'Ubay-Ubay, a Tinkers fundraiser (UP Cebu Fine Arts)',
     attachments: [blob],
