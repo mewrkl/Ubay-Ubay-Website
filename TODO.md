@@ -24,7 +24,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - [ ] Acceptance letter text (all 9 clauses)
 - [ ] Data privacy wording in the letter (RA 10173)
-- [ ] Set up the sign-up backend on ubayubaytinkers@gmail.com (README "Set up the sign-up form")
+- [x] Set up the sign-up backend on ubayubaytinkers@gmail.com (README "Set up the sign-up form")
       and paste the Web app URL into `SIGNUP_URL` in `script.js`
 - [ ] Turn off test mode when the letter is final: `TEST_MODE = false` in `script.js`, and
       delete the "Test mode" line in `sign-up.html`

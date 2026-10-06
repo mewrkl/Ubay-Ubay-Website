@@ -71,7 +71,7 @@ if (logoTip) {
 
 // EDIT: The Web app URL from Apps Script (Deploy > Manage deployments). It ends in /exec.
 // While it is empty, the form works up to sending, then says sending isn't switched on yet.
-const SIGNUP_URL = '';
+const SIGNUP_URL = 'https://script.google.com/macros/s/AKfycbyl7DMAC7VRyWy2h1U9qz1BE9n1KzHhFaD04jfPBFjeDNAIih9oWs38Xu0qD3pGEcRD/exec';
 // EDIT: Test mode stamps TEST on the PDF and the emails. When the letter is final, set this
 // to false AND delete the "Test mode" line near the top of sign-up.html.
 const TEST_MODE = true;
