@@ -1279,20 +1279,118 @@ input[type="email"]:hover {
   cursor: pointer;
 }
 
+/* The signature pad: a canvas. touch-action: none lets a finger draw instead of scrolling the page. */
 .signature-box {
+  display: block;
+  width: 100%;
   height: 160px;
   border: 1px dashed var(--color-control);
   border-radius: var(--radius-panel);
   background: var(--color-surface);
+  touch-action: none;
+  cursor: crosshair;
 }
 
 .signature-actions {
   margin: 0;
 }
 
+/* Problems to fix: red text under the field, and a red border on the field */
+.field-error {
+  margin: 0;
+  color: var(--color-error);
+  font-size: var(--size-small);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.check .field-error {
+  grid-column: 2;
+}
+
+input[aria-invalid="true"],
+input[aria-invalid="true"]:hover,
+.signature-box[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.check input[aria-invalid="true"] {
+  outline: 2px solid var(--color-error);
+  outline-offset: 1px;
+}
+
 .form-status {
   margin-top: var(--space-3);
   text-align: center;
+}
+
+.form-status.is-error {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+/* "Test mode" line under the intro. Delete it in sign-up.html when the letter is final. */
+.test-note {
+  margin: calc(-1 * var(--space-4)) 0 var(--space-8);
+  color: var(--color-error);
+  font-size: var(--size-small);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Shown after the letter is sent */
+.signup-done[hidden] {
+  display: none;
+}
+
+.signup-done {
+  padding: var(--space-6);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface);
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+.signup-done:focus {
+  outline: none;
+}
+
+.done-title {
+  margin-bottom: var(--space-4);
+}
+
+.done-summary {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-6) 0;
+  font-size: var(--size-small);
+}
+
+.done-summary > div {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: var(--space-3);
+}
+
+.done-summary dt {
+  color: var(--color-text-2);
+}
+
+.done-summary dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
 }
 
 .trap {

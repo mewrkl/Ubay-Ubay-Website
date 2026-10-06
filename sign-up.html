@@ -7,8 +7,11 @@
   <meta name="description" content="Read and sign the Ubay-Ubay artist acceptance letter.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=57">
-  <script src="script.js?v=23" defer></script>
+  <link rel="stylesheet" href="styles.css?v=58">
+  <!-- The signature pad and the PDF maker, from public CDNs. Pinned versions, so they never change by surprise. -->
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@5.1.4/dist/signature_pad.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js" defer></script>
+  <script src="script.js?v=24" defer></script>
 </head>
 <body>
 
@@ -17,6 +20,9 @@
   - The acceptance letter is between ACCEPTANCE LETTER: START and END below.
   - Anything not decided yet looks like this: <span class="tbd">[to be decided]</span>
   - The main page with the guidelines is index.html.
+  - The form sends to Google Apps Script (apps-script/Code.gs). The script address and the
+    test-mode switch are at the top of the sign-up part of script.js. Setup steps: README.md.
+  - The signed PDF is made from the letter text below, so whatever is here is what artists sign.
 -->
 
 <!-- The whole site sits on one centered sheet (.page) with rounded outer corners and
@@ -40,6 +46,8 @@
 
   <h1 id="page-title">Sign the acceptance letter</h1>
   <p class="signup-intro">Read the letter, fill in 4 details, and sign. We will email you a copy.</p>
+  <!-- EDIT: Test mode. Delete this line when the letter is final, AND set TEST_MODE = false in script.js. -->
+  <p class="test-note">Test mode: the letter isn't final yet, so please don't sign for real.</p>
 
   <!-- ================= ACCEPTANCE LETTER: START =================
        EDIT: Replace the placeholder text with the final letter.
@@ -82,48 +90,55 @@
     <p class="small">This form needs JavaScript. Please open this page in your phone's browser, such as Chrome or Safari.</p>
   </noscript>
 
-  <!-- The form is laid out but not connected yet. Validation, the signature pad,
-       and sending are added in Phase 2. -->
+  <!-- The form. script.js checks it, turns the signature and the letter into a PDF,
+       and sends it to Google Apps Script. Each empty <p class="field-error"> fills in
+       with a message when something needs fixing. -->
   <form class="form" id="acceptance-form" aria-labelledby="page-title" novalidate>
 
     <div class="field">
       <label for="full-name">Your full name</label>
       <p class="hint" id="full-name-hint">We use this name in the agreement.</p>
-      <input id="full-name" name="fullName" type="text" autocomplete="name" aria-describedby="full-name-hint" required>
+      <input id="full-name" name="fullName" type="text" autocomplete="name" maxlength="120" aria-describedby="full-name-hint full-name-error" required>
+      <p class="field-error" id="full-name-error"></p>
     </div>
 
     <div class="field">
       <label for="artist-name">Artist name</label>
       <p class="hint" id="artist-name-hint">This is shown on the backcard.</p>
-      <input id="artist-name" name="artistName" type="text" aria-describedby="artist-name-hint" required>
+      <input id="artist-name" name="artistName" type="text" maxlength="80" aria-describedby="artist-name-hint artist-name-error" required>
+      <p class="field-error" id="artist-name-error"></p>
     </div>
 
     <div class="field">
       <label for="email">Email</label>
       <p class="hint" id="email-hint">We will send your signed letter here.</p>
-      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="email-hint" required>
+      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" aria-describedby="email-hint email-error" required>
+      <p class="field-error" id="email-error"></p>
     </div>
 
     <div class="field">
       <label for="social">Social handle</label>
       <p class="hint" id="social-hint">Example: @artistname on Instagram</p>
-      <input id="social" name="social" type="text" aria-describedby="social-hint" required>
+      <input id="social" name="social" type="text" maxlength="120" aria-describedby="social-hint social-error" required>
+      <p class="field-error" id="social-error"></p>
     </div>
 
     <div class="check">
-      <input id="agree" name="agree" type="checkbox" required>
+      <input id="agree" name="agree" type="checkbox" aria-describedby="agree-error" required>
       <label for="agree">
         I have read the letter and agree to it. I consent to Ubay-Ubay using my details
         for my pin submissions and sales only, under the Data Privacy Act of 2012.
       </label>
+      <p class="field-error" id="agree-error"></p>
     </div>
 
     <div class="field">
       <p class="label" id="signature-label">Signature</p>
       <p class="hint" id="signature-hint">Sign with your finger or mouse.</p>
-      <!-- Phase 2 replaces this box with the signature pad. -->
-      <div class="signature-box" id="signature-pad" aria-labelledby="signature-label" aria-describedby="signature-hint"></div>
-      <p class="signature-actions"><button class="button button-ghost" type="button" disabled>Clear signature</button></p>
+      <canvas class="signature-box" id="signature-pad" tabindex="-1" role="img"
+              aria-labelledby="signature-label" aria-describedby="signature-hint signature-error"></canvas>
+      <p class="field-error" id="signature-error"></p>
+      <p class="signature-actions"><button class="button button-ghost" type="button" id="signature-clear">Clear signature</button></p>
     </div>
 
     <!-- Hidden fields. The first one is a trap for spam bots. People never see it. -->
@@ -133,9 +148,27 @@
     </div>
     <input type="hidden" id="date-signed" name="dateSigned">
 
-    <button class="button button-primary button-block" type="submit" disabled>Sign and send</button>
-    <p class="small form-status"><span class="tbd">[The form is not connected yet. Sending will work in the next build.]</span></p>
+    <button class="button button-primary button-block" type="submit" id="signup-submit">Sign and send</button>
+    <p class="small form-status" id="form-status" role="status" aria-live="polite"></p>
   </form>
+
+  <!-- Shown instead of the form once the letter is sent. script.js fills in the details. -->
+  <div class="signup-done" id="signup-done" tabindex="-1" hidden>
+    <h2 class="done-title">Signed and sent</h2>
+    <p>We emailed your signed letter to <strong data-done="email"></strong>. If it isn't in your inbox in a few minutes, check Spam.</p>
+    <dl class="done-summary">
+      <div><dt>Full name</dt><dd data-done="fullName"></dd></div>
+      <div><dt>Artist name</dt><dd data-done="artistName"></dd></div>
+      <div><dt>Social</dt><dd data-done="social"></dd></div>
+      <div><dt>Date signed</dt><dd data-done="dateSigned"></dd></div>
+    </dl>
+    <!-- EDIT: The next step. Keep it in line with "How to join" on index.html. -->
+    <p><strong>Next:</strong> we will email you your private upload link. Upload your 4 pin designs there by the last day of the month.</p>
+    <p class="done-actions">
+      <button class="button button-secondary" type="button" id="signup-download">Download your copy</button>
+      <a href="index.html">Back to the guidelines</a>
+    </p>
+  </div>
 
 </div>
 </main>

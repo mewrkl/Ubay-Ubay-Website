@@ -24,6 +24,12 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 - [ ] Acceptance letter text (all 9 clauses)
 - [ ] Data privacy wording in the letter (RA 10173)
+- [ ] Set up the sign-up backend on ubayubaytinkers@gmail.com (README "Set up the sign-up form")
+      and paste the Web app URL into `SIGNUP_URL` in `script.js`
+- [ ] Turn off test mode when the letter is final: `TEST_MODE = false` in `script.js`, and
+      delete the "Test mode" line in `sign-up.html`
+- [ ] The signed-letter email promises "we will email you your private upload link". That link
+      comes with the upload page (Phase 2, later step). Until then, staff reply by hand.
 
 ## Values that may still change
 
@@ -61,7 +67,7 @@ The admin page grows into a staff center (`admin.html`, requested 2026-10-01) wi
   and a "Next month's lineup" list that updates itself.
 Staff type their name at login so every change is logged. The Google Sheet is the database.
 
-- [ ] Waiting on: the person who decides which Google account runs the Apps Script
+- [x] The Apps Script runs on ubayubaytinkers@gmail.com (owner, 2026-10-06)
 - [ ] Who sets and keeps the admin page password? Keep the list of people who know it small (RA 10173).
 - [ ] Who besides ubayubaytinkers@gmail.com needs access to the Drive files?
 - [ ] Who on staff can change review and print statuses?

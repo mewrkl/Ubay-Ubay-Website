@@ -11,7 +11,8 @@ end of every month. Plain HTML, CSS, and JavaScript. No build step.
 | `index.html` | The main page: intro, the 4 numbered guidelines (design, pin template, earnings, FAQ), how to join |
 | `sign-up.html` | The acceptance letter and the short sign-up form |
 | `styles.css` | How both pages look. Colors, text sizes, and spacing are at the top. |
-| `script.js` | The form logic (added in Phase 2) |
+| `script.js` | Small page behaviors, and the sign-up form: checks, signature pad, PDF, sending |
+| `apps-script/Code.gs` | The sign-up backend, pasted into Google Apps Script (see "Set up the sign-up form") |
 | `assets/fonts/` | The brand font, Agrandir, as web files |
 | `assets/brand/` | The Ubay-Ubay logos and the sample bundle picture |
 | `assets/` | Also the place for pin idea images |
@@ -81,7 +82,7 @@ Keep each clause as a heading followed by paragraphs:
 <p>The clause text goes here.</p>
 ```
 
-The signed PDF (Phase 2) copies its text from this block, so the page and the PDF always match.
+The signed PDF copies its text from this block, so the page and the PDF always match.
 
 ### Copy rules
 
@@ -139,9 +140,81 @@ The look follows `UBAY-UBAY BRANDKIT.pdf`. The PDF is kept out of the public rep
   (`Agrandir-Font-Family/`, `Sunday/`) are listed in `.gitignore` and stay on your computer.
   The site no longer uses Sunday. It only appears inside the logo images.
 
-## Set up the form backend
+## Set up the sign-up form
 
-Coming in Phase 2.
+When an artist taps "Sign and send", the page makes the signed letter as a PDF and sends
+it to a small Google Apps Script program on the org's Google account. That program:
+
+- saves the PDF in Google Drive, in `Ubay-Ubay submissions / Signed letters`
+- adds a row to a Google Sheet (name, artist name, email, social, date, PDF link)
+- emails the PDF to the artist and to ubayubaytinkers@gmail.com
+
+The code is in `apps-script/Code.gs`. Setting it up takes about 10 minutes, once.
+Do every step while logged in to **ubayubaytinkers@gmail.com**.
+
+### 1. Make the Sheet and paste the code
+
+1. Go to [sheets.new](https://sheets.new). Name the new sheet `Ubay-Ubay sign-ups`.
+2. In the menu, click **Extensions > Apps Script**. A code editor opens in a new tab.
+3. Delete everything in the editor (the empty `function myFunction() {}`).
+4. Open `apps-script/Code.gs` from this folder, copy all of it, and paste it into the editor.
+5. Click the save icon (or press Ctrl+S). Name the project `Ubay-Ubay sign-up` if it asks.
+
+### 2. Run setup once
+
+1. At the top of the editor, next to **Run**, pick `setup` from the dropdown.
+2. Click **Run**.
+3. Google asks for permission. Click **Review permissions** and pick ubayubaytinkers@gmail.com.
+4. You will see **"Google hasn't verified this app"**. That is normal for a script you wrote yourself.
+   Click **Advanced**, then **Go to Ubay-Ubay sign-up (unsafe)**, then **Allow**.
+5. Wait for "Execution completed". Setup made:
+   - a **Signups** tab in the Sheet
+   - a **Ubay-Ubay submissions / Signed letters** folder in Drive
+   - a test email to ubayubaytinkers@gmail.com saying the form is set up
+
+### 3. Put it online (deploy)
+
+1. Click the blue **Deploy** button (top right) > **New deployment**.
+2. Click the gear icon next to "Select type" and pick **Web app**.
+3. Set **Execute as: Me** and **Who has access: Anyone**. (Anyone is needed so artists
+   can send the form without logging in to Google. They can only send a letter, never read anything.)
+4. Click **Deploy**, then copy the **Web app URL**. It ends in `/exec`.
+5. Open that URL in your browser. It should show `{"ok":true}`.
+
+### 4. Connect the website
+
+In `script.js`, find `const SIGNUP_URL = '';` and paste the URL between the quotes:
+
+```js
+const SIGNUP_URL = 'https://script.google.com/macros/s/AKfy.../exec';
+```
+
+Save, then raise the `script.js?v=` number on both pages (see the EDIT comment at the top of each).
+
+### Test mode
+
+While the letter is still placeholder text, the form runs in test mode:
+- a red "Test mode" line shows under the intro
+- every PDF page says "TEST - not a real signed letter"
+- emails start with `[TEST]`, and the Sheet row says `yes` in the Test column
+
+When the letter is final, set `const TEST_MODE = false;` in `script.js` **and** delete the
+"Test mode" line in `sign-up.html` (search for `Test mode`).
+
+### Changing the script later
+
+If `Code.gs` changes, paste the new code into the editor, save, then click
+**Deploy > Manage deployments**, the pencil icon, **Version: New version**, **Deploy**.
+That keeps the same URL, so the website doesn't need changing.
+(Do not use "New deployment" again. That makes a new URL.)
+
+### Settings
+
+In the Apps Script editor, the gear icon (**Project Settings**) > **Script Properties**:
+- `ORG_EMAIL` is where "Signed acceptance" emails go. Change it there, no code needed.
+- `LETTERS_FOLDER_ID` points to the Signed letters folder. Leave it alone.
+
+Free Gmail can send about 100 emails a day. Each sign-up sends 2.
 
 ## Put the site online
 
