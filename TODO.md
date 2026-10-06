@@ -22,8 +22,8 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 
 ## Sign-up page (`sign-up.html`)
 
-- [ ] Acceptance letter text (all 9 clauses)
-- [ ] Data privacy wording in the letter (RA 10173)
+- [x] Acceptance letter text: 10 clauses, written 2026-10-06. Owner to review, ideally with the Tinkers adviser, before test mode is turned off
+- [x] Data privacy wording in the letter (RA 10173): clause 9
 - [x] Set up the sign-up backend on ubayubaytinkers@gmail.com (README "Set up the sign-up form")
       and paste the Web app URL into `SIGNUP_URL` in `script.js`
 - [ ] Turn off test mode when the letter is final: `TEST_MODE = false` in `script.js`, and
@@ -49,7 +49,7 @@ When you fill one in, replace the whole `<span class="tbd">...</span>` and tick 
 - [x] No fixed pin mix. Guideline 1 just asks for 4 pin designs (the old 2 food, 1 on theme, 1 pop culture mix was dropped)
 - [ ] What does FASO stand for, and should the site spell it out the first time?
 - [ ] Can a leftover design (for example the 5th one) be sent as a solo pin?
-- [ ] Can the food and pop culture pins be older work? Does the originality clause allow fan art?
+- [x] Fan art is allowed, at the artist's responsibility (letter clause 6, owner 2026-10-06)
 - [x] Free pin bundle: we make copies of the artist's bundle, and 1 free copy goes to them
 - [ ] Exact red, gray, and green values in the template file (update `--color-template-*` in `styles.css`)
 
@@ -78,3 +78,14 @@ Required: full name, artist name, email, social handle, one checkbox (agree to t
 plus data privacy consent), drawn signature. Hidden: spam trap, date signed.
 Not collected: last name, mobile number, typed name, separate clause checkboxes,
 affiliation, portfolio, bundle plans. See `decisions/0002-minimal-signup-form.md`.
+
+## Acceptance letter decisions (owner, 2026-10-06)
+
+- The artist keeps copyright. Ubay-Ubay gets non-exclusive permission to print, sell anywhere
+  (in person and online), and promote. The artist may sell the same art elsewhere.
+- It lasts until the artist emails to stop. Pins already printed may still be sold.
+- Under 18 may join if a parent or guardian allows it (a line in the letter, no extra form).
+- Fan art is allowed, at the artist's responsibility.
+- Earnings and payout timing are announced by email before the first print or sale.
+  When they are decided, write them into clause 4 and raise the version date.
+- [ ] Optional: should the letter say anything about AI-generated art?
