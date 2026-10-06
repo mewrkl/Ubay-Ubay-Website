@@ -7,11 +7,11 @@
   <meta name="description" content="Read and sign the Ubay-Ubay artist acceptance letter.">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other page.
        It makes browsers load the new file instead of an old saved copy. -->
-  <link rel="stylesheet" href="styles.css?v=60">
+  <link rel="stylesheet" href="styles.css?v=61">
   <!-- The signature pad and the PDF maker, from public CDNs. Pinned versions, so they never change by surprise. -->
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@5.1.4/dist/signature_pad.umd.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js" defer></script>
-  <script src="script.js?v=27" defer></script>
+  <script src="script.js?v=28" defer></script>
 </head>
 <body>
 
@@ -27,7 +27,8 @@
 
 <!-- The whole site sits on one centered sheet (.page) with rounded outer corners and
      sand-colored space around it, like a Google Form. -->
-<div class="page">
+<!-- page-wide: this page uses a wider sheet, so the letter and the form sit side by side on computers. -->
+<div class="page page-wide">
 
 <!-- EDIT: The header. Keep it the same as the header on index.html. -->
 <header class="site-header">
@@ -40,7 +41,7 @@
 </header>
 
 <main class="signup">
-<div class="column">
+<div class="column signup-column">
 
   <p class="back"><a href="index.html#how-to-join">← Back to the guidelines</a></p>
 
@@ -48,6 +49,11 @@
   <p class="signup-intro">Read the letter, fill in 4 details, and sign. We will email you a copy.</p>
   <!-- EDIT: Test mode. Delete this line when the letter is final, AND set TEST_MODE = false in script.js. -->
   <p class="test-note">Test mode: the letter isn't final yet, so please don't sign for real.</p>
+
+  <!-- Two columns on computers: the letter on the left, the form on the right.
+       Phones stack them: the letter first, then the form. -->
+  <div class="signup-grid">
+  <div class="signup-letter-col">
 
   <!-- ================= ACCEPTANCE LETTER: START =================
        EDIT: The letter. The signed PDF copies this exact text, so only edit it here.
@@ -199,6 +205,9 @@
     </p>
   </div>
   <!-- ================= ACCEPTANCE LETTER: END ================= -->
+  </div>
+
+  <div class="signup-form-col">
 
   <noscript>
     <p class="small">This form needs JavaScript. Please open this page in your phone's browser, such as Chrome or Safari.</p>
@@ -284,6 +293,9 @@
     </p>
   </div>
 
+  </div>
+  </div>
+
   <!-- EDIT: The thank-you popup. It opens on top of the page once the letter is sent.
        Closing it (Done, the X, or Esc) shows the "Signed and sent" summary above. -->
   <dialog class="example-dialog thanks-dialog" id="thanks-dialog" aria-labelledby="thanks-title">
@@ -335,6 +347,8 @@
       </div>
     </dl>
     <p class="footer-credit">A Tinkers fundraiser · UP Cebu Fine Arts</p>
+    <!-- The staff page (password protected). Quiet on purpose: artists don't need it. -->
+    <p class="footer-staff"><a href="admin.html">Staff login</a></p>
   </div>
 </footer>
 

@@ -221,7 +221,7 @@ Free Gmail can send about 100 emails a day. Each sign-up sends 2.
 ## Use the staff page
 
 The staff page is `admin.html` (https://mewrkl.github.io/Ubay-Ubay-Website/admin.html).
-It isn't linked anywhere on the site, and search engines are told to skip it.
+Open it from the small "Staff login" link at the bottom of any page. Search engines are told to skip it.
 
 ### Set the staff password (once)
 

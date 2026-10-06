@@ -1,19 +1,30 @@
-// Staff page (admin.html). Lists sign-ups from the Sheet. Accept sends the welcome
-// email with the artist's private upload link, Decline sends a kind "not this time" email.
-// callScript() and plainError() come from script.js, which loads first.
+// Staff page (admin.html). A dashboard of sign-ups from the Sheet. Accept sends the
+// welcome email with the artist's private upload link, Decline sends a kind
+// "not this time" email. callScript() and plainError() come from script.js.
 
 (() => {
   const app = document.getElementById('admin-app');
   if (!app) return;
 
   const SESSION_KEY = 'ubay-staff';
+  const loginBox = document.getElementById('login-box');
   const loginForm = document.getElementById('login-form');
   const loginStatus = document.getElementById('login-status');
+  const topUser = document.getElementById('staff-top-user');
   const listBox = document.getElementById('staff-list');
   const status = document.getElementById('admin-status');
+  const search = document.getElementById('staff-search');
+  const thisMonth = (() => {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Manila', year: 'numeric', month: '2-digit' })
+      .formatToParts(new Date()).map((x) => [x.type, x.value]));
+    return p.year + '-' + p.month;
+  })();
+
   let creds = null;
   let signups = [];
   let filter = 'needs';
+  const open = new Set();       // the rows whose details are showing
+  const thumbCache = new Map(); // "signupId|month" -> thumbnails
 
   try { creds = JSON.parse(sessionStorage.getItem(SESSION_KEY)); } catch (error) { creds = null; }
 
@@ -38,7 +49,8 @@
     creds = null;
     try { sessionStorage.removeItem(SESSION_KEY); } catch (error) { /* private mode */ }
     app.hidden = true;
-    loginForm.hidden = false;
+    topUser.hidden = true;
+    loginBox.hidden = false;
     setStatus(loginStatus, message || '', Boolean(message));
   }
 
@@ -60,35 +72,50 @@
       document.getElementById('staff-password').value = '';
       setStatus(loginStatus, '');
     } catch (error) {
-      if (!loginForm.hidden) setStatus(loginStatus, plainError(error), true);
+      if (!loginBox.hidden) setStatus(loginStatus, plainError(error), true);
     } finally {
       button.disabled = false;
     }
   });
 
   document.getElementById('logout-button').addEventListener('click', () => showLogin(''));
-  document.getElementById('refresh-button').addEventListener('click', () => load().catch(() => {}));
+  document.getElementById('refresh-button').addEventListener('click', () => {
+    thumbCache.clear();
+    load().catch((error) => setStatus(status, plainError(error), true));
+  });
 
-  // ---------- The list ----------
+  // ---------- Loading and filtering ----------
 
   async function load() {
-    setStatus(status, 'Loading sign-ups…');
+    if (!signups.length) showSkeleton();
+    setStatus(status, '');
     const result = await staffCall('staffList');
     signups = result.signups;
-    loginForm.hidden = true;
+    loginBox.hidden = true;
     app.hidden = false;
+    topUser.hidden = false;
     document.getElementById('staff-shown').textContent = creds.staff;
-    setStatus(status, '');
     render();
   }
 
-  document.querySelectorAll('.chip[data-filter]').forEach((chip) => {
-    chip.addEventListener('click', () => {
-      filter = chip.dataset.filter;
-      document.querySelectorAll('.chip[data-filter]').forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
-      render();
-    });
+  function showSkeleton() {
+    listBox.replaceChildren(...[1, 2, 3].map(() => el('div', 'srow srow-skeleton')));
+  }
+
+  function setFilter(next) {
+    filter = next;
+    document.querySelectorAll('.stat-tile').forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.filter === filter)));
+    render();
+  }
+
+  document.querySelectorAll('.stat-tile').forEach((tile) => {
+    tile.addEventListener('click', () => setFilter(filter === tile.dataset.filter ? 'all' : tile.dataset.filter));
   });
+  document.getElementById('show-all').addEventListener('click', () => {
+    search.value = '';
+    setFilter('all');
+  });
+  search.addEventListener('input', () => render());
 
   /** Weekdays between the sign-up and now, so "1 to 3 business days" can be checked. */
   function businessDaysSince(iso) {
@@ -104,34 +131,56 @@
     return days;
   }
 
+  const uploadedThisMonth = (s) => s.uploads.some((m) => m.month === thisMonth);
+
+  const FILTER_NAMES = { needs: 'needing a reply', Accepted: 'accepted', Declined: 'declined', uploads: 'who uploaded this month', all: '' };
+
   function render() {
     const needs = signups.filter((s) => !s.replied);
+    const oldest = needs.reduce((max, s) => Math.max(max, businessDaysSince(s.timestamp)), 0);
     document.getElementById('count-needs').textContent = needs.length;
-    document.getElementById('count-all').textContent = signups.length;
+    document.getElementById('note-needs').textContent = needs.length ? 'Oldest waiting ' + oldest + ' business day' + (oldest === 1 ? '' : 's') : 'All caught up';
+    document.querySelector('.stat-tile[data-filter="needs"]').classList.toggle('is-late', oldest > 3);
     document.getElementById('count-accepted').textContent = signups.filter((s) => s.status === 'Accepted').length;
     document.getElementById('count-declined').textContent = signups.filter((s) => s.status === 'Declined').length;
+    document.getElementById('count-uploads').textContent = signups.filter(uploadedThisMonth).length;
 
     let shown = filter === 'needs' ? needs
-      : filter === 'all' ? signups
-        : signups.filter((s) => s.status === filter);
+      : filter === 'uploads' ? signups.filter(uploadedThisMonth)
+        : filter === 'all' ? signups
+          : signups.filter((s) => s.status === filter);
+    const q = search.value.trim().toLowerCase();
+    if (q) shown = shown.filter((s) => [s.artistName, s.fullName, s.email, s.social].some((v) => v.toLowerCase().includes(q)));
     // Waiting artists oldest first, everything else newest first.
     shown = [...shown].sort((a, b) => (filter === 'needs' ? 1 : -1) * (a.timestamp < b.timestamp ? -1 : 1));
+
+    document.getElementById('staff-showing').textContent =
+      'Showing ' + shown.length + ' of ' + signups.length + (FILTER_NAMES[filter] ? ', ' + FILTER_NAMES[filter] : '') + (q ? ', matching "' + search.value.trim() + '"' : '');
 
     listBox.replaceChildren();
     if (!shown.length) {
       const empty = el('div', 'staff-empty');
-      empty.append(el('p', 'staff-empty-title', filter === 'needs' ? 'Everyone has a reply.' : 'Nothing here yet.'));
-      if (filter !== 'all') {
-        const all = el('button', 'button button-ghost', 'Show all sign-ups');
+      empty.append(el('p', 'staff-empty-title',
+        q ? 'No one matches "' + search.value.trim() + '".'
+          : filter === 'needs' ? 'Everyone has a reply. Nice work.' : 'No one here yet.'));
+      if (filter !== 'all' || q) {
+        const all = el('button', 'button button-ghost', 'Show everyone');
         all.type = 'button';
-        all.addEventListener('click', () => document.querySelector('.chip[data-filter="all"]').click());
+        all.addEventListener('click', () => document.getElementById('show-all').click());
         empty.append(all);
       }
       listBox.append(empty);
       return;
     }
-    shown.forEach((s) => listBox.append(card(s)));
+
+    const head = el('div', 'srow-titles');
+    head.setAttribute('aria-hidden', 'true');
+    ['Artist', 'Full name', 'Email', 'Signed', 'Status', 'Waiting', ''].forEach((t) => head.append(el('span', '', t)));
+    listBox.append(head);
+    shown.forEach((s) => listBox.append(row(s)));
   }
+
+  // ---------- One row ----------
 
   function el(tag, className, text) {
     const node = document.createElement(tag);
@@ -154,27 +203,62 @@
     return name ? 'https://www.instagram.com/' + name + '/' : '';
   }
 
-  const shortDate = (iso) => (iso ? new Date(iso).toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' }) : '');
+  const shortDate = (iso) => (iso ? new Date(iso).toLocaleDateString('en-PH', { month: 'short', day: 'numeric' }) : '');
+  const longDate = (iso) => (iso ? new Date(iso).toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' }) : '');
 
-  function card(s) {
-    const box = el('article', 'staff-card');
+  function row(s) {
+    const box = el('article', 'srow');
+    const isOpen = open.has(s.id);
+    box.classList.toggle('is-open', isOpen);
 
-    const head = el('div', 'staff-card-head');
-    head.append(el('h2', 'staff-name', s.artistName));
-    head.append(el('span', 'tag tag-' + s.status.toLowerCase(), s.status));
-    if (s.test) head.append(el('span', 'tag tag-test', 'Test'));
+    // The summary line is one button that opens and closes the details.
+    const head = el('button', 'srow-head');
+    head.type = 'button';
+    head.setAttribute('aria-expanded', String(isOpen));
+    head.setAttribute('aria-controls', 'srow-' + s.id);
+
+    const name = el('span', 'srow-artist');
+    name.append(el('strong', '', s.artistName));
+    if (s.test) name.append(el('span', 'tag tag-test', 'Test'));
+    const days = businessDaysSince(s.timestamp);
+    const waiting = el('span', 'srow-wait' + (!s.replied && days > 3 ? ' is-late' : ''),
+      s.replied ? '' : days + (days === 1 ? ' day' : ' days'));
+    const chevron = el('span', 'srow-chevron');
+    chevron.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+    head.append(
+      name,
+      el('span', 'srow-full', s.fullName),
+      el('span', 'srow-email', s.email),
+      el('span', 'srow-date', s.dateSigned ? shortDate(s.dateSigned + 'T12:00:00') : shortDate(s.timestamp)),
+      el('span', 'srow-status'),
+      waiting,
+      chevron,
+    );
+    head.querySelector('.srow-status').append(el('span', 'tag tag-' + s.status.toLowerCase(), s.status));
+    head.addEventListener('click', () => {
+      if (open.has(s.id)) open.delete(s.id); else open.add(s.id);
+      const nowOpen = open.has(s.id);
+      box.classList.toggle('is-open', nowOpen);
+      head.setAttribute('aria-expanded', String(nowOpen));
+      body.hidden = !nowOpen;
+      if (nowOpen) loadAllThumbs(s, body);
+    });
     box.append(head);
 
-    const meta = el('p', 'small staff-meta', s.fullName + ' · Signed ' + (s.dateSigned || shortDate(s.timestamp)));
-    if (!s.replied) {
-      const days = businessDaysSince(s.timestamp);
-      const wait = el('span', days > 3 ? 'staff-late' : '', ' · Waiting ' + days + ' business day' + (days === 1 ? '' : 's'));
-      meta.append(wait);
-    }
-    box.append(meta);
+    const body = details(s);
+    body.id = 'srow-' + s.id;
+    body.hidden = !isOpen;
+    box.append(body);
+    if (isOpen) loadAllThumbs(s, body);
+    return box;
+  }
+
+  function details(s) {
+    const body = el('div', 'srow-body');
 
     // Contact
-    const details = el('dl', 'staff-details');
+    const contact = el('dl', 'staff-details');
     const emailRow = el('div');
     const emailValue = el('dd');
     const mail = el('a', '', s.email);
@@ -194,10 +278,12 @@
       socialValue.textContent = s.social;
     }
     socialRow.append(el('dt', '', 'Social'), socialValue);
-    details.append(emailRow, socialRow);
-    box.append(details);
+    const signedRow = el('div');
+    signedRow.append(el('dt', '', 'Signed'), el('dd', '', longDate(s.timestamp) + (s.replied ? '' : ', waiting ' + businessDaysSince(s.timestamp) + ' business days')));
+    contact.append(emailRow, socialRow, signedRow);
+    body.append(contact);
 
-    // Decision
+    // Decision and other actions
     const actions = el('div', 'staff-actions');
     if (s.status === 'New') {
       actions.append(
@@ -205,7 +291,7 @@
         button('Decline', 'secondary', () => decide(s, 'decline')),
       );
     } else {
-      actions.append(el('p', 'small staff-decided', s.status + ' by ' + (s.decidedBy || 'staff') + ', ' + shortDate(s.decidedAt)));
+      actions.append(el('p', 'small staff-decided', s.status + ' by ' + (s.decidedBy || 'staff') + ' on ' + longDate(s.decidedAt) + '.'));
       if (s.uploadLink) {
         actions.append(
           button('Resend upload link', 'secondary', (b) => resend(s, b)),
@@ -222,11 +308,11 @@
     tick.addEventListener('change', () => setReplied(s, tick));
     replied.append(tick, ' Replied');
     actions.append(replied);
-    box.append(actions);
+    body.append(actions);
 
-    // Uploads
+    // Designs
+    const designs = el('div', 'staff-uploads');
     if (s.uploads.length) {
-      const up = el('div', 'staff-uploads');
       s.uploads.forEach((m) => {
         const parts = m.bundles.map((b) => {
           const pins = b.slots.filter((x) => x.startsWith('pin-')).length;
@@ -236,15 +322,51 @@
         const line = el('p', 'staff-upload-line');
         line.append(el('strong', '', m.label + ': '), parts.join(' · '));
         const grid = el('div', 'thumbs');
-        const show = button('Show designs', 'ghost button-small', (b) => showThumbs(s, m, grid, b));
-        line.append(' ', show);
-        up.append(line, grid);
+        grid.dataset.month = m.month;
+        designs.append(line, grid);
       });
-      box.append(up);
-    } else if (s.status === 'Accepted') {
-      box.append(el('p', 'small staff-upload-line', 'No designs uploaded yet.'));
+    } else {
+      designs.append(el('p', 'small staff-upload-line',
+        s.status === 'Accepted' ? 'No designs uploaded yet.' : 'Designs show here once the artist is accepted and uploads.'));
     }
-    return box;
+    body.append(designs);
+    return body;
+  }
+
+  // ---------- Designs (thumbnails) ----------
+
+  const SLOT_NAMES = { 'pin-1': 'Pin 1', 'pin-2': 'Pin 2', 'pin-3': 'Pin 3', 'pin-4': 'Pin 4', logo: 'Logo', solo: 'Solo pin' };
+
+  function loadAllThumbs(s, body) {
+    body.querySelectorAll('.thumbs[data-month]').forEach((grid) => {
+      if (!grid.childElementCount) showThumbs(s, grid.dataset.month, grid);
+    });
+  }
+
+  async function showThumbs(s, month, grid) {
+    const key = s.id + '|' + month;
+    grid.replaceChildren(...[1, 2, 3, 4, 5].map(() => el('span', 'thumb thumb-skeleton')));
+    try {
+      if (!thumbCache.has(key)) thumbCache.set(key, (await staffCall('staffThumbs', { signupId: s.id, month })).thumbs);
+      grid.replaceChildren();
+      thumbCache.get(key).forEach((t) => {
+        const caption = (t.bundle ? t.bundle + ', ' : '') + (t.slot === 'solo' ? t.name : SLOT_NAMES[t.slot]);
+        const tile = el('button', 'thumb');
+        tile.type = 'button';
+        tile.setAttribute('aria-label', 'Open ' + caption + ' full size');
+        if (t.src) {
+          const img = el('img');
+          img.src = t.src;
+          img.alt = '';
+          tile.append(img);
+        }
+        tile.append(el('span', 'thumb-caption', caption));
+        tile.addEventListener('click', () => openImage(t.fileId, s.artistName + ': ' + caption));
+        grid.append(tile);
+      });
+    } catch (error) {
+      grid.replaceChildren(el('p', 'small is-error', 'The designs could not load. ' + plainError(error)));
+    }
   }
 
   // ---------- Actions ----------
@@ -359,42 +481,6 @@
     }
   }
 
-  const SLOT_NAMES = { 'pin-1': 'Pin 1', 'pin-2': 'Pin 2', 'pin-3': 'Pin 3', 'pin-4': 'Pin 4', logo: 'Logo', solo: 'Solo pin' };
-
-  async function showThumbs(s, m, grid, b) {
-    if (grid.childElementCount) {
-      grid.replaceChildren();
-      b.textContent = 'Show designs';
-      return;
-    }
-    b.disabled = true;
-    b.textContent = 'Loading…';
-    try {
-      const result = await staffCall('staffThumbs', { signupId: s.id, month: m.month });
-      result.thumbs.forEach((t) => {
-        const caption = (t.bundle ? t.bundle + ', ' : '') + (t.slot === 'solo' ? t.name : SLOT_NAMES[t.slot]);
-        const tile = el('button', 'thumb');
-        tile.type = 'button';
-        tile.setAttribute('aria-label', 'Open ' + caption + ' full size');
-        if (t.src) {
-          const img = el('img');
-          img.src = t.src;
-          img.alt = '';
-          tile.append(img);
-        }
-        tile.append(el('span', 'thumb-caption', caption));
-        tile.addEventListener('click', () => openImage(t.fileId, s.artistName + ': ' + caption));
-        grid.append(tile);
-      });
-      b.textContent = 'Hide designs';
-    } catch (error) {
-      b.textContent = 'Show designs';
-      setStatus(status, plainError(error), true);
-    } finally {
-      b.disabled = false;
-    }
-  }
-
   const imageDialog = document.getElementById('image-dialog');
   imageDialog.addEventListener('click', (event) => { if (event.target === imageDialog) imageDialog.close(); });
 
@@ -417,7 +503,7 @@
   // ---------- Start ----------
 
   if (creds && creds.staff && creds.password) {
-    load().catch((error) => { if (!loginForm.hidden) return; showLogin(plainError(error)); });
+    load().catch((error) => { if (loginBox.hidden) showLogin(plainError(error)); });
   } else {
     showLogin('');
   }
