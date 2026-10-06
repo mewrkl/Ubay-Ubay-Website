@@ -76,6 +76,32 @@ const SIGNUP_URL = 'https://script.google.com/macros/s/AKfycbyl7DMAC7VRyWy2h1U9q
 // to false AND delete the "Test mode" line near the top of sign-up.html.
 const TEST_MODE = true;
 
+// Sends one request to the Apps Script and returns its answer. Used by the sign-up,
+// upload, and staff pages. Throws an Error with a plain message when it says no.
+// text/plain stops the browser from asking Apps Script for permission first (it can't answer that).
+async function callScript(payload) {
+  if (!SIGNUP_URL) throw new Error('Sending isn’t switched on yet, so nothing was sent.');
+  const response = await fetch(SIGNUP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload),
+  });
+  const result = await response.json().catch(() => ({}));
+  if (!result.ok) {
+    const error = new Error(result.error || 'Something went wrong on our side.');
+    error.result = result;
+    throw error;
+  }
+  return result;
+}
+
+// fetch throws a TypeError when there is no connection.
+function plainError(error) {
+  return error instanceof TypeError
+    ? 'We couldn’t reach the server. Check your internet connection.'
+    : error.message;
+}
+
 const signupForm = document.getElementById('acceptance-form');
 if (signupForm) setUpSignup(signupForm);
 
@@ -182,31 +208,17 @@ function setUpSignup(form) {
 
     try {
       lastPdf = buildLetterPdf(details, pad, canvas);
-      if (!SIGNUP_URL) throw new Error('Sending isn’t switched on yet, so nothing was sent. Everything you typed is still here.');
-
-      const response = await fetch(SIGNUP_URL, {
-        method: 'POST',
-        // text/plain stops the browser from asking Apps Script for permission first (it can't answer that).
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          action: 'signup',
-          ...details,
-          agree: true,
-          test: TEST_MODE,
-          website: document.getElementById('website').value,
-          pdf: lastPdf.output('datauristring').split(',')[1],
-        }),
+      await callScript({
+        action: 'signup',
+        ...details,
+        agree: true,
+        test: TEST_MODE,
+        website: document.getElementById('website').value,
+        pdf: lastPdf.output('datauristring').split(',')[1],
       });
-      const result = await response.json().catch(() => ({}));
-      if (!result.ok) throw new Error(result.error || 'Something went wrong on our side.');
-
       showDone(details);
     } catch (error) {
-      // fetch throws a TypeError when there is no connection.
-      const message = error instanceof TypeError
-        ? 'We couldn’t reach the server. Check your internet connection.'
-        : error.message;
-      showStatus(/still here/.test(message) ? message : message + ' Tap Try again. Everything you typed is still here.', true);
+      showStatus(plainError(error) + ' Tap Try again. Everything you typed is still here.', true);
       submit.textContent = 'Try again';
     } finally {
       sending = false;

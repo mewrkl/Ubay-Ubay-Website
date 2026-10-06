@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff page, Ubay-Ubay</title>
+  <!-- Private page for Ubay-Ubay staff. Not linked anywhere, and hidden from search engines. -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other pages. -->
+  <link rel="stylesheet" href="styles.css?v=60">
+  <script src="script.js?v=27" defer></script>
+  <script src="admin.js?v=1" defer></script>
+</head>
+<body>
+
+<!--
+  HOW THIS PAGE WORKS
+  - Staff log in with their name and the staff password. The password is checked by the
+    Apps Script (ADMIN_PASSWORD in its settings), never stored in this page.
+  - Accept sends the welcome email with the artist's private upload link.
+    Decline sends a kind "not this time" email. Both are logged with the staff name.
+  - admin.js does the work. Setup and use: README.md, "Use the staff page".
+-->
+
+<div class="page">
+
+<header class="site-header">
+  <p><span>
+    Ubay-Ubay staff page
+  </span></p>
+</header>
+
+<main class="signup admin">
+<div class="column admin-column">
+
+  <h1 id="page-title">Sign-ups</h1>
+
+  <!-- Log in -->
+  <form class="form admin-login" id="login-form" novalidate hidden>
+    <div class="field">
+      <label for="staff-name">Your name</label>
+      <p class="hint" id="staff-name-hint">Shown next to every accept, decline, and change you make.</p>
+      <input id="staff-name" type="text" autocomplete="name" maxlength="60" aria-describedby="staff-name-hint" required>
+    </div>
+    <div class="field">
+      <label for="staff-password">Staff password</label>
+      <input id="staff-password" type="password" autocomplete="current-password" required>
+    </div>
+    <button class="button button-primary button-block" type="submit" id="login-button">Log in</button>
+    <p class="small form-status" id="login-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <!-- The list -->
+  <div id="admin-app" hidden>
+    <div class="admin-bar">
+      <p class="small">Logged in as <strong id="staff-shown"></strong></p>
+      <p class="admin-bar-actions">
+        <button class="button button-ghost" type="button" id="refresh-button">Refresh</button>
+        <button class="button button-ghost" type="button" id="logout-button">Log out</button>
+      </p>
+    </div>
+
+    <div class="chips" role="group" aria-label="Show">
+      <button class="chip" type="button" data-filter="needs" aria-pressed="true">Needs a reply <span class="chip-count" id="count-needs"></span></button>
+      <button class="chip" type="button" data-filter="all" aria-pressed="false">All <span class="chip-count" id="count-all"></span></button>
+      <button class="chip" type="button" data-filter="Accepted" aria-pressed="false">Accepted <span class="chip-count" id="count-accepted"></span></button>
+      <button class="chip" type="button" data-filter="Declined" aria-pressed="false">Declined <span class="chip-count" id="count-declined"></span></button>
+    </div>
+
+    <p class="small form-status admin-status" id="admin-status" role="status" aria-live="polite"></p>
+    <div class="staff-list" id="staff-list"></div>
+  </div>
+
+</div>
+</main>
+
+<!-- Asks before an email goes out -->
+<dialog class="example-dialog thanks-dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+  <div class="example-dialog-inner">
+    <div class="example-dialog-head">
+      <p class="example-dialog-title" id="confirm-title"></p>
+    </div>
+    <p id="confirm-text"></p>
+    <div class="confirm-actions">
+      <button class="button button-secondary" type="button" data-answer="no">Cancel</button>
+      <button class="button button-primary" type="button" data-answer="yes" id="confirm-yes">Send email</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- One design, full size -->
+<dialog class="example-dialog" id="image-dialog" aria-labelledby="image-title">
+  <div class="example-dialog-inner">
+    <div class="example-dialog-head">
+      <p class="example-dialog-title" id="image-title"></p>
+      <form method="dialog">
+        <button class="example-dialog-close" type="submit" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <div id="image-full"></div>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="column">
+    <p class="footer-credit">Ubay-Ubay staff page · A Tinkers fundraiser · UP Cebu Fine Arts</p>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>

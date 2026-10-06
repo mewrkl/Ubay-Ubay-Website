@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload your designs, Ubay-Ubay</title>
+  <!-- Private page: each accepted artist reaches it through the link in their welcome email. -->
+  <meta name="robots" content="noindex">
+  <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other pages. -->
+  <link rel="stylesheet" href="styles.css?v=60">
+  <script src="script.js?v=27" defer></script>
+  <script src="upload.js?v=1" defer></script>
+</head>
+<body>
+
+<!--
+  HOW THIS PAGE WORKS
+  - Accepted artists open it with their private link: upload.html?t=<code>.
+    The code tells the Apps Script who they are, so their files go to their own Drive folder.
+  - upload.js does the work. The checks (PNG, 1000 x 1000 px) happen here and again in the script.
+-->
+
+<div class="page">
+
+<!-- EDIT: The header. Keep it the same as the header on index.html. -->
+<header class="site-header">
+  <p><span>
+    This site is made by
+    <span class="logo-tip"><button class="logo-tip-trigger" type="button" aria-describedby="logo-tip-text" aria-expanded="false"><img class="site-header-logo" src="assets/brand/logo-wordmark-navy.png" width="465" height="101" alt="Ubay-Ubay"></button><span class="logo-tip-text" id="logo-tip-text" role="tooltip">Ubay-Ubay is a pop-up art market by Tinkers, an organization in the Fine Arts department of UP Cebu.</span></span>,
+    under Tinkers.
+  </span></p>
+</header>
+
+<main class="signup upload">
+<div class="column">
+
+  <p class="back"><a href="index.html#guidelines">← The guidelines</a></p>
+
+  <h1 id="page-title">Upload your designs</h1>
+  <p class="signup-intro" id="upload-loading">Checking your upload link…</p>
+
+  <noscript>
+    <p class="small">This page needs JavaScript. Please open it in your phone's browser, such as Chrome or Safari.</p>
+  </noscript>
+
+  <!-- Shown when the link is wrong or no longer works -->
+  <div class="upload-panel" id="upload-bad" hidden>
+    <p id="upload-bad-text"></p>
+    <p><button class="button button-secondary" type="button" id="upload-retry">Try again</button></p>
+  </div>
+
+  <div id="upload-app" hidden>
+    <!-- EDIT: The greeting. upload.js fills in the artist name and the month (the data-upload parts). -->
+    <p class="signup-intro">
+      Hi <strong data-upload="artistName"></strong>! Send your designs by the last day of
+      <span data-upload="monthLabel"></span>. They are printed the month after.
+    </p>
+
+    <section class="upload-section" aria-labelledby="mine-title">
+      <h2 id="mine-title" class="upload-title">Sent in <span data-upload="monthLabel"></span></h2>
+      <div id="upload-mine"></div>
+    </section>
+
+    <form class="upload-section" id="bundle-form" novalidate aria-labelledby="bundle-title">
+      <h2 id="bundle-title" class="upload-title">Send a bundle</h2>
+      <p class="hint">4 pins, each a PNG at exactly 1000 x 1000 px, and your bundle name logo as a PNG.
+        To fix a file you already sent, type the same bundle name and pick only that file.</p>
+
+      <div class="field">
+        <label for="bundle-name">Bundle name</label>
+        <input id="bundle-name" name="bundle" type="text" maxlength="60" autocomplete="off" required aria-describedby="bundle-name-error">
+        <p class="field-error" id="bundle-name-error"></p>
+      </div>
+
+      <div class="slots" id="bundle-slots">
+        <!-- Each tile is a file picker. upload.js fills in the preview. -->
+        <label class="slot" data-slot="pin-1"><input class="slot-input" type="file" accept="image/png"><span class="slot-preview"></span><span class="slot-name">Pin 1</span><span class="slot-state">Choose PNG</span></label>
+        <label class="slot" data-slot="pin-2"><input class="slot-input" type="file" accept="image/png"><span class="slot-preview"></span><span class="slot-name">Pin 2</span><span class="slot-state">Choose PNG</span></label>
+        <label class="slot" data-slot="pin-3"><input class="slot-input" type="file" accept="image/png"><span class="slot-preview"></span><span class="slot-name">Pin 3</span><span class="slot-state">Choose PNG</span></label>
+        <label class="slot" data-slot="pin-4"><input class="slot-input" type="file" accept="image/png"><span class="slot-preview"></span><span class="slot-name">Pin 4</span><span class="slot-state">Choose PNG</span></label>
+        <label class="slot" data-slot="logo"><input class="slot-input" type="file" accept="image/png"><span class="slot-preview"></span><span class="slot-name">Logo</span><span class="slot-state">Choose PNG</span></label>
+      </div>
+
+      <button class="button button-primary button-block" type="submit" id="bundle-send">Send bundle</button>
+      <p class="small form-status" id="bundle-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <form class="upload-section" id="solo-form" novalidate aria-labelledby="solo-title">
+      <h2 id="solo-title" class="upload-title">Send solo pins</h2>
+      <p class="hint" id="solo-hint">Optional. Single pins, each a PNG at exactly 1000 x 1000 px. They don't have to be new or on theme.</p>
+      <div class="field">
+        <label for="solo-files">Solo pin files</label>
+        <input id="solo-files" type="file" accept="image/png" multiple aria-describedby="solo-hint solo-error">
+        <p class="field-error" id="solo-error"></p>
+      </div>
+      <button class="button button-secondary button-block" type="submit" id="solo-send">Send solo pins</button>
+      <p class="small form-status" id="solo-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+</div>
+</main>
+
+<!-- EDIT: Footer contacts. Keep this the same as the footer on index.html. -->
+<footer class="site-footer">
+  <div class="column">
+    <img class="footer-logo" src="assets/brand/logo-horizontal-cream.png" width="160" height="57" alt="Ubay-Ubay pop-up art market">
+    <p class="footer-title">Questions?</p>
+    <dl class="footer-contacts">
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:ubayubaytinkers@gmail.com">ubayubaytinkers@gmail.com</a></dd>
+      </div>
+      <div>
+        <dt>Instagram</dt>
+        <dd><a href="https://www.instagram.com/anachimotte/" target="_blank" rel="noopener noreferrer">@anachimotte</a> <span class="footer-note">(backcard requests)</span></dd>
+      </div>
+      <div>
+        <dt>Facebook</dt>
+        <dd><a href="https://www.facebook.com/profile.php?id=61594420606815" target="_blank" rel="noopener noreferrer">Ubay-Ubay</a></dd>
+      </div>
+    </dl>
+    <p class="footer-credit">A Tinkers fundraiser · UP Cebu Fine Arts</p>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>

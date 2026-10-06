@@ -12,6 +12,8 @@ end of every month. Plain HTML, CSS, and JavaScript. No build step.
 | `sign-up.html` | The acceptance letter and the short sign-up form |
 | `styles.css` | How both pages look. Colors, text sizes, and spacing are at the top. |
 | `script.js` | Small page behaviors, and the sign-up form: checks, signature pad, PDF, sending |
+| `upload.html`, `upload.js` | The private upload page accepted artists open from their welcome email |
+| `admin.html`, `admin.js` | The staff page: sign-ups, Accept and Decline, uploaded designs |
 | `apps-script/Code.gs` | The sign-up backend, pasted into Google Apps Script (see "Set up the sign-up form") |
 | `assets/fonts/` | The brand font, Agrandir, as web files |
 | `assets/brand/` | The Ubay-Ubay logos and the sample bundle picture |
@@ -215,6 +217,43 @@ In the Apps Script editor, the gear icon (**Project Settings**) > **Script Prope
 - `LETTERS_FOLDER_ID` points to the Signed letters folder. Leave it alone.
 
 Free Gmail can send about 100 emails a day. Each sign-up sends 2.
+
+## Use the staff page
+
+The staff page is `admin.html` (https://mewrkl.github.io/Ubay-Ubay-Website/admin.html).
+It isn't linked anywhere on the site, and search engines are told to skip it.
+
+### Set the staff password (once)
+
+In the Apps Script editor: the gear icon (**Project Settings**) > **Script Properties** >
+**Add script property**. Name: `ADMIN_PASSWORD`. Value: a long password only staff know.
+Click **Save**. To change it later, edit the value. Everyone then logs in with the new one.
+
+Share the password only with the staff who need it. The staff page shows artists' personal
+details (Data Privacy Act). After 10 wrong passwords in 10 minutes, the page locks for 10 minutes.
+
+### Every day
+
+1. Open the staff page, type your name and the password, and click **Log in**.
+   Your name is saved next to everything you accept, decline, or change.
+2. **Needs a reply** lists everyone still waiting, oldest first. Red "Waiting" means it has
+   been more than 3 business days, which is longer than the sign-up page promises.
+3. **View letter** opens their signed letter. The social handle opens their Instagram.
+4. **Accept** emails the artist a welcome message with their private upload link.
+   **Decline** emails a kind "not this time" message. Both ask first, and can only be done once.
+5. If you answered someone from Gmail instead, tick **Replied** so they leave the waiting list.
+6. When an accepted artist uploads, their card shows what they sent each month.
+   **Show designs** shows the pictures, and clicking one opens it full size.
+7. Lost link? **Resend upload link** emails it again. **Copy upload link** copies it for you.
+
+The files are also in Drive (`Ubay-Ubay submissions / Artists / <artist> / <month> Bundle - <name>`),
+and every action is in the Sheet's **Log** tab, but daily work never needs either.
+
+### After pasting a new version of Code.gs
+
+1. Select `setup` at the top of the editor and click **Run**. It adds any new Sheet columns and
+   tabs, and keeps everything already there.
+2. **Deploy > Manage deployments**, the pencil icon, **Version: New version**, **Deploy**.
 
 ## Put the site online
 

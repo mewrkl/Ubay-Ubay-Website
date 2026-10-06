@@ -67,7 +67,8 @@ The admin page grows into a staff center (`admin.html`, requested 2026-10-01) wi
   and a "Next month's lineup" list that updates itself.
 Staff type their name at login so every change is logged. The Google Sheet is the database.
 
-**Sign-ups tab (ideas from the owner, 2026-10-06, not built yet).** Artists are told they get a
+**Sign-ups tab (built 2026-10-06 as `admin.html`: list, Accept/Decline emails, Replied tick,
+uploads with thumbnails, log). Still to do from the ideas below: auto-detect replies from Gmail.** Artists are told they get a
 reply within 1 to 3 business days, so staff need to see who is still waiting:
 - One row per sign-up: date, artist name, full name, email, social (clickable), signed letter.
 - Two statuses per row: Reply (Not replied / Replied) and Decision (New / Accepted / Not accepted).
@@ -80,6 +81,7 @@ reply within 1 to 3 business days, so staff need to see who is still waiting:
   ubayubaytinkers@gmail.com (the accept email carries the upload link) and set both statuses at once.
 
 - [x] The Apps Script runs on ubayubaytinkers@gmail.com (owner, 2026-10-06)
+- [ ] Set `ADMIN_PASSWORD` in Apps Script (README "Use the staff page")
 - [ ] Who sets and keeps the admin page password? Keep the list of people who know it small (RA 10173).
 - [ ] Who besides ubayubaytinkers@gmail.com needs access to the Drive files?
 - [ ] Who on staff can change review and print statuses?
@@ -101,3 +103,11 @@ affiliation, portfolio, bundle plans. See `decisions/0002-minimal-signup-form.md
 - Earnings and payout timing are announced by email before the first print or sale.
   When they are decided, write them into clause 4 and raise the version date.
 - [ ] Optional: should the letter say anything about AI-generated art?
+
+## Staff page and uploads (built 2026-10-06)
+
+- [ ] Paste the new `Code.gs`, run `setup`, add `ADMIN_PASSWORD`, publish a new version
+- [ ] Declined artists' data: the letter keeps data up to 2 years after you stop. Decide
+      whether declined sign-ups should be deleted sooner (for example after 30 days).
+- [ ] Optional: an upload deadline lock. Right now uploads are accepted any day and count
+      for the month they arrive in.
