@@ -8,9 +8,9 @@
        Hidden from search engines. -->
   <meta name="robots" content="noindex, nofollow">
   <!-- EDIT: When you change styles.css or script.js, raise the ?v= number here AND on the other pages. -->
-  <link rel="stylesheet" href="styles.css?v=61">
+  <link rel="stylesheet" href="styles.css?v=63">
   <script src="script.js?v=28" defer></script>
-  <script src="admin.js?v=2" defer></script>
+  <script src="admin.js?v=5" defer></script>
 </head>
 <body class="staff">
 
@@ -85,14 +85,68 @@
       </button>
     </div>
 
-    <div class="staff-tools">
+    <!-- Filters. They are saved in the page address, so Refresh keeps them and a copied
+         link opens the same view. The tiles above are shortcuts that set these. -->
+    <form class="staff-filters" id="staff-filters" role="search" aria-label="Filter sign-ups">
       <label class="staff-search">
         <span class="visually-hidden">Search</span>
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-        <input type="search" id="staff-search" placeholder="Search name, artist name, or email" autocomplete="off">
+        <input type="search" id="f-q" name="q" placeholder="Search name, artist name, or email" autocomplete="off">
       </label>
-      <button class="button button-ghost button-small" type="button" id="show-all">Show everyone</button>
+      <label class="filter-field">
+        <span>Status</span>
+        <select id="f-status" name="status">
+          <option value="all">All</option>
+          <option value="New">New (not decided)</option>
+          <option value="Accepted">Accepted</option>
+          <option value="Declined">Declined</option>
+        </select>
+      </label>
+      <label class="filter-field">
+        <span>Replied</span>
+        <select id="f-replied" name="replied">
+          <option value="all">All</option>
+          <option value="no">Not replied yet</option>
+          <option value="yes">Replied</option>
+        </select>
+      </label>
+      <label class="filter-field">
+        <span>Uploads</span>
+        <select id="f-uploads" name="uploads">
+          <option value="all">All</option>
+          <option value="month">Uploaded this month</option>
+          <option value="any">Uploaded any time</option>
+          <option value="none">No uploads yet</option>
+        </select>
+      </label>
+      <label class="filter-field">
+        <span>Signed</span>
+        <select id="f-signed" name="signed">
+          <option value="any">Any time</option>
+          <option value="week">Last 7 days</option>
+          <option value="month">This month</option>
+          <option value="last-month">Last month</option>
+          <option value="older">Before last month</option>
+        </select>
+      </label>
+      <label class="filter-field">
+        <span>Sort</span>
+        <select id="f-sort" name="sort">
+          <option value="oldest">Longest wait</option>
+          <option value="newest">Newest</option>
+          <option value="name">A to Z</option>
+        </select>
+      </label>
+    </form>
+
+    <div class="staff-tools">
       <p class="small staff-showing" id="staff-showing" aria-live="polite"></p>
+      <label class="filter-check">
+        <input type="checkbox" id="f-hide-test" name="hideTest"> Hide test sign-ups
+      </label>
+      <button class="button button-ghost button-small" type="button" id="clear-filters">Clear filters</button>
+      <!-- Copies every email in the list below, for Gmail's BCC box -->
+      <button class="button button-secondary button-small" type="button" id="copy-emails">Copy emails</button>
     </div>
 
     <p class="small form-status admin-status" id="admin-status" role="status" aria-live="polite"></p>
@@ -115,6 +169,28 @@
       <button class="button button-secondary" type="button" data-answer="no">Cancel</button>
       <button class="button button-primary" type="button" data-answer="yes" id="confirm-yes">Send email</button>
     </div>
+  </div>
+</dialog>
+
+<!-- A signed letter, shown on the page. Each PDF page is drawn as a picture, so it
+     works on phones too. Open in new tab and Download use the same file. -->
+<dialog class="example-dialog letter-dialog" id="letter-dialog" aria-labelledby="letter-title">
+  <div class="example-dialog-inner">
+    <div class="example-dialog-head">
+      <p class="example-dialog-title" id="letter-title">Signed letter</p>
+      <form method="dialog">
+        <button class="example-dialog-close" type="submit" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <p class="letter-dialog-actions">
+      <button class="button button-secondary button-small" type="button" id="letter-open" disabled>Open in new tab</button>
+      <button class="button button-ghost button-small" type="button" id="letter-download" disabled>Download</button>
+    </p>
+    <div class="letter-pages" id="letter-pages"></div>
   </div>
 </dialog>
 

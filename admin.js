@@ -13,7 +13,6 @@
   const topUser = document.getElementById('staff-top-user');
   const listBox = document.getElementById('staff-list');
   const status = document.getElementById('admin-status');
-  const search = document.getElementById('staff-search');
   const thisMonth = (() => {
     const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Manila', year: 'numeric', month: '2-digit' })
       .formatToParts(new Date()).map((x) => [x.type, x.value]));
@@ -22,7 +21,6 @@
 
   let creds = null;
   let signups = [];
-  let filter = 'needs';
   const open = new Set();       // the rows whose details are showing
   const thumbCache = new Map(); // "signupId|month" -> thumbnails
 
@@ -102,20 +100,91 @@
     listBox.replaceChildren(...[1, 2, 3].map(() => el('div', 'srow srow-skeleton')));
   }
 
-  function setFilter(next) {
-    filter = next;
-    document.querySelectorAll('.stat-tile').forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.filter === filter)));
+  // ---------- Filters ----------
+  // The filter values live in the form below the tiles AND in the page address
+  // (?status=Accepted&replied=no...), so Refresh keeps them and a link can be shared.
+
+  const filterForm = document.getElementById('staff-filters');
+  const field = {
+    q: document.getElementById('f-q'),
+    status: document.getElementById('f-status'),
+    replied: document.getElementById('f-replied'),
+    uploads: document.getElementById('f-uploads'),
+    signed: document.getElementById('f-signed'),
+    sort: document.getElementById('f-sort'),
+    hideTest: document.getElementById('f-hide-test'),
+  };
+  const CLEAR = { q: '', status: 'all', replied: 'all', uploads: 'all', signed: 'any', sort: 'oldest', hideTest: false };
+  // What each tile sets. A tile looks "on" when the filters match it exactly.
+  const TILES = {
+    needs: { replied: 'no' },
+    Accepted: { status: 'Accepted', sort: 'newest' },
+    Declined: { status: 'Declined', sort: 'newest' },
+    uploads: { uploads: 'month', sort: 'newest' },
+  };
+
+  const readFilters = () => ({
+    q: field.q.value.trim(),
+    status: field.status.value,
+    replied: field.replied.value,
+    uploads: field.uploads.value,
+    signed: field.signed.value,
+    sort: field.sort.value,
+    hideTest: field.hideTest.checked,
+  });
+
+  function writeFilters(f) {
+    Object.keys(CLEAR).forEach((k) => {
+      const v = f[k] === undefined ? CLEAR[k] : f[k];
+      if (k === 'hideTest') field.hideTest.checked = Boolean(v);
+      else field[k].value = v;
+    });
+  }
+
+  function saveFiltersToAddress(f) {
+    const params = new URLSearchParams();
+    Object.keys(CLEAR).forEach((k) => {
+      if (String(f[k]) !== String(CLEAR[k])) params.set(k, k === 'hideTest' ? '1' : f[k]);
+    });
+    const query = params.toString();
+    history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+  }
+
+  function filtersFromAddress() {
+    const params = new URLSearchParams(location.search);
+    if (![...params.keys()].length) return { ...CLEAR, ...TILES.needs }; // first visit: who needs a reply
+    const f = { ...CLEAR };
+    Object.keys(CLEAR).forEach((k) => {
+      if (params.has(k)) f[k] = k === 'hideTest' ? params.get(k) === '1' : params.get(k);
+    });
+    return f;
+  }
+
+  function applyFilters(f) {
+    writeFilters(f);
     render();
   }
 
+  writeFilters(filtersFromAddress());
+  filterForm.addEventListener('input', () => render());
+  filterForm.addEventListener('change', () => render());
+  filterForm.addEventListener('submit', (event) => event.preventDefault());
+  field.hideTest.addEventListener('change', () => render());
+
   document.querySelectorAll('.stat-tile').forEach((tile) => {
-    tile.addEventListener('click', () => setFilter(filter === tile.dataset.filter ? 'all' : tile.dataset.filter));
+    tile.addEventListener('click', () => {
+      const preset = TILES[tile.dataset.filter];
+      const on = tile.getAttribute('aria-pressed') === 'true';
+      applyFilters(on ? CLEAR : { ...CLEAR, hideTest: field.hideTest.checked, ...preset });
+    });
   });
-  document.getElementById('show-all').addEventListener('click', () => {
-    search.value = '';
-    setFilter('all');
+  document.getElementById('clear-filters').addEventListener('click', () => applyFilters(CLEAR));
+
+  const copyEmailsButton = document.getElementById('copy-emails');
+  copyEmailsButton.addEventListener('click', () => {
+    const emails = [...new Set(lastShown.map((s) => s.email))];
+    copy(emails.join(', '), copyEmailsButton, 'Copied ' + emails.length + ' email' + (emails.length === 1 ? '' : 's'));
   });
-  search.addEventListener('input', () => render());
 
   /** Weekdays between the sign-up and now, so "1 to 3 business days" can be checked. */
   function businessDaysSince(iso) {
@@ -133,9 +202,39 @@
 
   const uploadedThisMonth = (s) => s.uploads.some((m) => m.month === thisMonth);
 
-  const FILTER_NAMES = { needs: 'needing a reply', Accepted: 'accepted', Declined: 'declined', uploads: 'who uploaded this month', all: '' };
+  /** True when the sign-up date falls in the chosen "Signed" range. */
+  function signedIn(range, iso) {
+    if (range === 'any') return true;
+    const d = new Date(iso);
+    const now = new Date();
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    if (range === 'week') return now - d <= 7 * 24 * 3600 * 1000;
+    if (range === 'month') return d >= monthStart;
+    if (range === 'last-month') return d >= lastMonthStart && d < monthStart;
+    return d < lastMonthStart; // older
+  }
+
+  /** "Status: New · Not replied yet" for the line above the list. */
+  function describe(f) {
+    const parts = [];
+    const label = (sel) => sel.options[sel.selectedIndex].text;
+    if (f.status !== 'all') parts.push('Status: ' + label(field.status));
+    if (f.replied !== 'all') parts.push(label(field.replied));
+    if (f.uploads !== 'all') parts.push(label(field.uploads));
+    if (f.signed !== 'any') parts.push('Signed: ' + label(field.signed).toLowerCase());
+    if (f.hideTest) parts.push('No test sign-ups');
+    if (f.q) parts.push('Matching "' + f.q + '"');
+    return parts;
+  }
+
+  let lastShown = [];
 
   function render() {
+    const f = readFilters();
+    saveFiltersToAddress(f);
+
+    // The tiles count everyone, whatever the filters are.
     const needs = signups.filter((s) => !s.replied);
     const oldest = needs.reduce((max, s) => Math.max(max, businessDaysSince(s.timestamp)), 0);
     document.getElementById('count-needs').textContent = needs.length;
@@ -144,29 +243,50 @@
     document.getElementById('count-accepted').textContent = signups.filter((s) => s.status === 'Accepted').length;
     document.getElementById('count-declined').textContent = signups.filter((s) => s.status === 'Declined').length;
     document.getElementById('count-uploads').textContent = signups.filter(uploadedThisMonth).length;
+    document.querySelectorAll('.stat-tile').forEach((tile) => {
+      const preset = { ...CLEAR, hideTest: f.hideTest, ...TILES[tile.dataset.filter] };
+      const matches = ['status', 'replied', 'uploads', 'signed', 'q'].every((k) => String(preset[k]) === String(f[k]));
+      tile.setAttribute('aria-pressed', String(matches));
+    });
 
-    let shown = filter === 'needs' ? needs
-      : filter === 'uploads' ? signups.filter(uploadedThisMonth)
-        : filter === 'all' ? signups
-          : signups.filter((s) => s.status === filter);
-    const q = search.value.trim().toLowerCase();
-    if (q) shown = shown.filter((s) => [s.artistName, s.fullName, s.email, s.social].some((v) => v.toLowerCase().includes(q)));
-    // Waiting artists oldest first, everything else newest first.
-    shown = [...shown].sort((a, b) => (filter === 'needs' ? 1 : -1) * (a.timestamp < b.timestamp ? -1 : 1));
+    const q = f.q.toLowerCase();
+    let shown = signups.filter((s) =>
+      (f.status === 'all' || s.status === f.status) &&
+      (f.replied === 'all' || (f.replied === 'yes') === s.replied) &&
+      (f.uploads === 'all' ||
+        (f.uploads === 'month' && uploadedThisMonth(s)) ||
+        (f.uploads === 'any' && s.uploads.length > 0) ||
+        (f.uploads === 'none' && s.uploads.length === 0)) &&
+      signedIn(f.signed, s.timestamp) &&
+      !(f.hideTest && s.test) &&
+      (!q || [s.artistName, s.fullName, s.email, s.social].some((v) => v.toLowerCase().includes(q))));
 
+    shown = [...shown].sort((a, b) => {
+      if (f.sort === 'name') return a.artistName.localeCompare(b.artistName, 'en', { sensitivity: 'base' });
+      const older = a.timestamp < b.timestamp ? -1 : 1;
+      return f.sort === 'newest' ? -older : older;
+    });
+    lastShown = shown;
+
+    const parts = describe(f);
     document.getElementById('staff-showing').textContent =
-      'Showing ' + shown.length + ' of ' + signups.length + (FILTER_NAMES[filter] ? ', ' + FILTER_NAMES[filter] : '') + (q ? ', matching "' + search.value.trim() + '"' : '');
+      'Showing ' + shown.length + ' of ' + signups.length + (parts.length ? ' · ' + parts.join(' · ') : '');
+    document.getElementById('clear-filters').hidden = !parts.length;
+    copyEmailsButton.textContent = 'Copy ' + shown.length + ' email' + (shown.length === 1 ? '' : 's');
+    copyEmailsButton.disabled = !shown.length;
 
     listBox.replaceChildren();
     if (!shown.length) {
       const empty = el('div', 'staff-empty');
+      const onlyNeeds = parts.length === 1 && f.replied === 'no';
       empty.append(el('p', 'staff-empty-title',
-        q ? 'No one matches "' + search.value.trim() + '".'
-          : filter === 'needs' ? 'Everyone has a reply. Nice work.' : 'No one here yet.'));
-      if (filter !== 'all' || q) {
-        const all = el('button', 'button button-ghost', 'Show everyone');
+        !signups.length ? 'No sign-ups yet.'
+          : onlyNeeds ? 'Everyone has a reply. Nice work.'
+            : 'No one matches these filters.'));
+      if (parts.length) {
+        const all = el('button', 'button button-ghost', 'Clear filters');
         all.type = 'button';
-        all.addEventListener('click', () => document.getElementById('show-all').click());
+        all.addEventListener('click', () => applyFilters(CLEAR));
         empty.append(all);
       }
       listBox.append(empty);
@@ -441,15 +561,15 @@
     }
   }
 
-  async function copy(textToCopy, b) {
+  async function copy(textToCopy, b, doneLabel) {
     const label = b.textContent;
     try {
       await navigator.clipboard.writeText(textToCopy);
-      b.textContent = 'Copied';
+      b.textContent = doneLabel || 'Copied';
     } catch (error) {
       b.textContent = 'Copy failed';
     }
-    setTimeout(() => { b.textContent = label; }, 1500);
+    setTimeout(() => { if (b.textContent !== label) b.textContent = label; }, 1800);
   }
 
   function base64ToUrl(data, mimeType) {
@@ -457,25 +577,85 @@
     return URL.createObjectURL(new Blob([bytes], { type: mimeType }));
   }
 
+  // ---------- The signed letter, in a popup ----------
+  // PDF.js (from cdnjs, pinned) draws each PDF page as a picture, so the letter shows
+  // on phones too. It only loads the first time someone opens a letter.
+  // Pinned to 4.10.38 on purpose: version 6 needs JavaScript features most browsers
+  // don't have yet, and fails to draw.
+  const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/';
+  let pdfjs = null;
+  function loadPdfJs() {
+    if (!pdfjs) {
+      pdfjs = import(PDFJS + 'pdf.min.mjs').then((lib) => {
+        lib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.mjs';
+        return lib;
+      });
+      pdfjs.catch(() => { pdfjs = null; }); // let the next try load it again
+    }
+    return pdfjs;
+  }
+
+  const letterDialog = document.getElementById('letter-dialog');
+  const letterPages = document.getElementById('letter-pages');
+  const letterOpen = document.getElementById('letter-open');
+  const letterDownload = document.getElementById('letter-download');
+  let letterFile = null; // { url, name } of the letter showing now
+  letterDialog.addEventListener('click', (event) => { if (event.target === letterDialog) letterDialog.close(); });
+  letterOpen.addEventListener('click', () => { if (letterFile) window.open(letterFile.url, '_blank', 'noopener'); });
+  letterDownload.addEventListener('click', () => {
+    if (!letterFile) return;
+    const a = el('a');
+    a.href = letterFile.url;
+    a.download = letterFile.name;
+    a.click();
+  });
+
   async function viewLetter(s, b) {
-    // Open the tab right away (browsers block tabs opened after waiting), then fill it.
-    const tab = window.open('', '_blank');
-    if (tab) tab.document.write('<p style="font-family:sans-serif">Loading the signed letter…</p>');
+    document.getElementById('letter-title').textContent = s.artistName + ': signed letter';
+    letterFile = null;
+    letterOpen.disabled = true;
+    letterDownload.disabled = true;
+    letterPages.replaceChildren(el('p', 'small', 'Loading the signed letter…'));
+    letterDialog.showModal();
     b.disabled = true;
+    let file = null;
+    let lib = null;
     try {
-      const file = await staffCall('staffFile', { letterFor: s.id });
-      const url = base64ToUrl(file.data, file.mimeType);
-      if (tab) {
-        tab.location.href = url;
-      } else {
-        const a = el('a');
-        a.href = url;
-        a.download = file.name;
-        a.click();
+      [file, lib] = await Promise.all([staffCall('staffFile', { letterFor: s.id }), loadPdfJs().catch(() => null)]);
+    } catch (error) {
+      letterPages.replaceChildren(el('p', 'small is-error', plainError(error)));
+      b.disabled = false;
+      return;
+    }
+    letterFile = { url: base64ToUrl(file.data, file.mimeType), name: file.name };
+    letterOpen.disabled = false;
+    letterDownload.disabled = false;
+    const cantShow = () => letterPages.replaceChildren(el('p', 'small', 'The letter can’t be shown here. Use Open in new tab or Download.'));
+    if (!lib) {
+      cantShow();
+      b.disabled = false;
+      return;
+    }
+    try {
+      const bytes = Uint8Array.from(atob(file.data), (c) => c.charCodeAt(0));
+      const pdf = await lib.getDocument({ data: bytes }).promise;
+      letterPages.replaceChildren();
+      const width = letterPages.clientWidth || 600;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      for (let n = 1; n <= pdf.numPages; n++) {
+        const page = await pdf.getPage(n);
+        const base = page.getViewport({ scale: 1 });
+        const viewport = page.getViewport({ scale: (width / base.width) * ratio });
+        const canvas = el('canvas', 'letter-page');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        canvas.setAttribute('role', 'img');
+        canvas.setAttribute('aria-label', 'Page ' + n + ' of ' + pdf.numPages);
+        letterPages.append(canvas);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
       }
     } catch (error) {
-      if (tab) tab.close();
-      setStatus(status, plainError(error), true);
+      cantShow();
     } finally {
       b.disabled = false;
     }

@@ -236,15 +236,25 @@ details (Data Privacy Act). After 10 wrong passwords in 10 minutes, the page loc
 
 1. Open the staff page, type your name and the password, and click **Log in**.
    Your name is saved next to everything you accept, decline, or change.
-2. **Needs a reply** lists everyone still waiting, oldest first. Red "Waiting" means it has
-   been more than 3 business days, which is longer than the sign-up page promises.
-3. **View letter** opens their signed letter. The social handle opens their Instagram.
-4. **Accept** emails the artist a welcome message with their private upload link.
+2. The page opens on **Needs a reply**: everyone still waiting, longest wait first. Red means
+   more than 3 business days, which is longer than the sign-up page promises.
+3. The 4 tiles at the top (Needs a reply, Accepted, Declined, Uploaded this month) are shortcuts.
+   Click one to show only those, and click it again to show everyone.
+4. For anything else, use the filter bar: search, **Status**, **Replied**, **Uploads**,
+   **Signed**, and **Sort**, plus **Hide test sign-ups**. **Clear filters** resets them.
+   The filters stay in the page address, so Refresh keeps them, and you can send the link to
+   another staff member to show them the same list.
+5. **Copy emails** copies every email in the list you're looking at. Paste it into Gmail's
+   **Bcc** box to message, for example, all accepted artists at once.
+6. Click an artist's row to open it. The social handle opens their Instagram.
+   **View letter** shows their signed letter right on the page, with **Open in new tab**
+   and **Download** if you need the file.
+7. **Accept** emails the artist a welcome message with their private upload link.
    **Decline** emails a kind "not this time" message. Both ask first, and can only be done once.
-5. If you answered someone from Gmail instead, tick **Replied** so they leave the waiting list.
-6. When an accepted artist uploads, their card shows what they sent each month.
-   **Show designs** shows the pictures, and clicking one opens it full size.
-7. Lost link? **Resend upload link** emails it again. **Copy upload link** copies it for you.
+8. If you answered someone from Gmail instead, tick **Replied** so they leave the waiting list.
+9. When an accepted artist uploads, their row shows what they sent each month, with pictures.
+   Click a picture to see it full size.
+10. Lost link? **Resend upload link** emails it again. **Copy upload link** copies it for you.
 
 The files are also in Drive (`Ubay-Ubay submissions / Artists / <artist> / <month> Bundle - <name>`),
 and every action is in the Sheet's **Log** tab, but daily work never needs either.

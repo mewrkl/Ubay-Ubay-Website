@@ -2307,3 +2307,143 @@ body.staff {
   gap: var(--space-2);
   margin-top: var(--space-6);
 }
+
+/* Staff page filter bar: search and 5 dropdowns on one even row */
+.staff-filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) repeat(5, minmax(0, 1fr));
+  align-items: end;
+  gap: var(--space-3);
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.staff-filters .staff-search {
+  max-width: none;
+}
+
+.filter-field select {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .staff-filters {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .staff-filters .staff-search {
+    grid-column: 1 / -1;
+  }
+}
+
+.filter-field {
+  display: grid;
+  gap: var(--space-1);
+  font-weight: 400;
+}
+
+.filter-field > span {
+  color: var(--color-text-2);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-field select {
+  min-height: 44px;
+  padding: 0 36px 0 var(--space-3);
+  border: 1px solid var(--color-control);
+  border-radius: var(--radius-control);
+  /* The small down arrow, drawn in navy */
+  background: var(--color-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%232b2c49' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--size-small);
+  appearance: none;
+  cursor: pointer;
+}
+
+.filter-field select:hover {
+  border-color: var(--color-text-2);
+}
+
+.filter-check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-size: var(--size-small);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.filter-check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.staff-tools {
+  margin: 0 0 var(--space-2);
+}
+
+.staff-tools .staff-showing {
+  flex: 1 1 auto;
+  margin: 0;
+}
+
+.staff-tools .button[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .staff-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .staff-tools .staff-showing {
+    flex-basis: 100%;
+  }
+}
+
+/* The signed letter popup: the PDF pages, stacked, in a scrolling grey well */
+.letter-dialog {
+  width: min(760px, calc(100vw - 2 * var(--space-4)));
+}
+
+.letter-dialog .example-dialog-inner {
+  text-align: left;
+}
+
+.letter-dialog .example-dialog-head {
+  margin-bottom: var(--space-2);
+}
+
+.letter-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+}
+
+.letter-pages {
+  display: grid;
+  gap: var(--space-3);
+  max-height: calc(100dvh - 180px);
+  overflow-y: auto;
+  padding: var(--space-3);
+  border-radius: var(--radius-panel);
+  background: var(--color-well);
+}
+
+.letter-pages > p {
+  margin: 0;
+}
+
+.letter-page {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-line);
+  background: #fff;
+}
